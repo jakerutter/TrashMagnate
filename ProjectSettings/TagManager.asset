@@ -17,6 +17,7 @@ TagManager:
   - GarbageCapacityText
   - Recycler
   - InventoryCube
+  - RecycleSlotContainer
   layers:
   - Default
   - TransparentFX

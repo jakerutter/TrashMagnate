@@ -1,5 +1,26 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2121642676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1413763361903563403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 602f74cbbbd80034b96f88091a8e7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverBehaviourType: 0
+  hoverBehaviour_Color_Enter: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Color_Exit: {r: 0, g: 0, b: 0, a: 0}
+  hoverBehaviour_Image: {fileID: 0}
+  hoverBehaviour_Sprite_Exit: {fileID: 0}
+  hoverBehaviour_Sprite_Enter: {fileID: 0}
+  hoverBehaviour_Move: 0
+  hoverBehaviour_Move_Amount: {x: 0, y: 0}
+  triggerMouseOutFuncOnClick: 0
 --- !u!1 &1413763363119315268
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,14 +112,14 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 200
+  m_fontSizeBase: 200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_textAlignment: 257
+  m_textAlignment: 260
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -167,6 +188,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: image
       objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301440, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_Name
+      value: text
+      objectReference: {fileID: 0}
     - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
         type: 3}
       propertyPath: m_LocalScale.y
@@ -175,22 +201,52 @@ PrefabInstance:
     - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 44.9
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -34.4
+      value: 19.1
       objectReference: {fileID: 0}
     - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 50
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3642844639798301443, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3642844640191314834, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
         type: 3}
@@ -302,9 +358,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: ItemSlotTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 3642844640191314835, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3642844639798301442, guid: 99265ac353b3b4aa6a0240c0e8b448d9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 99265ac353b3b4aa6a0240c0e8b448d9, type: 3}
+--- !u!1 &1413763361903563403 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3642844640191314835, guid: 99265ac353b3b4aa6a0240c0e8b448d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2383329647135861016}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1413763361903563402 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3642844640191314834, guid: 99265ac353b3b4aa6a0240c0e8b448d9,

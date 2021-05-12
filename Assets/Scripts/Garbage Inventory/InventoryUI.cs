@@ -12,6 +12,10 @@ public class InventoryUI : MonoBehaviour
     private Transform itemSlotTemplate;
     private Inventory inventory;
     private Player player;
+    //recyclerInventory properties
+    private Transform recycleSlotContainer;
+    private Transform recycleSlotTemplate;
+    private RecyclerInventory recyclerInventory;
 
     private void Awake()
     {
@@ -20,6 +24,14 @@ public class InventoryUI : MonoBehaviour
         if(itemSlotContainer != null)
         {
             itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        }
+
+        //recyclerInventory UI items
+        recycleSlotContainer = GameObject.FindGameObjectWithTag("RecycleSlotContainer").transform;
+
+        if(recycleSlotContainer != null)
+        {
+          recycleSlotTemplate = recycleSlotContainer.transform.Find("RecycleSlotTemplate");  
         }
     }
 
@@ -33,7 +45,20 @@ public class InventoryUI : MonoBehaviour
 
         if(itemSlotTemplate == null)
         {
+            if(itemSlotContainer == null) {return;}
             itemSlotTemplate = itemSlotContainer.Find("ItemSlotTemplate");
+        }
+
+        //recyclerInventory UI items
+        if(recycleSlotContainer == null)
+        {
+            recycleSlotContainer = GameObject.FindGameObjectWithTag("RecycleSlotContainer").transform;
+        }
+         
+        if(recycleSlotTemplate == null)
+        {
+            if(recycleSlotContainer == null){return;}
+            recycleSlotTemplate = recycleSlotContainer.transform.Find("RecycleSlotTemplate");  
         }
     }
 
@@ -49,11 +74,13 @@ public class InventoryUI : MonoBehaviour
        inventory.OnItemListChanged += Inventory_OnItemListChanged;
        //recently uncommented the below line 
        RefreshInventoryItems();
+       RefreshRecycleInventoryItems();
     }
 
     private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
     {
         RefreshInventoryItems();
+        RefreshRecycleInventoryItems();
     }
 
     private void RefreshInventoryItems()
@@ -82,6 +109,8 @@ public class InventoryUI : MonoBehaviour
             itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //use item (convert to raw or place in recycler)
                 inventory.UseItem(item);
+                Debug.Log("raw type is " + item.RawType());
+                Debug.Log("mass is " + item.GetRawMass());
 
             };
             itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
@@ -112,6 +141,72 @@ public class InventoryUI : MonoBehaviour
                 y--;
             }
 
+        }
+    }
+
+    private void RefreshRecycleInventoryItems()
+    {
+        Debug.LogWarning("In RefreshRecycle InventoryItems");
+        if(recycleSlotContainer == null){
+            Debug.LogWarning("item slot container is null in refreshInventoryItems");
+            //return;
+        }
+
+        foreach(Transform child in recycleSlotContainer)
+        {
+            if (child == recycleSlotTemplate)
+            {
+                continue;
+            }
+            Destroy(child.gameObject);
+        }
+
+        int x = 0;
+        int y = 0;
+        float itemSlotCellSize = 110f;
+
+        foreach (Item item in inventory.GetItemList())
+        {
+            Debug.LogWarning("In RefreshRecycleInventoryItems itemList count is " + inventory.GetItemList().Count);
+            if(item.CanRecycle() == false)
+            {
+                // itemList.Remove(item);
+                continue;
+            }
+
+            RectTransform itemSlotRectTransform = Instantiate(recycleSlotTemplate, recycleSlotContainer).GetComponent<RectTransform>();
+            itemSlotRectTransform.gameObject.SetActive(true);
+
+            itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
+                //use item (convert to raw or place in recycler)
+                inventory.UseItem(item);
+        };
+        // itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
+        //     //drop item
+        //     Item duplicateItem = new Item { itemType = item.itemType, amount = item.amount };
+        //     inventory.RemoveItem(item);
+        //     ItemWorld.DropItem(player.GetPosition(), duplicateItem);
+        // };
+
+        itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+        Image image = itemSlotRectTransform.Find("image").GetComponent<Image>();
+        image.sprite = item.GetSprite();
+        
+        TextMeshProUGUI uiText = itemSlotRectTransform.Find("text").GetComponent<TextMeshProUGUI>();
+        if(item.amount > 1)
+        {
+            uiText.SetText(item.amount.ToString());   
+        } else {
+            uiText.SetText("");
+        }
+            
+        x++;
+
+        if(x > 8)
+        {
+            x=0;
+            y--;
+        }
         }
     }
 }
