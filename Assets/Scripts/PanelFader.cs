@@ -7,6 +7,7 @@ public class PanelFader : MonoBehaviour
     private bool mFaded = false;
 
     public float duration = .4f;
+    public Texture2D pointer; // normal pointer cursor
 
     public void Fade()
     {
@@ -33,6 +34,13 @@ public class PanelFader : MonoBehaviour
         {
             counter += Time.deltaTime;
             canvasGrp.alpha = Mathf.Lerp(start, end, counter / duration);
+            if (end == 0 && canvasGrp.gameObject.name == "RecyclingInventory")
+            {
+                Debug.Log("this is Recycler panel being faded "+ end);
+                Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
+            } else {
+                Debug.Log(canvasGrp.gameObject.name +" "+ end);
+            }
 
             yield return null;
         }

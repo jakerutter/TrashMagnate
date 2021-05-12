@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     {
         // switch(item.itemType)
         // {
-        //     case Item.ItemType.
+        //     case Item.ItemType.PlasticBottle: return;
         // }
     }
 

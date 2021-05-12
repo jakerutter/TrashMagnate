@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2549399155318915071}
   - component: {fileID: 2549399155318915070}
-  - component: {fileID: 7942409560453848793}
   - component: {fileID: 8043732866179059888}
+  - component: {fileID: 2096252920}
   m_Layer: 8
   m_Name: recycler1
   m_TagString: Recycler
@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2549399155318915040}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.9899998, y: 0.52, z: -0.01}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
@@ -81,26 +81,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7942409560453848793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2549399155318915040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8ee2ebc1e3fd0491a8d65da3991b20ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clickableLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  pointer: {fileID: 2800000, guid: 14fc8483bc49a40b98358f3e1fc97220, type: 3}
-  target: {fileID: 2800000, guid: 688a7dfa5ca24437d9bc31a869994a25, type: 3}
-  OnClickEnvironment:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!61 &8043732866179059888
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,5 +105,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 11.1, y: 7.35}
+  m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
+--- !u!114 &2096252920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2549399155318915040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86891f972e856485786edb1a59b2bee5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clickableLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  pointer: {fileID: 2800000, guid: 14fc8483bc49a40b98358f3e1fc97220, type: 3}
+  recycleCursor: {fileID: 2800000, guid: 9e483426836cb4935a452d3fd1835c23, type: 3}
+  OnClickEnvironment:
+    m_PersistentCalls:
+      m_Calls: []
+  recycleInventoryToggle: {fileID: 0}

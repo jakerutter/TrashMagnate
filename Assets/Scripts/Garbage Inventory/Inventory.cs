@@ -14,10 +14,6 @@ public class Inventory
     {
         this.useItemAction = useItemAction;
         itemList = new List<Item>();
-
-        // AddItem(new Item{itemType = Item.ItemType.PlasticBottle, amount = 1});
-        // AddItem(new Item{itemType = Item.ItemType.Computer, amount = 1});
-        // AddItem(new Item{itemType = Item.ItemType.GrowlerBottle, amount = 1});
     }
 
     public void AddItem(Item item)

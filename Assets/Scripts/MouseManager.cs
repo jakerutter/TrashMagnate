@@ -31,14 +31,14 @@ public class MouseManager : MonoBehaviour
 
     void Update()
     {
-          if(isBegingHeld)
-        {
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
-            Cursor.SetCursor(target, new Vector2(16,16), CursorMode.Auto);
-        }
+        //   if(isBegingHeld)
+        // {
+        //     Vector3 mousePos;
+        //     mousePos = Input.mousePosition;
+        //     mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        //     this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, 0);
+        //     Cursor.SetCursor(target, new Vector2(16,16), CursorMode.Auto);
+        // }
 
         if(Input.GetKeyDown("t"))
         {
@@ -69,21 +69,22 @@ public class MouseManager : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
+
             Debug.Log("Selecting item "+ this.gameObject.name);
-            isBegingHeld = true;
+        //     isBegingHeld = true;
             
-            Vector3 mousePos;
-            mousePos = Input.mousePosition;
-            mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
+        //     Vector3 mousePos;
+        //     mousePos = Input.mousePosition;
+        //     mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        //     startPosX = mousePos.x - this.transform.localPosition.x;
+        //     startPosY = mousePos.y - this.transform.localPosition.y;
         }
     }
 
     private void OnMouseUp()
     {
-        isBegingHeld = false;
-        Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
+        // isBegingHeld = false;
+        // Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
     }
 }
 
