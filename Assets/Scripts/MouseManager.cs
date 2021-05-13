@@ -18,15 +18,21 @@ public class MouseManager : MonoBehaviour
     public Button mainInventoryToggle;
     public Button questInventoryToggle;
     public Button rawInventoryToggle;
+    public Button recycleInventoryToggle;
 
     private GameObject selectedObject;
     private float startPosX;
     private float startPosY;
-    private bool isBegingHeld = false;
+    //private bool isBegingHeld = false;
 
     void Start()
     {
         Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
+        //Do not remove these onClick invokes. They "prime" the buttons so a single click opens the menus
+        mainInventoryToggle.onClick.Invoke();
+        questInventoryToggle.onClick.Invoke();
+        rawInventoryToggle.onClick.Invoke();
+        recycleInventoryToggle.onClick.Invoke();
     }
 
     void Update()

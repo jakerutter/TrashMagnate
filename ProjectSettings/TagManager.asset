@@ -29,14 +29,14 @@ TagManager:
   - 
   - Clickable
   - UISprite
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - PostProcessing
+  - Terra_Vegetation
+  - Terra_Geometry
+  - Player
+  - Target
+  - Weapon
+  - Projectile
+  - PlayerCollisionOnly
   - 
   - 
   - 

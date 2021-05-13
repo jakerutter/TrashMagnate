@@ -164,7 +164,7 @@ public class Inventory
             RecyclingInventory.AdjustAvailableCapacity(mass);
 
             //if entire item was not recycled, remove item and replace with less items
-            if(canHoldAmount < item.amount)
+            if(canHoldAmount < item.amount && item.amount > 1)
             {
                 Debug.Log("recycling "+ canHoldAmount + " " + item.itemType);
                 Item dupeItem = new Item { itemType = item.itemType, amount = item.amount };

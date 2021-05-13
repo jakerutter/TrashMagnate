@@ -17,7 +17,6 @@ public class Recycler : MonoBehaviour
     private GameObject selectedObject;
     private float startPosX;
     private float startPosY;
-    private bool isRecyclerCursor = false;
 
     private void OnMouseDown()
     {
