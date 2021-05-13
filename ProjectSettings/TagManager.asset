@@ -11,13 +11,13 @@ TagManager:
   - PlasticInv
   - RubberInv
   - MetalInv
-  - ElectronicsInv
   - GarbageInventoryPanel
   - GarbageInventoryButton
   - GarbageCapacityText
   - Recycler
   - InventoryCube
   - RecycleSlotContainer
+  - ElectronicInv
   layers:
   - Default
   - TransparentFX

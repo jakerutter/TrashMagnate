@@ -146,12 +146,6 @@ public class InventoryUI : MonoBehaviour
 
     private void RefreshRecycleInventoryItems()
     {
-        Debug.LogWarning("In RefreshRecycle InventoryItems");
-        if(recycleSlotContainer == null){
-            Debug.LogWarning("item slot container is null in refreshInventoryItems");
-            //return;
-        }
-
         foreach(Transform child in recycleSlotContainer)
         {
             if (child == recycleSlotTemplate)
@@ -167,7 +161,6 @@ public class InventoryUI : MonoBehaviour
 
         foreach (Item item in inventory.GetItemList())
         {
-            Debug.LogWarning("In RefreshRecycleInventoryItems itemList count is " + inventory.GetItemList().Count);
             if(item.CanRecycle() == false)
             {
                 // itemList.Remove(item);
@@ -179,7 +172,7 @@ public class InventoryUI : MonoBehaviour
 
             itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //use item (convert to raw or place in recycler)
-                inventory.UseItem(item);
+                inventory.RecycleItem(item);
         };
         // itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
         //     //drop item

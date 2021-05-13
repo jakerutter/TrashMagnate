@@ -9,15 +9,15 @@ public static class RecyclingInventory
     private static float RubberInventory;
     private static float MetalInventory;
     private static float PaperInventory;
-    private static float ElectronicsInventory;
+    private static float ElectronicInventory;
     private static float WoodInventory;
     private static float GlassInventory;
 
-    private static float CarryingCapacity = 20f;
+    private static float CarryingCapacity = 5f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
  
-    private static int RecyclingSkill;
+    private static int RecyclingSkill = 1;
     private static int Currency;
 
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
@@ -104,22 +104,22 @@ public static class RecyclingInventory
         paperText.text = "Paper: \n "+string.Format("{0:F2}",inventory)+ "kg";
     }
 
-    public static float GetElectronicsInventory()
+    public static float GetElectronicInventory()
     {
-        return ElectronicsInventory;
+        return ElectronicInventory;
     }
 
-    public static void SetElectronicsInventory(float inventory)
+    public static void SetElectronicInventory(float inventory)
     {
-        ElectronicsInventory = inventory;
+        ElectronicInventory = inventory;
 
-        Debug.Log("electronics inv should = " + inventory);
+        Debug.Log("Electronic inv should = " + inventory);
 
-        GameObject electronicsInv = GameObject.FindGameObjectWithTag("ElectronicsInv");
+        GameObject ElectronicInv = GameObject.FindGameObjectWithTag("ElectronicInv");
 
-        Text electronicsText = electronicsInv.GetComponent<Text>();
+        Text ElectronicText = ElectronicInv.GetComponent<Text>();
 
-        electronicsText.text = "Electronics: \n "+string.Format("{0:F2}",inventory)+ "kg";
+        ElectronicText.text = "Electronic: \n "+string.Format("{0:F2}",inventory)+ "kg";
     }
     
     public static float GetWoodInventory()
@@ -192,7 +192,7 @@ public static class RecyclingInventory
 
     public static float GetAvailableCapacity()
     {
-        TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicsInventory + WoodInventory;
+        TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicInventory + WoodInventory;
         AvailableCapcity = CarryingCapacity - TotalInventoryMass;
         AvailableCapcity = Mathf.Max(AvailableCapcity, 0f);
         return AvailableCapcity;
@@ -200,7 +200,7 @@ public static class RecyclingInventory
 
     public static bool HaveAvailableCapacity(float mass)
     {
-        TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicsInventory + WoodInventory;
+        TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicInventory + WoodInventory;
         AvailableCapcity = CarryingCapacity - TotalInventoryMass;
         AvailableCapcity = Mathf.Max(AvailableCapcity, 0f);
         
@@ -213,7 +213,7 @@ public static class RecyclingInventory
 
     public static float GeteTotalInventoryMass()
     {
-        TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicsInventory + WoodInventory;
+        TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicInventory + WoodInventory;
         return TotalInventoryMass;
     }
 

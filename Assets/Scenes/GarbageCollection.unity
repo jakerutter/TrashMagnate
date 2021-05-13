@@ -494,7 +494,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32596799}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -506,7 +506,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &32596803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +545,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.45066667, y: 0.576}
+  m_Size: {x: 0.3, y: 0.5}
   m_EdgeRadius: 0
 --- !u!95 &32596805
 Animator:
@@ -1761,7 +1761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     itemType: 9
-    amount: 7
+    amount: 20
 --- !u!4 &315517218
 Transform:
   m_ObjectHideFlags: 0
@@ -4228,7 +4228,7 @@ GameObject:
   - component: {fileID: 955526244}
   m_Layer: 5
   m_Name: Text
-  m_TagString: ElectronicsInv
+  m_TagString: ElectronicInv
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4283,7 +4283,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Electronics:
+  m_Text: 'Electronic:
 
     0 kg'
 --- !u!222 &955526245
@@ -4350,7 +4350,7 @@ GameObject:
   - component: {fileID: 961194400}
   - component: {fileID: 961194401}
   m_Layer: 5
-  m_Name: ElectronicsInv
+  m_Name: ElectronicInv
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9412,7 +9412,7 @@ PrefabInstance:
     - target: {fileID: 2549399155318915071, guid: cf53142e6578c43f590ff02a4309fd7e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 29.72
+      value: 27.865
       objectReference: {fileID: 0}
     - target: {fileID: 2549399155318915071, guid: cf53142e6578c43f590ff02a4309fd7e,
         type: 3}

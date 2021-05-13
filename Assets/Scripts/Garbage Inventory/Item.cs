@@ -137,10 +137,7 @@ public class Item
             case ItemType.Shoe:                
             case ItemType.Boot:                 
             case ItemType.NewsPaper:
-            case ItemType.Box:                 
-            case ItemType.Computer:          
-            case ItemType.CellPhone:
-            case ItemType.Fan:                  
+            case ItemType.Box:                                 
             case ItemType.SmallBattery:        
             case ItemType.LargeBattery:
             case ItemType.SmallWood:  
@@ -151,7 +148,10 @@ public class Item
             case ItemType.LargeTire:            
             case ItemType.Book:                        
             case ItemType.LargeWood:            
-            case ItemType.GrowlerBottle:   
+            case ItemType.GrowlerBottle:  
+            case ItemType.Computer:          
+            case ItemType.CellPhone:
+            case ItemType.Fan:   
                 return 2;     
         }
     }
