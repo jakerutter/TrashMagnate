@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2620688084741316173}
   m_Layer: 5
   m_Name: RecycleSlotContainer
-  m_TagString: Untagged
+  m_TagString: RecycleSlotContainer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -162,7 +162,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7968628184263434168, guid: 085a58344b7f64076bdcbf363ca67189, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 085a58344b7f64076bdcbf363ca67189, type: 3}
 --- !u!224 &2620688085973972358 stripped
 RectTransform:

@@ -140,7 +140,6 @@ public class InventoryUI : MonoBehaviour
                 x=0;
                 y--;
             }
-
         }
     }
 
@@ -161,9 +160,13 @@ public class InventoryUI : MonoBehaviour
 
         foreach (Item item in inventory.GetItemList())
         {
+
+            Debug.Log("item name is " + item.itemType);
+            Debug.Log("skill = " + RecyclingInventory.GetRecyclingSkill() + ". requirement = " + item.RecycleRequirement());
+
             if(item.CanRecycle() == false)
             {
-                // itemList.Remove(item);
+                Debug.Log("skipping item, cannot recycle");
                 continue;
             }
 
@@ -173,13 +176,13 @@ public class InventoryUI : MonoBehaviour
             itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //use item (convert to raw or place in recycler)
                 inventory.RecycleItem(item);
-        };
-        // itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
-        //     //drop item
-        //     Item duplicateItem = new Item { itemType = item.itemType, amount = item.amount };
-        //     inventory.RemoveItem(item);
-        //     ItemWorld.DropItem(player.GetPosition(), duplicateItem);
-        // };
+            };
+            // itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
+            //     //drop item
+            //     Item duplicateItem = new Item { itemType = item.itemType, amount = item.amount };
+            //     inventory.RemoveItem(item);
+            //     ItemWorld.DropItem(player.GetPosition(), duplicateItem);
+            // };
 
         itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
         Image image = itemSlotRectTransform.Find("image").GetComponent<Image>();
@@ -192,14 +195,22 @@ public class InventoryUI : MonoBehaviour
         } else {
             uiText.SetText("");
         }
-            
-        x++;
 
-        if(x > 8)
+        //if player's recycling skill is high enough to recycle, highlight item green
+        if(RecyclingInventory.GetRecyclingSkill() >= item.RecycleRequirement())
         {
-            x=0;
-            y--;
+            GameObject rc = recycleSlotTemplate.gameObject;
+            Outline outline = rc.GetComponent<Outline>(); 
+            outline.enabled = true;
         }
+
+            x++;
+
+            if(x > 4)
+            {
+                x=0;
+                y--;
+            }
         }
     }
 }

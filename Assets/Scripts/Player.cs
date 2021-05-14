@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
         inventoryUI.SetInventory(inventory); 
     }
 
-    private void OnTriggerEnter2D(Collider2D collider)
+     private void OnTriggerEnter(Collider collider)
     {
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
         if(itemWorld != null)

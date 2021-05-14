@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class MouseManager : MonoBehaviour
 {
@@ -77,6 +78,15 @@ public class MouseManager : MonoBehaviour
         {
 
             Debug.Log("Selecting item "+ this.gameObject.name);
+
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+              Debug.Log("Clicked on a panel. Ignore game objects in the background");
+              return;
+            }
+            else{
+                //clicked directly on game object. 
+            }
         //     isBegingHeld = true;
             
         //     Vector3 mousePos;

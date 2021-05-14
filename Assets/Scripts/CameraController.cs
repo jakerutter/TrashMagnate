@@ -9,16 +9,16 @@ public class CameraController : MonoBehaviour
     public Transform playerLocation;
     public float scrollSpeed = 1f;
     private float zoomLevel;
-    public float minZ = -1f;
-    public float maxZ = -500f;
+    public float minY = 1f;
+    public float maxY = 100;
 
     void Start()
     {
         Vector3 pos = cam.transform.position;
         Vector3 playerPos = playerLocation.position;
         pos.x = playerPos.x;
-        pos.y = playerPos.y;
-        pos.z = playerPos.z-3;
+        pos.y = playerPos.y+4;
+        pos.z = playerPos.z-6;
 
         cam.transform.position = pos;
         cam.transform.LookAt(playerLocation);           
@@ -30,14 +30,14 @@ public class CameraController : MonoBehaviour
         Vector3 playerPos = playerLocation.position;
 
         pos.x = playerPos.x;
-        pos.y = playerPos.y;
+        pos.z = playerPos.z-5;
 
         cam.transform.position = pos;
 
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        // float scroll = Input.GetAxis("Mouse ScrollWheel");
 
-        pos.z += scroll * 1000 * scrollSpeed * Time.deltaTime;
-        pos.z = Mathf.Clamp(pos.z, maxZ, minZ);
-        transform.position = pos;
+        // pos.y += scroll * 1000 * scrollSpeed * Time.deltaTime;
+        // pos.y = Mathf.Clamp(pos.y, maxY, minY);
+        // transform.position = pos;
     }
 }

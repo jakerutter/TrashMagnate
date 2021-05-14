@@ -13,7 +13,7 @@ public static class RecyclingInventory
     private static float WoodInventory;
     private static float GlassInventory;
 
-    private static float CarryingCapacity = 5f;
+    private static float CarryingCapacity = 50f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
  

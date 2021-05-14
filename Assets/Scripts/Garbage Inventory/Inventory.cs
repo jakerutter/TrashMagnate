@@ -85,6 +85,7 @@ public class Inventory
         string rawType = item.RawType();
         bool stackable = item.IsStackable();
         int canHoldAmount = 0;
+        bool canHoldAll = true;
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())
         {
@@ -94,7 +95,7 @@ public class Inventory
 
         // check available inventory  space against mass
         bool canHold = RecyclingInventory.HaveAvailableCapacity(mass * item.amount);
-
+        canHoldAll = canHold;
         //cant hold the entire stack of items
         if(!canHold && item.amount > 1)
         {
@@ -164,7 +165,7 @@ public class Inventory
             RecyclingInventory.AdjustAvailableCapacity(mass);
 
             //if entire item was not recycled, remove item and replace with less items
-            if(canHoldAmount < item.amount && item.amount > 1)
+            if(!canHoldAll)
             {
                 Debug.Log("recycling "+ canHoldAmount + " " + item.itemType);
                 Item dupeItem = new Item { itemType = item.itemType, amount = item.amount };

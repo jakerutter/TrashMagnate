@@ -46,8 +46,7 @@ public class ItemWorld : MonoBehaviour
         else 
         {
             textMeshPro.SetText("");
-        }
-        
+        }  
     }
 
     public Item GetItem()

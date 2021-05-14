@@ -203,27 +203,27 @@ public class Item
         switch (itemType)
         {
             default:
-            case ItemType.PlasticBottle:        return .5f;
+            case ItemType.PlasticBottle:        return .6f;
             case ItemType.PlasticJug:           return 2f;
-            case ItemType.GroceryBag:           return .25f;
+            case ItemType.GroceryBag:           return .2f;
             case ItemType.SmallTire:            return 2f;
             case ItemType.LargeTire:            return 5f;
-            case ItemType.Shoe:                 return .25f;
-            case ItemType.Boot:                 return .5f;
-            case ItemType.NewsPaper:            return .25f;
+            case ItemType.Shoe:                 return .4f;
+            case ItemType.Boot:                 return .6f;
+            case ItemType.NewsPaper:            return .4f;
             case ItemType.Book:                 return 2f;
-            case ItemType.Box:                  return .5f;
-            case ItemType.Computer:             return 1f;
-            case ItemType.CellPhone:            return .25f;
-            case ItemType.Fan:                  return 2f;
-            case ItemType.SmallBattery:         return .25f;
+            case ItemType.Box:                  return .6f;
+            case ItemType.Computer:             return 2f;
+            case ItemType.CellPhone:            return .6f;
+            case ItemType.Fan:                  return 3f;
+            case ItemType.SmallBattery:         return .2f;
             case ItemType.LargeBattery:         return 4f;
             case ItemType.SmallWood:            return 1f;
             case ItemType.LargeWood:            return 3f;
-            case ItemType.Can:                  return .25f;
-            case ItemType.BrownGlassBottle:     return .25f;
-            case ItemType.GreenGlassBottle:     return .25f;
-            case ItemType.GrowlerBottle:        return .5f;
+            case ItemType.Can:                  return .2f;
+            case ItemType.BrownGlassBottle:     return .6f;
+            case ItemType.GreenGlassBottle:     return .6f;
+            case ItemType.GrowlerBottle:        return 1f;
 
         }
     }
