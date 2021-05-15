@@ -34,4 +34,13 @@ public class ItemAssets : MonoBehaviour
     public Sprite BrownGlassBottleSprite;
     public Sprite GreenGlassBottleSprite;
     public Sprite GrowlerBottleSprite;
+    public Sprite BasicRecyclerSprite;
+    public Sprite ModernRecyclerSprite;
+    public Sprite AdvancedRecyclerSprite;
+    public Sprite BlackCubeSprite;
+    public Sprite TrophySprite;
+    public Sprite GraphSprite;
+    public Sprite RecycleSprite;
+    public Sprite CheckSprite;
+    public Sprite WrenchSprite;
 }

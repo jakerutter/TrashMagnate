@@ -16,7 +16,7 @@ public static class RecyclingInventory
     private static float CarryingCapacity = 50f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
- 
+
     private static int RecyclingSkill = 1;
     private static int Currency;
 
@@ -211,7 +211,7 @@ public static class RecyclingInventory
         return false;
     }
 
-    public static float GeteTotalInventoryMass()
+    public static float GetTotalInventoryMass()
     {
         TotalInventoryMass = PlasticInventory + RubberInventory + PaperInventory + MetalInventory + GlassInventory + ElectronicInventory + WoodInventory;
         return TotalInventoryMass;
@@ -220,7 +220,7 @@ public static class RecyclingInventory
     public static void AdjustAvailableCapacity(float mass)
     {
         float carryLimit = GetCarryingCapacity();
-        float totalMass = GeteTotalInventoryMass();
+        float totalMass = GetTotalInventoryMass();
         AvailableCapcity -= mass;
 
         AvailableCapcity = Mathf.Max(AvailableCapcity, 0f);
@@ -229,4 +229,14 @@ public static class RecyclingInventory
         Text capText = cap.GetComponent<Text>();
         capText.text = "Carrying Capacity\n "+totalMass+" kg / "+carryLimit+ " kg";  
     }
+
+    // public static void SetRecyclerType(RecyclerType recType)
+    // {
+    //     recyclerType = recType;
+    // }
+
+    // public static RecyclerType GetRecyclerType()
+    // {
+    //     return recyclerType;
+    // }
 }

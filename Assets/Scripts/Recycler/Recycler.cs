@@ -1,11 +1,22 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 
+[Serializable]
 public class Recycler : MonoBehaviour
 {
+    public enum RecyclerType
+    {
+        BasicRecycler,
+        ModernRecycler,
+        AdvancedRecycler,
+    }
+
+    public RecyclerType recyclerType;
+
     // Need to know what objects are clickable
     //Need to swap cursors per object type
     public LayerMask clickableLayer;
@@ -18,6 +29,13 @@ public class Recycler : MonoBehaviour
     private float startPosX;
     private float startPosY;
 
+    private void Start()
+    {
+        SpriteRenderer render = this.GetComponent<SpriteRenderer>();
+        render.sprite = GetSprite();
+    }
+
+
     private void OnMouseDown()
     {
         if(Input.GetMouseButtonDown(0))
@@ -29,6 +47,28 @@ public class Recycler : MonoBehaviour
                 recycleInventoryToggle.onClick.Invoke();
                 Cursor.SetCursor(recycleCursor, new Vector2(16,16), CursorMode.Auto);
             }
+        }
+    }
+
+    public float GetYield()
+    {
+        switch (recyclerType)
+        {
+            default:
+            case RecyclerType.BasicRecycler:        return .25f;
+            case RecyclerType.ModernRecycler:       return .5f;
+            case RecyclerType.AdvancedRecycler:     return .75f;
+        }
+    }
+
+    public Sprite GetSprite()
+    {
+        switch (recyclerType)
+        {
+            default:
+            case RecyclerType.BasicRecycler:        return ItemAssets.Instance.BasicRecyclerSprite;
+            case RecyclerType.ModernRecycler:       return ItemAssets.Instance.ModernRecyclerSprite;
+            case RecyclerType.AdvancedRecycler:     return ItemAssets.Instance.AdvancedRecyclerSprite;
         }
     }
 

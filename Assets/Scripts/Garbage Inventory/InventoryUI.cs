@@ -15,7 +15,7 @@ public class InventoryUI : MonoBehaviour
     //recyclerInventory properties
     private Transform recycleSlotContainer;
     private Transform recycleSlotTemplate;
-    private RecyclerInventory recyclerInventory;
+    //private RecyclerInventory recyclerInventory;
 
     private void Awake()
     {

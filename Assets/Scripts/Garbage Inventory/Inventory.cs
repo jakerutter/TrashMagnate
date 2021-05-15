@@ -86,6 +86,11 @@ public class Inventory
         bool stackable = item.IsStackable();
         int canHoldAmount = 0;
         bool canHoldAll = true;
+
+        GameObject recyclerGameObject = GameObject.FindGameObjectWithTag("Recycler");
+        Recycler rec = recyclerGameObject.GetComponent<Recycler>();
+        float yield = rec.GetYield();
+        Debug.Log("*** " + yield + " ***");
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())
         {
@@ -94,12 +99,12 @@ public class Inventory
         }
 
         // check available inventory  space against mass
-        bool canHold = RecyclingInventory.HaveAvailableCapacity(mass * item.amount);
+        bool canHold = RecyclingInventory.HaveAvailableCapacity(mass * item.amount * yield);
         canHoldAll = canHold;
         //cant hold the entire stack of items
         if(!canHold && item.amount > 1)
         {
-            if(RecyclingInventory.HaveAvailableCapacity(item.GetRawMass()))
+            if(RecyclingInventory.HaveAvailableCapacity(mass * yield))
             {
                 canHoldAmount = GetCanHoldAmount(item);
                 canHold = true;
@@ -111,7 +116,7 @@ public class Inventory
         {
             int recycleAmt = item.amount;
 
-            Debug.Log("Item to recycle: " + canHoldAmount + " " + item.itemType + "\n Item mass: " + mass + "\n Item raw type: " + rawType);
+            Debug.Log("Item to recycle: " + canHoldAmount + " " + item.itemType + "\n Item mass: " + mass + "\n Item raw type: " + rawType + "\n Yield: " + yield);
             
             if(canHoldAmount > 0)
             {
@@ -122,43 +127,43 @@ public class Inventory
             if(rawType == "Paper")
             {
                 float totalPaper = RecyclingInventory.GetPaperInventory();
-                float newTotal = totalPaper + mass * recycleAmt;
+                float newTotal = totalPaper + mass * recycleAmt * yield;
                 RecyclingInventory.SetPaperInventory(newTotal);
             }
             else if(rawType == "Glass")
             {
                 float totalGlass = RecyclingInventory.GetGlassInventory();
-                float newTotal = totalGlass + mass * recycleAmt;
+                float newTotal = totalGlass + mass * recycleAmt * yield;
                 RecyclingInventory.SetGlassInventory(newTotal);
             }
                 else if(rawType == "Metal")
             {
                 float totalMetal = RecyclingInventory.GetMetalInventory();
-                float newTotal = totalMetal + mass * recycleAmt;
+                float newTotal = totalMetal + mass * recycleAmt * yield;
                 RecyclingInventory.SetMetalInventory(newTotal);
             }
                 else if(rawType == "Wood")
             {
                 float totalWood = RecyclingInventory.GetWoodInventory();
-                float newTotal = totalWood + mass * recycleAmt;
+                float newTotal = totalWood + mass * recycleAmt * yield;
                 RecyclingInventory.SetWoodInventory(newTotal);
             }
                 else if(rawType == "Plastic")
             {
                 float totalPlastic = RecyclingInventory.GetPlasticInventory();
-                float newTotal = totalPlastic + mass * recycleAmt;
+                float newTotal = totalPlastic + mass * recycleAmt * yield;
                 RecyclingInventory.SetPlasticInventory(newTotal);
             }
                 else if(rawType == "Rubber")
             {
                 float totalRubber = RecyclingInventory.GetRubberInventory();
-                float newTotal = totalRubber + mass * recycleAmt;
+                float newTotal = totalRubber + mass * recycleAmt * yield;
                 RecyclingInventory.SetRubberInventory(newTotal);
             }
                 else if(rawType == "Electronic")
             {
                 float totalElectronic = RecyclingInventory.GetElectronicInventory();
-                float newTotal = totalElectronic + mass * recycleAmt;
+                float newTotal = totalElectronic + mass * recycleAmt * yield;
                 RecyclingInventory.SetElectronicInventory(newTotal);
             }
             
@@ -177,7 +182,26 @@ public class Inventory
             {
                 RemoveItem(item);
             }
+        } else {
+            Debug.Log("fell into the cannot hold");
         }
+    }
+
+    public void RecycleAll(Item[] items)
+    {
+        //TODO not sure which order we want to iterated through if we do
+        //get all items in inventory
+        //iterate through each item
+
+        //remove item if either item cannot be recycled
+        //remove item if skill level is inadequate
+
+        //if can hold current item (or stack) add all
+
+        //if cannot hold all of current item (or stack) then fit what can be held
+
+        //iterate all items in case items with less mass come later and may fit
+        
     }
 
     private int GetCanHoldAmount(Item item)
