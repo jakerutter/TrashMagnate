@@ -23,13 +23,19 @@ public class Player : MonoBehaviour
         inventoryUI.SetInventory(inventory); 
     }
 
-     private void OnTriggerEnter(Collider collider)
+    private void OnTriggerEnter(Collider collider)
     {
+        Debug.Log("Triggered! item is " + collider.GetComponent<ItemWorld>().GetItem().itemType);
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
         if(itemWorld != null)
         {
             //Touching item
             inventory.AddItem(itemWorld.GetItem());
+            
+            //TODO delete these when bug is squashed
+            Debug.Log("Triggered and added " + collider.GetComponent<ItemWorld>().GetItem().itemType);
+            Debug.LogWarning(inventory.GetItemList().Count);
+            
             itemWorld.DestroySelf();
         }
     }

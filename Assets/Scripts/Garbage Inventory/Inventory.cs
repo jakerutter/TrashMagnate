@@ -14,6 +14,8 @@ public class Inventory
     {
         this.useItemAction = useItemAction;
         itemList = new List<Item>();
+
+        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 4});
     }
 
     public void AddItem(Item item)
@@ -21,6 +23,7 @@ public class Inventory
         if(item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
+            Debug.LogWarning("itemList count is " + itemList.Count + " in AddItem");
             foreach (Item inventoryItem in itemList)
             {
                 if (inventoryItem.itemType == item.itemType)
@@ -31,16 +34,21 @@ public class Inventory
             }
             if (!itemAlreadyInInventory)
             {
+                //getting here!
+                Debug.LogWarning("whoop");
                 itemList.Add(item);
+                Debug.LogWarning("!!! " +itemList.Count + " is the count");
             }
         } 
         else 
         {
+            Debug.LogWarning("wwoop2");
             itemList.Add(item);
         }
-        
         if(OnItemListChanged != null)
         {
+            //getting here too
+            Debug.LogWarning("swonk swonk");
             OnItemListChanged.Invoke(this, EventArgs.Empty);
         }
     }
@@ -220,6 +228,7 @@ public class Inventory
            
     public List<Item> GetItemList()
     {
+        Debug.Log("itemList has " + itemList.Count + " items in GetItemList");
         return itemList;
     }
 }

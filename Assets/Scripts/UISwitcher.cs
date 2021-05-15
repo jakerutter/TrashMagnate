@@ -12,6 +12,6 @@ public class Switcher : MonoBehaviour
     public void SetTab(Tab tab)
     {
         // set titleText and titleImag with tab info
-        
+
     }
 }

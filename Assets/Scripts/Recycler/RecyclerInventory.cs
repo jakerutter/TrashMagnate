@@ -16,9 +16,9 @@
 //         this.useItemAction = useItemAction;
 //         itemList = new List<Item>();
 
-//         AddItem(new Item{itemType = Item.ItemType.PlasticBottle, amount = 1});
-//         AddItem(new Item{itemType = Item.ItemType.Computer, amount = 5});
-//         AddItem(new Item{itemType = Item.ItemType.GrowlerBottle, amount = 1});
+//         // AddItem(new Item{itemType = Item.ItemType.PlasticBottle, amount = 1});
+//         // AddItem(new Item{itemType = Item.ItemType.Computer, amount = 5});
+//         // AddItem(new Item{itemType = Item.ItemType.GrowlerBottle, amount = 1});
 //     }
 
 //     public void AddItem(Item item)

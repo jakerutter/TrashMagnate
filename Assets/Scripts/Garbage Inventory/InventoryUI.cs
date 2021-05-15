@@ -7,7 +7,6 @@ using CodeMonkey.Utils;
 
 public class InventoryUI : MonoBehaviour
 {
-
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
     private Inventory inventory;
@@ -72,7 +71,7 @@ public class InventoryUI : MonoBehaviour
        this.inventory = inventory;
 
        inventory.OnItemListChanged += Inventory_OnItemListChanged;
-       //recently uncommented the below line 
+       
        RefreshInventoryItems();
        RefreshRecycleInventoryItems();
     }
@@ -101,8 +100,10 @@ public class InventoryUI : MonoBehaviour
         int y = 0;
         float itemSlotCellSize = 110f;
 
+        Debug.LogWarning("GetItemList item count is " + inventory.GetItemList().Count + " in RefreshInventoryItems");
+
         foreach (Item item in inventory.GetItemList())
-        {
+        {       
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
             itemSlotRectTransform.gameObject.SetActive(true);
 
