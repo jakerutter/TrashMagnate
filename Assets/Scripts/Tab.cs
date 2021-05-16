@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
-[Serializable]
-public class Tab
+public class Tab : MonoBehaviour
 {
     public enum TabType {
         InventoryItems,

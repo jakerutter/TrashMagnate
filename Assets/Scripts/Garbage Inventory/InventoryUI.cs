@@ -100,8 +100,6 @@ public class InventoryUI : MonoBehaviour
         int y = 0;
         float itemSlotCellSize = 110f;
 
-        Debug.LogWarning("GetItemList item count is " + inventory.GetItemList().Count + " in RefreshInventoryItems");
-
         foreach (Item item in inventory.GetItemList())
         {       
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();

@@ -22,6 +22,7 @@ public class ItemAssets : MonoBehaviour
     public Sprite BootSprite;
     public Sprite NewsPaperSprite;
     public Sprite BookSprite;
+    public Sprite BookFlippedSprite;
     public Sprite BoxSprite;
     public Sprite ComputerSprite;
     public Sprite CellPhoneSprite;
@@ -38,9 +39,15 @@ public class ItemAssets : MonoBehaviour
     public Sprite ModernRecyclerSprite;
     public Sprite AdvancedRecyclerSprite;
     public Sprite BlackCubeSprite;
+    public Sprite BlackCubeFlippedSprite;
     public Sprite TrophySprite;
     public Sprite GraphSprite;
+    public Sprite GraphFlippedSprite;
     public Sprite RecycleSprite;
     public Sprite CheckSprite;
     public Sprite WrenchSprite;
+    public Sprite WrenchFlippedSprite;
+    public Sprite BackpackSprite;
+    public Sprite BackpackFlippedSprite;
+    public Sprite WoodTitleSprite;
 }
