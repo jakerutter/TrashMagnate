@@ -13,6 +13,7 @@ public class UISwitcher : MonoBehaviour
     public Image titleImage2;
     public TextMeshProUGUI titleText;
     public List<Tab> tabs;
+    public List<GameObject> tabPanels;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class UISwitcher : MonoBehaviour
         {
             tab.GetComponent<Button_UI>().ClickFunc = () => {
                 SetTab(tab);
+                SetPanel(tab);
             };
         }
     }
@@ -61,6 +63,83 @@ public class UISwitcher : MonoBehaviour
             titleText.SetText("Game Stats"); 
             titleImage.sprite = ItemAssets.Instance.GraphFlippedSprite;
             titleImage2.sprite = ItemAssets.Instance.GraphSprite;
+        }
+    }
+
+      public void SetPanel(Tab tab)
+    {
+        if (tab.tabType == Tab.TabType.InventoryItems)
+        {
+             foreach(GameObject panel in tabPanels)
+             {
+                 if(panel.name == "InventoryUI")
+                 {
+                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                 } else{
+                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                 }
+             }
+        }
+        else if (tab.tabType == Tab.TabType.RawResources)
+        {
+            foreach(GameObject panel in tabPanels)
+             {
+                 if(panel.name == "RawResourcesUI")
+                 {
+                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                 } else{
+                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                 }
+             }
+        }
+        else if (tab.tabType == Tab.TabType.QuestLog)
+        {
+            foreach(GameObject panel in tabPanels)
+             {
+                 if(panel.name == "QuestLogUI")
+                 {
+                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                 } else{
+                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                 }
+             }
+        }
+        else if (tab.tabType == Tab.TabType.BuildLog)
+        {
+            foreach(GameObject panel in tabPanels)
+             {
+                 if(panel.name == "BuildLogUI")
+                 {
+                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                 } else{
+                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                 }
+             }
+        }
+        else if (tab.tabType == Tab.TabType.Collectables)
+        {
+           foreach(GameObject panel in tabPanels)
+             {
+                 Debug.Log(panel.name);
+                 if(panel.name == "CollectablesUI")
+                 {
+                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                 } else{
+                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                 }
+             }
+        }
+        else if (tab.tabType == Tab.TabType.Stats)
+        {
+            foreach(GameObject panel in tabPanels)
+             {
+                 if(panel.name == "StatsUI")
+                 {
+                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                 } else{
+                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                 }
+             }
         }
     }
 }

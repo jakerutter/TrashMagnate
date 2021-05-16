@@ -2749,6 +2749,7 @@ GameObject:
   - component: {fileID: 309897973}
   - component: {fileID: 309897972}
   - component: {fileID: 309897971}
+  - component: {fileID: 309897974}
   m_Layer: 5
   m_Name: BuildLogUI
   m_TagString: Untagged
@@ -2823,6 +2824,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 309897969}
   m_CullTransparentMesh: 0
+--- !u!225 &309897974
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309897969}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &315517215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3337,6 +3350,7 @@ GameObject:
   - component: {fileID: 395150181}
   - component: {fileID: 395150180}
   - component: {fileID: 395150179}
+  - component: {fileID: 395150182}
   m_Layer: 5
   m_Name: StatsUI
   m_TagString: Untagged
@@ -3411,6 +3425,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395150177}
   m_CullTransparentMesh: 0
+--- !u!225 &395150182
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 395150177}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &398018855
 GameObject:
   m_ObjectHideFlags: 0
@@ -7059,6 +7085,7 @@ GameObject:
   - component: {fileID: 780591668}
   - component: {fileID: 780591667}
   - component: {fileID: 780591666}
+  - component: {fileID: 780591669}
   m_Layer: 5
   m_Name: RawResourcesUI
   m_TagString: Untagged
@@ -7133,6 +7160,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780591664}
   m_CullTransparentMesh: 0
+--- !u!225 &780591669
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780591664}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &795353655
 GameObject:
   m_ObjectHideFlags: 0
@@ -7717,6 +7756,7 @@ GameObject:
   - component: {fileID: 819482222}
   - component: {fileID: 819482221}
   - component: {fileID: 819482223}
+  - component: {fileID: 819482224}
   m_Layer: 5
   m_Name: InventoryUI
   m_TagString: Untagged
@@ -7791,6 +7831,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a61f69402cae846e6a8aecdc835cdc1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &819482224
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 819482219}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &822366463
 GameObject:
   m_ObjectHideFlags: 0
@@ -9128,6 +9180,7 @@ GameObject:
   - component: {fileID: 929433931}
   - component: {fileID: 929433930}
   - component: {fileID: 929433929}
+  - component: {fileID: 929433932}
   m_Layer: 5
   m_Name: QuestLogUI
   m_TagString: Untagged
@@ -9202,6 +9255,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929433927}
   m_CullTransparentMesh: 0
+--- !u!225 &929433932
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929433927}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &933813850
 GameObject:
   m_ObjectHideFlags: 0
@@ -9288,7 +9353,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933813850}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -10297,6 +10362,13 @@ MonoBehaviour:
   - {fileID: 3642844640543017934}
   - {fileID: 3642844639137011242}
   - {fileID: 3642844639637980028}
+  tabPanels:
+  - {fileID: 819482219}
+  - {fileID: 780591664}
+  - {fileID: 929433927}
+  - {fileID: 309897969}
+  - {fileID: 1212908605}
+  - {fileID: 395150177}
 --- !u!1 &1082503581
 GameObject:
   m_ObjectHideFlags: 0
@@ -12259,6 +12331,7 @@ GameObject:
   - component: {fileID: 1212908609}
   - component: {fileID: 1212908608}
   - component: {fileID: 1212908607}
+  - component: {fileID: 1212908610}
   m_Layer: 5
   m_Name: CollectablesUI
   m_TagString: Untagged
@@ -12333,6 +12406,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1212908605}
   m_CullTransparentMesh: 0
+--- !u!225 &1212908610
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212908605}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!224 &1239191394 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1413763363119315271, guid: 88d6679946ee34f059f26755f8835f4a,
