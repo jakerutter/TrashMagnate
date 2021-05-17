@@ -4,71 +4,78 @@ using UnityEngine;
 
 public static class Quests
 {
-    private static RecyclingQuest[] RecyclingQuests;
-    private static RecyclingQuest[] ActiveRecyclingQuests;
-    private static RecyclingQuest[] CompleteRecyclingQuests;
-    private static LaunchQuest[] LaunchQuests;
-    private static LaunchQuest[] ActiveLaunchQuests;
-    private static LaunchQuest[] CompleteLaunchQuests;
+    private static List<RecyclingQuest> RecyclingQuests;
+    private static List<RecyclingQuest> ActiveRecyclingQuests;
+    private static List<RecyclingQuest> CompleteRecyclingQuests;
+    private static List<LaunchQuest> LaunchQuests;
+    private static List<LaunchQuest> ActiveLaunchQuests;
+    private static List<LaunchQuest> CompleteLaunchQuests;
 
-    public static RecyclingQuest[] GetRecyclingQuests()
+    public static List<RecyclingQuest> GetRecyclingQuests()
     {
         return RecyclingQuests;
     }
 
-    public static RecyclingQuest[] GetActiveRecyclingQuests()
+    public static List<RecyclingQuest> GetActiveRecyclingQuests()
     {
         return ActiveRecyclingQuests;
     }
 
-    public static void SetActiveRecyclingQuests(RecyclingQuest[] quests)
+    public static void SetActiveRecyclingQuests(List<RecyclingQuest> quests)
     {
         ActiveRecyclingQuests = quests;
     }
 
-    public static RecyclingQuest[] GetCompleteRecyclingQuests()
+    public static List<RecyclingQuest> GetCompleteRecyclingQuests()
     {
         return CompleteRecyclingQuests;
     }
 
-    public static void SetCompleteRecyclingQuests(RecyclingQuest[] quests)
+    public static void SetCompleteRecyclingQuests(List<RecyclingQuest> quests)
     {
         CompleteRecyclingQuests = quests;
     }
 
-    public static LaunchQuest[] GetLaunchQuests()
+    public static List<LaunchQuest> GetLaunchQuests()
     {
         return LaunchQuests;
     }
 
-     public static LaunchQuest[] GetActiveLaunchQuests()
+     public static List<LaunchQuest> GetActiveLaunchQuests()
     {
         return ActiveLaunchQuests;
     }
 
-    public static void SetActiveLaunchQuests(LaunchQuest[] quests)
+    public static void SetActiveLaunchQuests(List<LaunchQuest> quests)
     {
         ActiveLaunchQuests = quests;
     }
 
-    public static LaunchQuest[] GetCompleteLaunchQuests()
+    public static List<LaunchQuest> GetCompleteLaunchQuests()
     {
         return CompleteLaunchQuests;
     }
 
-    public static void SetCompleteLaunchQuests(LaunchQuest[] quests)
+    public static void SetCompleteLaunchQuests(List<LaunchQuest> quests)
     {
         CompleteLaunchQuests = quests;
     }
 
-    private static void InitialLoadRecyclingQuests(RecyclingQuest[] recyclingQuests)
+    public static void InitialLoadRecyclingQuests()
     {
-        //this function will find populate the lits of all recycling quests
-        //this will need to happen from a binary/json or something
-        RecyclingQuests = recyclingQuests;
+        //TODO this only works for a brand new game, otherwise will need to load saved quest data
+        List<RecyclingQuest> initialQuests = new List<RecyclingQuest>();
+        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect1});
+        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect2});
+        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect3});
+        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect4});
+        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.BuildRecycler1});
+
+        
+        ActiveRecyclingQuests = initialQuests;
     }
 
-    private static void InitialLoadLaunchQuests(LaunchQuest[] launchQuests)
+    private static void InitialLoadLaunchQuests(List<LaunchQuest> launchQuests)
     {
         //this function will find populate the lits of all launch quests
         //this will need to happen from a binary/json or something

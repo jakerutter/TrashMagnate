@@ -57,7 +57,7 @@ public class RecyclingQuest
         }
     }
 
-     public int GetRocketTechPoints()
+     public int GetRocketTechReward()
     {
         switch(questName)
         {
@@ -72,6 +72,24 @@ public class RecyclingQuest
             case QuestName.Recycle1:            return 50;
             case QuestName.Recycle2:            return 50;
             case QuestName.Recycle3:            return 50;
+        }
+    }
+
+     public bool HasSkillPointUpgrade()
+    {
+        switch(questName)
+        {
+            default:
+            case QuestName.BuildRecycler1:      return true;
+            case QuestName.BuildRecycler2:      return true;
+            case QuestName.BuildRecycler3:      return true;
+            case QuestName.Collect1:            return false;
+            case QuestName.Collect2:            return false;
+            case QuestName.Collect3:            return false;
+            case QuestName.Collect4:            return false;
+            case QuestName.Recycle1:            return false;
+            case QuestName.Recycle2:            return false;
+            case QuestName.Recycle3:            return false;
         }
     }
 
@@ -111,7 +129,7 @@ public class RecyclingQuest
         }
     }
 
-     public bool IsQuestActivated()
+    public bool IsQuestActivated()
     {
         switch (questName)
         {
