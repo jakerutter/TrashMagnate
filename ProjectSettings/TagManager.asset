@@ -19,6 +19,15 @@ TagManager:
   - RecycleSlotContainer
   - ElectronicInv
   - TitlePanel
+  - RawSlotContainer
+  - PaperAmount
+  - PlasticAmount
+  - RubberAmount
+  - WoodAmount
+  - GlassAmount
+  - MetalAmount
+  - ElectronicAmount
+  - MiscAmount
   layers:
   - Default
   - TransparentFX

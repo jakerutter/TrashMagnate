@@ -16,7 +16,7 @@ public class RecyclingQuest
         Collect4,
         Recycle1,
         Recycle2,
-        Recycle3 
+        Recycle3, 
     }
 
     public QuestName questName;
