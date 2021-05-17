@@ -6,7 +6,12 @@ using UnityEngine;
 [Serializable]
 public class RecyclingQuest
 {
-    public enum QuestName {
+    public bool IsQuestActivated = false;
+    public bool IsQuestComplete = false;
+    public int questLevel;
+
+    public enum QuestName 
+    {
         BuildRecycler1,
         BuildRecycler2,
         BuildRecycler3,
@@ -21,13 +26,28 @@ public class RecyclingQuest
 
     public QuestName questName;
 
+    public enum QuestGoal 
+    {
+        ItemCollected,          //specific item collected (# of items)
+        ItemRecycled,           //specific item recycled (# of items)
+        TypeRecycled,           //raw product type recycled (# of items)
+        TypeCollected,          //raw product type collected (# of items)
+        BuildObject,            //build a specific thing
+        LaunchHeight,           //reach a specific altitude during flight
+        LaunchDuration,         //launch a rocket for specific duration
+        LaunchMass,             //launch a rocket of a specific mass
+        LaunchComplexity,       //launch a rocket (# of parts)   
+    }
+
+    public QuestGoal goal;
+
     public string GetQuestShortDesc()
     {
         switch (questName)
         {
             default:
             case QuestName.Collect1:            return "Gather 15 cans";
-            case QuestName.Collect2:            return "Gather 15 glass bottles";
+            case QuestName.Collect2:            return "Gather 5 glass bottles";
             case QuestName.Collect3:            return "Gather 5 small tires";
             case QuestName.Collect4:            return "Gather 5 cardboard boxes";
             case QuestName.BuildRecycler1:      return "Build basic recycler";
@@ -43,11 +63,11 @@ public class RecyclingQuest
     {
         switch(questName)
         {
-             default:
-            case QuestName.Collect1:            return "Search the landscape for aluminum cans. You can track progress in the quest log.";
-            case QuestName.Collect2:            return "Search the landscape for glass bottles. You can track progress in the quest log.";
-            case QuestName.Collect3:            return "Search the landscape for small tires. You can track progress in the quest log.";
-            case QuestName.Collect4:            return "Search the landscape for cardboard boxes. You can track progress in the quest log.";
+             default:                               
+            case QuestName.Collect1:            return "Search the landscape for aluminum cans until you have gathered 15 total";
+            case QuestName.Collect2:            return "Search the landscape for glass bottles until you have gathered 15 total";
+            case QuestName.Collect3:            return "Search the landscape for small tires until you have gathered 5 total";
+            case QuestName.Collect4:            return "Search the landscape for cardboard boxes until you have gathered 5 total";
             case QuestName.BuildRecycler1:      return "To build the basic recycler you need: 15 cans, 15 bottles, 5 small tires, 5 cardboard boxes.";
             case QuestName.BuildRecycler2:      return "To build the modern recycler you need: TODO";
             case QuestName.BuildRecycler3:      return "To build the advanced recycler you need: TODO";
@@ -57,21 +77,40 @@ public class RecyclingQuest
         }
     }
 
+    //  public int GetRocketTechReward()
+    // {
+    //     switch(questName)
+    //     {
+    //         default:
+    //         case QuestName.BuildRecycler1:      return 100;
+    //         case QuestName.BuildRecycler2:      return 200;
+    //         case QuestName.BuildRecycler3:      return 300;
+    //         case QuestName.Collect1:            return 25;
+    //         case QuestName.Collect2:            return 25;
+    //         case QuestName.Collect3:            return 25;
+    //         case QuestName.Collect4:            return 25;
+    //         case QuestName.Recycle1:            return 50;
+    //         case QuestName.Recycle2:            return 50;
+    //         case QuestName.Recycle3:            return 50;
+    //     }
+    // }
+
      public int GetRocketTechReward()
     {
-        switch(questName)
+        switch(questLevel)
         {
             default:
-            case QuestName.BuildRecycler1:      return 100;
-            case QuestName.BuildRecycler2:      return 200;
-            case QuestName.BuildRecycler3:      return 300;
-            case QuestName.Collect1:            return 25;
-            case QuestName.Collect2:            return 25;
-            case QuestName.Collect3:            return 25;
-            case QuestName.Collect4:            return 25;
-            case QuestName.Recycle1:            return 50;
-            case QuestName.Recycle2:            return 50;
-            case QuestName.Recycle3:            return 50;
+            case 1:      return 25;
+            case 2:      return 35;
+            case 3:      return 50;
+            case 4:      return 75;
+            case 5:      return 100;
+            case 6:      return 150;
+            case 7:      return 225;
+            case 8:      return 300;
+            case 9:      return 400;
+            case 10:     return 500;
+           
         }
     }
 
@@ -111,58 +150,32 @@ public class RecyclingQuest
         }
     }
 
-     public string QuestUnlockName()
+    public string GetQuestProgressString()
     {
-        switch(questName)
-        {
-             default:
-            case QuestName.Collect1:            return "CollectCan2";
-            case QuestName.Collect2:            return "CollectPlasticJug2";
-            case QuestName.Collect3:            return "CollectWood2";
-            case QuestName.Collect4:            return "CollectElectronic1";
-            case QuestName.BuildRecycler1:      return "TODO";
-            case QuestName.BuildRecycler2:      return "TODO";
-            case QuestName.BuildRecycler3:      return "TODO";
-            case QuestName.Recycle1:            return "TODO";
-            case QuestName.Recycle2:            return "TODO";
-            case QuestName.Recycle3:            return "TODO";
-        }
+        return "";
     }
 
-    public bool IsQuestActivated()
+    public RecyclingQuest CompleteQuest(RecyclingQuest quest)
     {
-        switch (questName)
-        {
-            default:
-            case QuestName.Collect1:            return false;
-            case QuestName.Collect2:            return false;
-            case QuestName.Collect3:            return false;
-            case QuestName.Collect4:            return false;
-            case QuestName.BuildRecycler1:      return false;
-            case QuestName.BuildRecycler2:      return false;
-            case QuestName.BuildRecycler3:      return false;
-            case QuestName.Recycle1:            return false;
-            case QuestName.Recycle2:            return false;
-            case QuestName.Recycle3:            return false;
-        }
-    }
+        // remove completed quest from active quest
+        List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
+        activeQuests.Remove(quest);
 
-     public bool IsQuestComplete()
-    {
-        switch (questName)
-        {
-            default:
-            case QuestName.Collect1:            return false;
-            case QuestName.Collect2:            return false;
-            case QuestName.Collect3:            return false;
-            case QuestName.Collect4:            return false;
-            case QuestName.BuildRecycler1:      return false;
-            case QuestName.BuildRecycler2:      return false;
-            case QuestName.BuildRecycler3:      return false;
-            case QuestName.Recycle1:            return false;
-            case QuestName.Recycle2:            return false;
-            case QuestName.Recycle3:            return false;
-        }
+        // inactivate quest
+        quest.IsQuestActivated = false;
+
+        //add quest to completed quest list
+        List<RecyclingQuest> completeQuests = Quests.GetCompleteRecyclingQuests();
+        completeQuests.Add(quest);
+        
+        // generate new quest
+        RecyclingQuest newQuest = Quests.GenerateNewRecyclingQuest(quest);
+        
+        // activate new quest and add it to active quests
+        activeQuests.Add(newQuest);
+        newQuest.IsQuestActivated = true;
+
+        return newQuest;
     }
 }
 

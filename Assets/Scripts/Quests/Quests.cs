@@ -81,4 +81,36 @@ public static class Quests
         //this will need to happen from a binary/json or something
         LaunchQuests = launchQuests;
     }
+
+    public static void UpdateActiveQuestProgress()
+    {
+
+    }
+
+    public static RecyclingQuest GenerateNewRecyclingQuest(RecyclingQuest quest)
+    {
+        //itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 4});
+        //iterate level by 1 until max level is reached
+        int newLevel = GetNewQuestLevel(quest.questLevel);
+
+
+        RecyclingQuest newQuest = new RecyclingQuest {
+            questLevel = newLevel, 
+        };
+
+        return newQuest;
+    }
+
+    private static int GetNewQuestLevel(int level)
+    {
+        if(level < 10)
+        {
+            return level + 1;
+        } else 
+        {
+            return level;
+        }
+    }
+
+    
 }
