@@ -72,11 +72,15 @@ public class UISwitcher : MonoBehaviour
         {
              foreach(GameObject panel in tabPanels)
              {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
                  if(panel.name == "InventoryUI")
                  {
-                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
                  } else{
-                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
                  }
              }
         }
@@ -84,11 +88,15 @@ public class UISwitcher : MonoBehaviour
         {
             foreach(GameObject panel in tabPanels)
              {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+                 
                  if(panel.name == "RawResourcesUI")
                  {
-                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
                  } else{
-                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
                  }
              }
         }
@@ -96,11 +104,15 @@ public class UISwitcher : MonoBehaviour
         {
             foreach(GameObject panel in tabPanels)
              {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
                  if(panel.name == "QuestLogUI")
                  {
-                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
                  } else{
-                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
                  }
              }
         }
@@ -108,11 +120,15 @@ public class UISwitcher : MonoBehaviour
         {
             foreach(GameObject panel in tabPanels)
              {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
                  if(panel.name == "BuildLogUI")
                  {
-                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
                  } else{
-                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
                  }
              }
         }
@@ -120,12 +136,15 @@ public class UISwitcher : MonoBehaviour
         {
            foreach(GameObject panel in tabPanels)
              {
-                 Debug.Log(panel.name);
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
                  if(panel.name == "CollectablesUI")
                  {
-                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
                  } else{
-                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
                  }
              }
         }
@@ -133,11 +152,15 @@ public class UISwitcher : MonoBehaviour
         {
             foreach(GameObject panel in tabPanels)
              {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
                  if(panel.name == "StatsUI")
                  {
-                     panel.GetComponent<CanvasGroup>().alpha = 1;
+                    canva.alpha = 1;
+                    canva.blocksRaycasts = true;
                  } else{
-                     panel.GetComponent<CanvasGroup>().alpha = 0;
+                    canva.alpha = 0;
+                    canva.blocksRaycasts = false;
                  }
              }
         }

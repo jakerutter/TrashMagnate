@@ -25,27 +25,22 @@ public class QuestLogUI : MonoBehaviour
         Quests.InitialLoadRecyclingQuests();
 
         activeQuests = Quests.GetActiveRecyclingQuests();
-        SetActiveQuests(activeQuests);
 
-        for(int i = 0; i < activeQuestTabs.Count; i++)
-        {
-            activeQuestTabs[i].GetComponent<Button_UI>().ClickFunc = () => {
-                SetSelectedQuest(activeQuests[i]);
-            };
-        }
+        SetActiveQuestTabs(activeQuests);
     }
 
     public void SetSelectedQuest(RecyclingQuest quest)
     {
-        
+        selectedQuestDetail.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestLongDesc());
     }
 
-    public void SetActiveQuests(List<RecyclingQuest> activeQuests)
+    public void SetActiveQuestTabs(List<RecyclingQuest> activeQuests)
     {
         for(int i = 0; i<5; i++)
         {
             RecyclingQuest thisQuest = activeQuests[i];
-            
+
+            GameObject questTemplate = activeQuestTabs[i];
             TextMeshProUGUI questShortDesc = questTexts[i].GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI questReward = questRewards[i].GetComponent<TextMeshProUGUI>();
 
@@ -55,8 +50,14 @@ public class QuestLogUI : MonoBehaviour
 
             if(thisQuest.HasSkillPointUpgrade() == true)
             {
-                text += " \n +1 recycling skill";
+                text += " - +1 recycling skill";
             }
+
+            questReward.SetText(text);
+
+            questTemplate.GetComponent<Button_UI>().ClickFunc = () => {
+                SetSelectedQuest(thisQuest);
+            };
         }
     }
 }

@@ -2194,7 +2194,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -37}
+  m_AnchoredPosition: {x: 13, y: -37}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &172753991
@@ -7097,7 +7097,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -37}
+  m_AnchoredPosition: {x: 12.999939, y: -37}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &608762325
@@ -10272,7 +10272,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -37}
+  m_AnchoredPosition: {x: 12.999939, y: -37}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &854428298
@@ -11595,8 +11595,8 @@ GameObject:
   - component: {fileID: 929433928}
   - component: {fileID: 929433931}
   - component: {fileID: 929433930}
-  - component: {fileID: 929433929}
   - component: {fileID: 929433932}
+  - component: {fileID: 929433929}
   m_Layer: 5
   m_Name: QuestLogUI
   m_TagString: Untagged
@@ -11635,9 +11635,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 929433927}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a61f69402cae846e6a8aecdc835cdc1b, type: 3}
+  m_Script: {fileID: 11500000, guid: 91f88f40c40d940bc84fad472aed2b25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activeQuestTabs:
+  - {fileID: 1413763363279011689}
+  - {fileID: 541775447}
+  - {fileID: 720462385}
+  - {fileID: 1471823619}
+  - {fileID: 203890636}
+  questTexts:
+  - {fileID: 2006085941}
+  - {fileID: 1028258054}
+  - {fileID: 1739197597}
+  - {fileID: 17721619}
+  - {fileID: 839520689}
+  questRewards:
+  - {fileID: 608762323}
+  - {fileID: 1254807204}
+  - {fileID: 1155086772}
+  - {fileID: 854428296}
+  - {fileID: 172753989}
+  selectedQuestDetail: {fileID: 1924342651}
+  selectedQuestProgress: {fileID: 872248699}
 --- !u!114 &929433930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14664,7 +14684,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -37}
+  m_AnchoredPosition: {x: 12.999939, y: -37}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1155086774
@@ -15647,7 +15667,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: -37}
+  m_AnchoredPosition: {x: 12.999939, y: -37}
   m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1254807206
