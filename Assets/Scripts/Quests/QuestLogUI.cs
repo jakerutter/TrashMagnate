@@ -29,12 +29,6 @@ public class QuestLogUI : MonoBehaviour
         SetActiveQuestTabs(activeQuests);
     }
 
-    public void SetSelectedQuest(RecyclingQuest quest)
-    {
-        selectedQuestDetail.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestLongDesc());
-        //selectedQuestProgress.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestProgress());
-    }
-
     public void SetActiveQuestTabs(List<RecyclingQuest> activeQuests)
     {
         for(int i = 0; i<5; i++)
@@ -47,11 +41,11 @@ public class QuestLogUI : MonoBehaviour
 
             questShortDesc.SetText(thisQuest.GetQuestShortDesc());
             int rocketTechPoints = thisQuest.GetRocketTechReward();
-            string text = "Reward: " + rocketTechPoints + " rocket tech ponts";
+            string text = "Reward: " + rocketTechPoints + " rocket tech points";
 
             if(thisQuest.HasSkillPointUpgrade() == true)
             {
-                text += " - +1 recycling skill";
+                text += " & +1 recycling skill";
             }
 
             questReward.SetText(text);
@@ -60,5 +54,11 @@ public class QuestLogUI : MonoBehaviour
                 SetSelectedQuest(thisQuest);
             };
         }
+    }
+
+     public void SetSelectedQuest(RecyclingQuest quest)
+    {
+        selectedQuestDetail.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestLongDesc());
+        selectedQuestProgress.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestProgressString(quest.isBuildQuest));
     }
 }

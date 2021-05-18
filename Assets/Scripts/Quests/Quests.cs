@@ -65,13 +65,53 @@ public static class Quests
     {
         //TODO this only works for a brand new game, otherwise will need to load saved quest data
         List<RecyclingQuest> initialQuests = new List<RecyclingQuest>();
-        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect1});
-        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect2});
-        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect3});
-        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.Collect4});
-        initialQuests.Add(new RecyclingQuest {questName = RecyclingQuest.QuestName.BuildRecycler1});
-
         
+        initialQuests.Add(new RecyclingQuest 
+        {
+            questName = RecyclingQuest.QuestName.CollectItem, 
+            questLevel = 1,
+            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            goalAmount = 15,
+            questItem = new Item {itemType = Item.ItemType.Can}
+        });
+
+        initialQuests.Add(new RecyclingQuest 
+        {
+            questName = RecyclingQuest.QuestName.CollectType, 
+            questLevel = 1,
+            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            goalAmount = 15,
+            questItem = new Item {itemType = Item.ItemType.BrownGlassBottle}
+        });
+
+        initialQuests.Add(new RecyclingQuest 
+        {
+            questName = RecyclingQuest.QuestName.CollectItem, 
+            questLevel = 1,
+            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            goalAmount = 5,
+            questItem = new Item {itemType = Item.ItemType.SmallTire}
+        });
+
+        initialQuests.Add(new RecyclingQuest 
+        {
+            questName = RecyclingQuest.QuestName.CollectItem, 
+            questLevel = 1,
+            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            goalAmount = 5,
+            questItem = new Item {itemType = Item.ItemType.Box}
+        });
+        
+        initialQuests.Add(new RecyclingQuest 
+        {
+            questName = RecyclingQuest.QuestName.BuildObject, 
+            questLevel = 1,
+            goalAmount = 1,
+            isBuildQuest = true,
+            questBuilding = new Recycler {recyclerType = Recycler.RecyclerType.BasicRecycler}
+
+        });
+
         ActiveRecyclingQuests = initialQuests;
     }
 
@@ -93,9 +133,12 @@ public static class Quests
         //iterate level by 1 until max level is reached
         int newLevel = GetNewQuestLevel(quest.questLevel);
 
+        //cardSuit = (CardSuit)Random.Range(0, 3);
 
         RecyclingQuest newQuest = new RecyclingQuest {
-            questLevel = newLevel, 
+            questLevel = newLevel,
+            questName = (RecyclingQuest.QuestName)Random.Range(0,5)
+
         };
 
         return newQuest;

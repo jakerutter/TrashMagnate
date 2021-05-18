@@ -107,8 +107,8 @@ public class InventoryUI : MonoBehaviour
             itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //use item (convert to raw or place in recycler)
                 inventory.UseItem(item);
-                Debug.Log("raw type is " + item.RawType());
-                Debug.Log("mass is " + item.GetRawMass());
+                //Debug.Log("raw type is " + item.RawType());
+                //Debug.Log("mass is " + item.GetRawMass());
 
             };
             itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
@@ -159,8 +159,8 @@ public class InventoryUI : MonoBehaviour
         foreach (Item item in inventory.GetItemList())
         {
 
-            Debug.Log("item name is " + item.itemType);
-            Debug.Log("skill = " + RecyclingInventory.GetRecyclingSkill() + ". requirement = " + item.RecycleRequirement());
+            // Debug.Log("item name is " + item.itemType);
+            // Debug.Log("skill = " + RecyclingInventory.GetRecyclingSkill() + ". requirement = " + item.RecycleRequirement());
 
             if(item.CanRecycle() == false)
             {

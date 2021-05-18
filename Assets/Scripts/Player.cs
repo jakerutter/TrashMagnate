@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Inventory inventory;
+    private List<RecyclingQuest> activeRecyclingQuests;
     [SerializeField] private InventoryUI inventoryUI;
 
     void Awake()
@@ -20,6 +21,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        activeRecyclingQuests = Quests.GetActiveRecyclingQuests();
         inventoryUI.SetInventory(inventory); 
     }
 
@@ -29,9 +31,14 @@ public class Player : MonoBehaviour
         if(itemWorld != null)
         {
             //Touching item
-            inventory.AddItem(itemWorld.GetItem());
+            Item currentItem = itemWorld.GetItem();
+            inventory.AddItem(currentItem);
             
+            //TODO add flying around player effect before destroying
+            //TODO add sound for picking up item
             itemWorld.DestroySelf();
+
+            HandleQuestProgress(currentItem);
         }
     }
 
@@ -46,5 +53,18 @@ public class Player : MonoBehaviour
     public Vector3 GetPosition()
     {
         return gameObject.transform.position;
+    }
+
+    private void HandleQuestProgress(Item currentItem)
+    {
+        Item.ItemType type = currentItem.itemType;
+
+        foreach(RecyclingQuest quest in activeRecyclingQuests)
+        {
+            if(true)
+            {
+                Debug.Log("truth");
+            }
+        }
     }
 }

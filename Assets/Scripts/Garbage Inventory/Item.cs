@@ -227,4 +227,34 @@ public class Item
 
         }
     }
+
+    public string GetName()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.PlasticBottle:        return "Plastic Bottles";
+            case ItemType.PlasticJug:           return "Plastic Jugs";
+            case ItemType.GroceryBag:           return "Grocery Bags";
+            case ItemType.SmallTire:            return "Small Tires";
+            case ItemType.LargeTire:            return "Large Tires";
+            case ItemType.Shoe:                 return "Shoes";
+            case ItemType.Boot:                 return "Boots";
+            case ItemType.NewsPaper:            return "Newspapers";
+            case ItemType.Book:                 return "Books";
+            case ItemType.Box:                  return "Boxes";
+            case ItemType.Computer:             return "Computers";
+            case ItemType.CellPhone:            return "Cell Phones";
+            case ItemType.Fan:                  return "Fans";
+            case ItemType.SmallBattery:         return "Small Batteries";
+            case ItemType.LargeBattery:         return "Large Batteries";
+            case ItemType.SmallWood:            return "Small Chunks of Wood";
+            case ItemType.LargeWood:            return "Large Wood Planks";
+            case ItemType.Can:                  return "Aluminum Cans";
+            case ItemType.BrownGlassBottle:     return "Brown Glass Bottles";
+            case ItemType.GreenGlassBottle:     return "Green Glass Bottles";
+            case ItemType.GrowlerBottle:        return "Growler Bottle";
+
+        }
+    }
 }

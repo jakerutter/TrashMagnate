@@ -72,4 +72,14 @@ public class Recycler : MonoBehaviour
         }
     }
 
+    public string GetName()
+    {
+        switch (recyclerType)
+        {
+            default:
+            case RecyclerType.BasicRecycler:        return "Basic Recycler";
+            case RecyclerType.ModernRecycler:       return "Modern Recycler";
+            case RecyclerType.AdvancedRecycler:     return "Advanced Recycler";
+        }
+    }
 }
