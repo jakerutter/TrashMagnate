@@ -110,6 +110,8 @@ public class UISwitcher : MonoBehaviour
                  {
                      canva.alpha = 1;
                      canva.blocksRaycasts = true;
+                     // go ahead and trigger a click on the first quest tab to refresh the panel info
+                     GameObject.Find("QuestTemplate1").gameObject.GetComponent<Button_UI>().ClickFunc.Invoke();
                  } else{
                      canva.alpha = 0;
                      canva.blocksRaycasts = false;

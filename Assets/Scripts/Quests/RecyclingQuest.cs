@@ -6,14 +6,15 @@ using UnityEngine;
 [Serializable]
 public class RecyclingQuest
 {
+    private bool isQuestComplete;
+
     public bool IsQuestActivated = false;
-    public bool IsQuestComplete = false;
     public int questLevel;
     public Item questItem;
     public QuestGoal questGoal;
     public QuestName questName;
     public int goalAmount;
-    public int goalProgress;
+    public float goalProgress;
     public Recycler questBuilding;
     public bool isBuildQuest = false;
 
@@ -23,17 +24,23 @@ public class RecyclingQuest
         RecycleItem,
         RecycleType,
         CollectType,
+        CollectItemAmount,     
+        CollectTypeAmount,   
+        RecycleItemAmount,      
+        RecycleTypeAmount,  
         BuildObject,
     }
 
     public enum QuestGoal 
     {
-        ItemCollected,          //specific item collected (# of items)
-        ItemRecycled,           //specific item recycled (# of items)
-        TypeRecycled,           //raw product type recycled (# of [glass] items)
-        TypeCollected,          //raw product type collected (# of [glass] items)
-        ItemAmountCollected,    //specific amount of items mass picked up (25kg)
-        TypeAmountCollected,    //specific amount of raw product type [mass] collected (25kg)
+        CollectItem,            //specific item collected (# of items)
+        RecycleItem,            //specific item recycled (# of items)
+        RecycleType,            //raw product type recycled (# of [glass] items)
+        CollectType,            //raw product type collected (# of [glass] items)
+        CollectItemAmount,      //specific amount of items mass picked up (25kg)
+        CollectTypeAmount,      //specific amount of raw product type [mass] collected (25kg)
+        RecycleItemAmount,      //specific amount of items mass recycled (5kg)
+        RecycleTypeAmount,      //specific amount of raw product type [mass] recycled (5kg)
         BuildObject,            //build a specific thing  
     }
 
@@ -108,36 +115,63 @@ public class RecyclingQuest
         }
     }
 
-    public string GetQuestProgressString(bool build)
+    public string GetQuestProgressString(bool isBuildQuest)
     {
-        if (build)
+        if (isBuildQuest)
         {
             return $"{goalProgress} / {goalAmount} {questBuilding.GetName()}";
         }
+
         return $"{goalProgress} / {goalAmount} {questItem.GetName()}";
     }
 
     public RecyclingQuest CompleteQuest(RecyclingQuest quest)
     {
-        // remove completed quest from active quest
-        List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
-        activeQuests.Remove(quest);
+        //add quest to completed quest list
+        AddQuestToCompletedQuests(quest);
 
         // inactivate quest
         quest.IsQuestActivated = false;
 
-        //add quest to completed quest list
-        List<RecyclingQuest> completeQuests = Quests.GetCompleteRecyclingQuests();
-        completeQuests.Add(quest);
+         // remove completed quest from active quests
+        RemoveQuestFromAcitveQuests(quest);
         
         // generate new quest
         RecyclingQuest newQuest = Quests.GenerateNewRecyclingQuest(quest);
         
-        // activate new quest and add it to active quests
-        activeQuests.Add(newQuest);
+        // List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
+        // activeQuests.Add(newQuest);
+        // Quests.SetActiveRecyclingQuests(activeQuests);
+
         newQuest.IsQuestActivated = true;
 
         return newQuest;
+    }
+
+    public bool IsQuestComplete()
+    {
+        isQuestComplete = goalProgress >= goalAmount;
+        return isQuestComplete;
+    }
+
+    private void AddQuestToCompletedQuests(RecyclingQuest quest)
+    {
+        List<RecyclingQuest> completeQuests = Quests.GetCompleteRecyclingQuests();
+        if (completeQuests == null) 
+        {
+            completeQuests = new List<RecyclingQuest>();
+        }
+
+        completeQuests.Add(quest);
+
+        Quests.SetCompleteRecyclingQuests(completeQuests);
+    }
+
+    private void RemoveQuestFromAcitveQuests(RecyclingQuest quest)
+    {
+        List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
+        activeQuests.Remove(quest);
+        Quests.SetActiveRecyclingQuests(activeQuests);
     }
 }
 

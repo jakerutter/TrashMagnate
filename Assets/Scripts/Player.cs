@@ -38,7 +38,20 @@ public class Player : MonoBehaviour
             //TODO add sound for picking up item
             itemWorld.DestroySelf();
 
-            HandleQuestProgress(currentItem);
+            bool questProgressed = HandleQuestProgress(currentItem);
+
+            if(questProgressed)
+            {
+                for (int x = activeRecyclingQuests.Count - 1; x > -1; x--)
+                {
+                   bool isComplete = activeRecyclingQuests[x].IsQuestComplete(); 
+
+                    if(isComplete)
+                    {
+                        activeRecyclingQuests[x].CompleteQuest(activeRecyclingQuests[x]);
+                    }
+                }        
+            }
         }
     }
 
@@ -55,16 +68,43 @@ public class Player : MonoBehaviour
         return gameObject.transform.position;
     }
 
-    private void HandleQuestProgress(Item currentItem)
+    private bool HandleQuestProgress(Item currentItem)
     {
+        bool progressed = false;
+
         Item.ItemType type = currentItem.itemType;
 
+        Debug.Log(type.ToString());
         foreach(RecyclingQuest quest in activeRecyclingQuests)
         {
-            if(true)
+            if(quest.questItem == null) { continue; }
+
+            //if the quest is tracking number of items collected iterate by 1
+            if(quest.questItem.itemType == type && quest.questGoal == RecyclingQuest.QuestGoal.CollectItem)
             {
-                Debug.Log("truth");
+                quest.goalProgress += currentItem.amount;
+                progressed = true;
             }
+            //if the quest is tracking the amount of item mass collected iterate by item mass
+            if(quest.questItem.itemType == type && quest.questGoal == RecyclingQuest.QuestGoal.CollectItemAmount)
+            {
+                quest.goalProgress += currentItem.GetRawMass();
+                progressed = true;
+            }
+            //if the quest is tracking the number of items collected of a raw type then iterate by 1
+              if(quest.questItem.RawType() == currentItem.RawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectType)
+            {
+                quest.goalProgress += currentItem.amount;
+                progressed = true;
+            }
+            //if the quest is tracking the amount of item mass collected iterate by item mass
+            if(quest.questItem.RawType() == currentItem.RawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectTypeAmount)
+            {
+                quest.goalProgress += currentItem.GetRawMass();
+                progressed = true;
+            }       
         }
+        Debug.Log("Progressed is ====== " + progressed);
+        return progressed;
     }
 }

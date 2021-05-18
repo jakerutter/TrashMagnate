@@ -70,7 +70,7 @@ public static class Quests
         {
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
-            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            questGoal = RecyclingQuest.QuestGoal.CollectItem,
             goalAmount = 15,
             questItem = new Item {itemType = Item.ItemType.Can}
         });
@@ -79,7 +79,7 @@ public static class Quests
         {
             questName = RecyclingQuest.QuestName.CollectType, 
             questLevel = 1,
-            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            questGoal = RecyclingQuest.QuestGoal.CollectItem,
             goalAmount = 15,
             questItem = new Item {itemType = Item.ItemType.BrownGlassBottle}
         });
@@ -88,7 +88,7 @@ public static class Quests
         {
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
-            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            questGoal = RecyclingQuest.QuestGoal.CollectItem,
             goalAmount = 5,
             questItem = new Item {itemType = Item.ItemType.SmallTire}
         });
@@ -97,7 +97,7 @@ public static class Quests
         {
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
-            questGoal = RecyclingQuest.QuestGoal.ItemCollected,
+            questGoal = RecyclingQuest.QuestGoal.CollectItem,
             goalAmount = 5,
             questItem = new Item {itemType = Item.ItemType.Box}
         });
@@ -108,8 +108,8 @@ public static class Quests
             questLevel = 1,
             goalAmount = 1,
             isBuildQuest = true,
+            questItem = null,
             questBuilding = new Recycler {recyclerType = Recycler.RecyclerType.BasicRecycler}
-
         });
 
         ActiveRecyclingQuests = initialQuests;
@@ -117,29 +117,29 @@ public static class Quests
 
     private static void InitialLoadLaunchQuests(List<LaunchQuest> launchQuests)
     {
-        //this function will find populate the lits of all launch quests
-        //this will need to happen from a binary/json or something
         LaunchQuests = launchQuests;
-    }
-
-    public static void UpdateActiveQuestProgress()
-    {
-
     }
 
     public static RecyclingQuest GenerateNewRecyclingQuest(RecyclingQuest quest)
     {
-        //itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 4});
         //iterate level by 1 until max level is reached
         int newLevel = GetNewQuestLevel(quest.questLevel);
 
         //cardSuit = (CardSuit)Random.Range(0, 3);
-
+        int randInt = Random.Range(0,5);
+        int randItem = Random.Range(0, 22);
         RecyclingQuest newQuest = new RecyclingQuest {
             questLevel = newLevel,
-            questName = (RecyclingQuest.QuestName)Random.Range(0,5)
-
+            questName = (RecyclingQuest.QuestName)randInt,
+            questGoal = (RecyclingQuest.QuestGoal)randInt,
+            questItem = new Item{ itemType = (Item.ItemType)randItem },
+            goalAmount = GetAmountByLevel(newLevel)
         };
+
+        // get active quests and add this new quest to the list
+        List<RecyclingQuest> activeQuests = GetActiveRecyclingQuests();
+        activeQuests.Add(newQuest);
+        Quests.SetActiveRecyclingQuests(activeQuests);
 
         return newQuest;
     }
@@ -155,5 +155,8 @@ public static class Quests
         }
     }
 
-    
+    private static int GetAmountByLevel(int level)
+    {
+        return level * 10;
+    }
 }
