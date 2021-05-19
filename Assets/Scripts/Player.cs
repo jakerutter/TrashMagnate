@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private Inventory inventory;
     private List<RecyclingQuest> activeRecyclingQuests;
+    private AudioManager audio;
     [SerializeField] private InventoryUI inventoryUI;
 
     void Awake()
@@ -23,6 +24,8 @@ public class Player : MonoBehaviour
     {
         activeRecyclingQuests = Quests.GetActiveRecyclingQuests();
         inventoryUI.SetInventory(inventory); 
+
+        audio = FindObjectOfType<AudioManager>();
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -30,12 +33,15 @@ public class Player : MonoBehaviour
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
         if(itemWorld != null)
         {
+            //play sound for picking up item
+            audio.Play("PickUpItem");
             //Touching item
             Item currentItem = itemWorld.GetItem();
             inventory.AddItem(currentItem);
             
             //TODO add flying around player effect before destroying
-            //TODO add sound for picking up item
+           
+
             itemWorld.DestroySelf();
 
             bool questProgressed = HandleQuestProgress(currentItem);

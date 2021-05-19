@@ -62,7 +62,7 @@ public class RecyclingQuest
         switch(questName)
         {
              default:                               
-            case QuestName.CollectItem:      return $"Search the landscape for {questItem.GetName()} until you have gathered {goalAmount} totals.";
+            case QuestName.CollectItem:      return $"Search the landscape for {questItem.GetName()} until you have gathered {goalAmount} total.";
             case QuestName.RecycleItem:      return $"Using a recycler, recycle {goalAmount} {questItem.GetName()}.";
             case QuestName.RecycleType:      return $"Using a recycler, recycle {goalAmount} items made of {questItem.RawType()}.";
             case QuestName.CollectType:      return $"Search the landscape and collect {goalAmount} items made of {questItem.RawType()}.";
