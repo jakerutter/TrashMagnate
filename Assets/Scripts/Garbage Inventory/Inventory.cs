@@ -9,6 +9,7 @@ public class Inventory
 
     private List<Item> itemList;
     private Action<Item> useItemAction;
+    private AudioManager _audio;
 
     public Inventory(Action<Item> useItemAction)
     {
@@ -20,6 +21,7 @@ public class Inventory
 
     public void AddItem(Item item)
     {
+        //Debug.Log("AddItem called in Inv");
         if(item.IsStackable())
         {
             bool itemAlreadyInInventory = false;
@@ -28,12 +30,14 @@ public class Inventory
             {
                 if (inventoryItem.itemType == item.itemType)
                 {
+                    //Debug.Log("iterating item amount");
                     inventoryItem.amount += item.amount;
                     itemAlreadyInInventory = true;
                 }
             }
             if (!itemAlreadyInInventory)
             {
+                //Debug.Log("itemList .Add called in Inv");
                 itemList.Add(item);
             }
         } 
@@ -43,7 +47,11 @@ public class Inventory
         }
         if(OnItemListChanged != null)
         {
+            //Debug.Log("OnItemListChanged is Invoked");
             OnItemListChanged.Invoke(this, EventArgs.Empty);
+        } else 
+        {
+            //Debug.LogWarning("OnItemListChanged is null Inventory.cs ln 48");
         }
     }
 
@@ -82,6 +90,9 @@ public class Inventory
 
     public void RecycleItem(Item item)
     {
+        //get audio manager
+        _audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
+
         int requirement = item.RecycleRequirement();
         float mass = item.GetRawMass();
         string rawType = item.RawType();
@@ -137,12 +148,16 @@ public class Inventory
                 float totalGlass = RecyclingInventory.GetGlassInventory();
                 float newTotal = totalGlass + mass * recycleAmt * yield;
                 RecyclingInventory.SetGlassInventory(newTotal);
+                //play sound
+                _audio.Play("RecycleGlass");
             }
                 else if(rawType == "Metal")
             {
                 float totalMetal = RecyclingInventory.GetMetalInventory();
                 float newTotal = totalMetal + mass * recycleAmt * yield;
                 RecyclingInventory.SetMetalInventory(newTotal);
+                //play sound
+                _audio.Play("RecycleMetal");
             }
                 else if(rawType == "Wood")
             {

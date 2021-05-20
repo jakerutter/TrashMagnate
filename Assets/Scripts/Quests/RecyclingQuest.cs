@@ -125,8 +125,9 @@ public class RecyclingQuest
         return $"{goalProgress} / {goalAmount} {questItem.GetName()}";
     }
 
-    public RecyclingQuest CompleteQuest(RecyclingQuest quest)
+    public RecyclingQuest CompleteQuest()
     {
+        RecyclingQuest quest = this;
         //add quest to completed quest list
         AddQuestToCompletedQuests(quest);
 
@@ -138,12 +139,12 @@ public class RecyclingQuest
         
         // generate new quest
         RecyclingQuest newQuest = Quests.GenerateNewRecyclingQuest(quest);
-        
-        // List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
-        // activeQuests.Add(newQuest);
-        // Quests.SetActiveRecyclingQuests(activeQuests);
 
         newQuest.IsQuestActivated = true;
+
+        List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
+        activeQuests.Add(newQuest);
+        Quests.SetActiveRecyclingQuests(activeQuests);
 
         return newQuest;
     }

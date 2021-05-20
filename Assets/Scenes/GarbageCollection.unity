@@ -646,7 +646,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 45, y: 0, z: 0}
 --- !u!54 &32596802
 Rigidbody:
@@ -7848,7 +7848,7 @@ GameObject:
   - component: {fileID: 648388964}
   m_Layer: 0
   m_Name: SoundManager
-  m_TagString: Untagged
+  m_TagString: AudioManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7882,7 +7882,7 @@ MonoBehaviour:
   sounds:
   - name: WalkingGrass
     clip: {fileID: 8300000, guid: f8c786c7fd23c4e2f8a53061645249e9, type: 3}
-    volume: 0.1
+    volume: 0.055
     pitch: 1.5
     source: {fileID: 0}
     loop: 0
@@ -7894,6 +7894,18 @@ MonoBehaviour:
     loop: 0
   - name: PickUpItem
     clip: {fileID: 8300000, guid: f4ac480e1950c4b73baf88c732217ed5, type: 3}
+    volume: 0.1
+    pitch: 1.5
+    source: {fileID: 0}
+    loop: 0
+  - name: RecycleGlass
+    clip: {fileID: 8300000, guid: 48b4e546091b84322a95403fb003008f, type: 3}
+    volume: 0.1
+    pitch: 1.5
+    source: {fileID: 0}
+    loop: 0
+  - name: RecycleMetal
+    clip: {fileID: 8300000, guid: bbfe4c28e081f423faa8d8d218425fc7, type: 3}
     volume: 0.1
     pitch: 1.5
     source: {fileID: 0}
@@ -11659,6 +11671,7 @@ GameObject:
   - component: {fileID: 929433930}
   - component: {fileID: 929433932}
   - component: {fileID: 929433929}
+  - component: {fileID: 929433933}
   m_Layer: 5
   m_Name: QuestLogUI
   m_TagString: Untagged
@@ -11763,10 +11776,22 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 929433927}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &929433933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929433927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61f69402cae846e6a8aecdc835cdc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &933813850
 GameObject:
   m_ObjectHideFlags: 0
@@ -18529,7 +18554,7 @@ Transform:
   - {fileID: 2061750701}
   - {fileID: 1258539871}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1497322687
 MonoBehaviour:

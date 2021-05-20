@@ -22,7 +22,7 @@ public class QuestLogUI : MonoBehaviour
     {
         //load the start game qusts
         //TODO --only do this for new games, not loaded save games
-        Quests.InitialLoadRecyclingQuests();
+        //Quests.InitialLoadRecyclingQuests();
 
         activeQuests = Quests.GetActiveRecyclingQuests();
 
@@ -31,6 +31,7 @@ public class QuestLogUI : MonoBehaviour
 
     public void SetActiveQuestTabs(List<RecyclingQuest> activeQuests)
     {
+
         for(int i = 0; i<5; i++)
         {
             RecyclingQuest thisQuest = activeQuests[i];
@@ -58,6 +59,8 @@ public class QuestLogUI : MonoBehaviour
 
      public void SetSelectedQuest(RecyclingQuest quest)
     {
+        Debug.Log("SetSelectedQuest has been called");
+        Debug.Log(quest.GetQuestProgressString(quest.isBuildQuest));
         selectedQuestDetail.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestLongDesc());
         selectedQuestProgress.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestProgressString(quest.isBuildQuest));
     }

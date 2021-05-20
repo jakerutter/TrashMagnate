@@ -83,6 +83,7 @@ public class InventoryUI : MonoBehaviour
 
     private void RefreshInventoryItems()
     {
+        //Debug.Log("Refreshing Inventory Items");
         if(itemSlotContainer == null){
             Debug.Log("item slot container is null in refreshInventoryItems");
         }
@@ -129,7 +130,6 @@ public class InventoryUI : MonoBehaviour
             } else {
                 uiText.SetText("");
             }
-            
             
             x++;
 

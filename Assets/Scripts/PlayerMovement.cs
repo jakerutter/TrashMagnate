@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 movement;
     private Vector3 movement3d;
     private bool hasWheelbarrow = false;
-    private AudioManager audio;
+    private AudioManager _audio;
 
     //public Rigidbody2D rb;
     public Rigidbody rb;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        audio = FindObjectOfType<AudioManager>();
+        _audio = FindObjectOfType<AudioManager>();
     }
 
     // Update is called once per frame
@@ -46,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(movement3d.sqrMagnitude > 0)
         {
-            audio.Play("WalkingGrass");
+            _audio.Play("WalkingGrass");
         }
     }
 

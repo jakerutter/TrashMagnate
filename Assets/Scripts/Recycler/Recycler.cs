@@ -35,7 +35,6 @@ public class Recycler : MonoBehaviour
         render.sprite = GetSprite();
     }
 
-
     private void OnMouseDown()
     {
         if(Input.GetMouseButtonDown(0))

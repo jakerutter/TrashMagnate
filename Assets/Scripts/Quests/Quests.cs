@@ -77,7 +77,7 @@ public static class Quests
 
         initialQuests.Add(new RecyclingQuest 
         {
-            questName = RecyclingQuest.QuestName.CollectType, 
+            questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
             questGoal = RecyclingQuest.QuestGoal.CollectItem,
             goalAmount = 15,
@@ -104,12 +104,14 @@ public static class Quests
         
         initialQuests.Add(new RecyclingQuest 
         {
-            questName = RecyclingQuest.QuestName.BuildObject, 
+            //questName = RecyclingQuest.QuestName.BuildObject, 
+            questName = RecyclingQuest.QuestName.CollectItem,
             questLevel = 1,
             goalAmount = 1,
-            isBuildQuest = true,
-            questItem = null,
-            questBuilding = new Recycler {recyclerType = Recycler.RecyclerType.BasicRecycler}
+            //isBuildQuest = true,
+            //questItem = null,
+            questItem = new Item {itemType = Item.ItemType.GroceryBag},
+            //questBuilding = new Recycler {recyclerType = Recycler.RecyclerType.BasicRecycler}
         });
 
         ActiveRecyclingQuests = initialQuests;

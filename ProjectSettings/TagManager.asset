@@ -28,6 +28,7 @@ TagManager:
   - MetalAmount
   - ElectronicAmount
   - MiscAmount
+  - AudioManager
   layers:
   - Default
   - TransparentFX
