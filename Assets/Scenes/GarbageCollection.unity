@@ -723,6 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 819482223}
+  questLogUI: {fileID: 929433929}
 --- !u!1 &43734084
 GameObject:
   m_ObjectHideFlags: 0
@@ -5190,7 +5191,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     itemType: 17
-    amount: 4
+    amount: 15
 --- !u!4 &465840791
 Transform:
   m_ObjectHideFlags: 0
@@ -24555,7 +24556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item:
     itemType: 18
-    amount: 7
+    amount: 15
 --- !u!1 &2068104851
 GameObject:
   m_ObjectHideFlags: 0

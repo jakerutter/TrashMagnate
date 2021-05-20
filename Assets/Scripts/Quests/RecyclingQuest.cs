@@ -130,6 +130,9 @@ public class RecyclingQuest
         RecyclingQuest quest = this;
         //add quest to completed quest list
         AddQuestToCompletedQuests(quest);
+        
+        // give player quest rewards
+
 
         // inactivate quest
         quest.IsQuestActivated = false;
@@ -152,6 +155,7 @@ public class RecyclingQuest
     public bool IsQuestComplete()
     {
         isQuestComplete = goalProgress >= goalAmount;
+        Debug.Log("goalProgress = " + goalProgress + " && goalAmount = " + goalAmount);
         return isQuestComplete;
     }
 

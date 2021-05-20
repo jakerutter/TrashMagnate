@@ -7,17 +7,15 @@ public class Player : MonoBehaviour
     private Inventory inventory;
     private List<RecyclingQuest> activeRecyclingQuests;
     private AudioManager _audio;
+
     [SerializeField] private InventoryUI inventoryUI;
+    [SerializeField] private QuestLogUI questLogUI;
 
     void Awake()
     {
         inventory = new Inventory(UseItem);   
 
         inventoryUI.SetPlayer(this);
-
-        // ItemWorld.SpawnItemWorld(new Vector3(1,1), new Item { itemType = Item.ItemType.LargeBattery});
-        // ItemWorld.SpawnItemWorld(new Vector3(-1,1), new Item { itemType = Item.ItemType.Book});
-        // ItemWorld.SpawnItemWorld(new Vector3(1,-1), new Item { itemType = Item.ItemType.Can});
     } 
 
     void Start()
@@ -30,6 +28,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        bool questComplete = false;
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
 
         if(itemWorld != null)
@@ -52,24 +51,35 @@ public class Player : MonoBehaviour
 
                 if(questProgressed)
                 {
+                    Debug.Log("activeQuest number " + i + " was progressed");
                     questsUpdated.Add(i);
                 }
             }
 
             if (questsUpdated.Count > 0)
             {
-                for(int z = questsUpdated.Count-1; z>0; z--)
+                for(int z = questsUpdated.Count-1; z>=0; z--)
                 {
                     RecyclingQuest thisQuest = activeRecyclingQuests[questsUpdated[z]];
+
+                    Debug.Log("checking complete status for " + questsUpdated[z]);
 
                     bool isComplete = thisQuest.IsQuestComplete(); 
 
                     if(isComplete)
                     {
-                        Debug.Log("Quest complete!!!");
+                        RecyclingInventory.AddRocketTechPoints(thisQuest.GetRocketTechReward());
+                        Debug.Log("Quest complete!!" + " RT Points = " + RecyclingInventory.GetRocketTechPoints());
                         RecyclingQuest newQuest = thisQuest.CompleteQuest();
+                        
+                        questComplete = true;
                     }
                 }
+            }
+
+            if(questComplete)
+            {
+                 questLogUI.GetComponent<QuestLogUI>().SetActiveQuestTabs(activeRecyclingQuests);
             }
 
             //Update inventory (not sure this is best place for this)

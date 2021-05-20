@@ -4,17 +4,17 @@ using UnityEngine;
 
 public static class Quests
 {
-    private static List<RecyclingQuest> RecyclingQuests;
+    // private static List<RecyclingQuest> RecyclingQuests;
     private static List<RecyclingQuest> ActiveRecyclingQuests;
     private static List<RecyclingQuest> CompleteRecyclingQuests;
     private static List<LaunchQuest> LaunchQuests;
     private static List<LaunchQuest> ActiveLaunchQuests;
     private static List<LaunchQuest> CompleteLaunchQuests;
 
-    public static List<RecyclingQuest> GetRecyclingQuests()
-    {
-        return RecyclingQuests;
-    }
+    // public static List<RecyclingQuest> GetRecyclingQuests()
+    // {
+    //     return RecyclingQuests;
+    // }
 
     public static List<RecyclingQuest> GetActiveRecyclingQuests()
     {
@@ -137,10 +137,16 @@ public static class Quests
             questItem = new Item{ itemType = (Item.ItemType)randItem },
             goalAmount = GetAmountByLevel(newLevel)
         };
-
+        
         // get active quests and add this new quest to the list
         List<RecyclingQuest> activeQuests = GetActiveRecyclingQuests();
+
+        Debug.LogWarning("active quest count before adding new = " + activeQuests.Count);
+
         activeQuests.Add(newQuest);
+
+        Debug.LogWarning("active quest count after adding new = " + activeQuests.Count);
+
         Quests.SetActiveRecyclingQuests(activeQuests);
 
         return newQuest;

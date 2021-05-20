@@ -20,6 +20,7 @@ public static class RecyclingInventory
 
     private static int RecyclingSkill = 1;
     private static int Currency;
+    private static int RocketTechPoints;
 
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
@@ -180,6 +181,16 @@ public static class RecyclingInventory
     public static void SetCurrency(int currency)
     {
         Currency += currency;
+    }
+
+     public static int GetRocketTechPoints()
+    {
+        return RocketTechPoints;
+    }
+
+    public static void AddRocketTechPoints(int rtPoints)
+    {
+        RocketTechPoints += rtPoints;
     }
 
     public static ManualRecyclingUpgrade[] GetManualRecyclingUpgrades()
