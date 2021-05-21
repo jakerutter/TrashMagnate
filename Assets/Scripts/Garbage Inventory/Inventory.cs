@@ -142,6 +142,8 @@ public class Inventory
                 float totalPaper = RecyclingInventory.GetPaperInventory();
                 float newTotal = totalPaper + mass * recycleAmt * yield;
                 RecyclingInventory.SetPaperInventory(newTotal);
+                 //play sound
+                _audio.Play("RecyclePaper");
             }
             else if(rawType == "Glass")
             {
@@ -164,6 +166,8 @@ public class Inventory
                 float totalWood = RecyclingInventory.GetWoodInventory();
                 float newTotal = totalWood + mass * recycleAmt * yield;
                 RecyclingInventory.SetWoodInventory(newTotal);
+                 //play sound
+                _audio.Play("RecycleWood");
             }
                 else if(rawType == "Plastic")
             {

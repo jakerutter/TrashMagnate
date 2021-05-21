@@ -17,7 +17,7 @@ public class CameraController : MonoBehaviour
         Vector3 pos = cam.transform.position;
         Vector3 playerPos = playerLocation.position;
         pos.x = playerPos.x;
-        pos.y = playerPos.y+1;
+        pos.y = playerPos.y;
         pos.z = playerPos.z-2;
 
         cam.transform.position = pos;
@@ -25,6 +25,18 @@ public class CameraController : MonoBehaviour
     }
 
     void Update()
+    {
+        // Vector3 pos = cam.transform.position;
+        // Vector3 playerPos = playerLocation.position;
+
+        // pos.x = playerPos.x;
+        // pos.z = playerPos.z-2;
+
+        // cam.transform.position = pos;
+
+    }
+
+    void FixedUpdate()
     {
         Vector3 pos = cam.transform.position;
         Vector3 playerPos = playerLocation.position;
@@ -37,7 +49,7 @@ public class CameraController : MonoBehaviour
         // float scroll = Input.GetAxis("Mouse ScrollWheel");
 
         // pos.y += scroll * 1000 * scrollSpeed * Time.deltaTime;
-        // pos.y = Mathf.Clamp(pos.y, maxY, minY);
-        // transform.position = pos;
+
+        //transform.position = pos;
     }
 }
