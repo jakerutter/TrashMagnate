@@ -24,6 +24,7 @@ public class MouseManager : MonoBehaviour
     private GameObject selectedObject;
     private float startPosX;
     private float startPosY;
+    private AudioManager _audio;
     //private bool isBegingHeld = false;
 
     void Start()
@@ -34,6 +35,8 @@ public class MouseManager : MonoBehaviour
         questInventoryToggle.onClick.Invoke();
         rawInventoryToggle.onClick.Invoke();
         recycleInventoryToggle.onClick.Invoke();
+
+        _audio = FindObjectOfType<AudioManager>();
     }
 
     void Update()
@@ -51,6 +54,7 @@ public class MouseManager : MonoBehaviour
         {
             if(mainInventoryToggle != null)
             {
+                _audio.Play("MenuAction");
                 mainInventoryToggle.onClick.Invoke();
             }
         }
@@ -59,6 +63,7 @@ public class MouseManager : MonoBehaviour
         {
             if(questInventoryToggle != null)
             {
+                _audio.Play("MenuAction");
                 questInventoryToggle.onClick.Invoke();
             }
         }
@@ -67,6 +72,7 @@ public class MouseManager : MonoBehaviour
         {
             if(rawInventoryToggle != null)
             {
+                _audio.Play("MenuAction");
                 rawInventoryToggle.onClick.Invoke();
             }
         }

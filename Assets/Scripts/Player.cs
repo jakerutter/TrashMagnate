@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
 
                     if(isComplete)
                     {
+                        _audio.Play("LevelUp");
                         RecyclingInventory.AddRocketTechPoints(thisQuest.GetRocketTechReward());
                         //Debug.Log("Quest complete!!" + " RT Points = " + RecyclingInventory.GetRocketTechPoints());
                         RecyclingQuest newQuest = thisQuest.CompleteQuest();
