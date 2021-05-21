@@ -39,7 +39,7 @@ public class Recycler : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Selecting item "+ this.gameObject.name);
+            //Debug.Log("Selecting item "+ this.gameObject.name);
 
             if(recycleInventoryToggle != null)
             {

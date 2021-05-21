@@ -103,7 +103,7 @@ public class Inventory
         GameObject recyclerGameObject = GameObject.FindGameObjectWithTag("Recycler");
         Recycler rec = recyclerGameObject.GetComponent<Recycler>();
         float yield = rec.GetYield();
-        Debug.Log("*** " + yield + " ***");
+        //Debug.Log("*** " + yield + " ***");
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())
         {
@@ -129,7 +129,7 @@ public class Inventory
         {
             int recycleAmt = item.amount;
 
-            Debug.Log("Item to recycle: " + canHoldAmount + " " + item.itemType + "\n Item mass: " + mass + "\n Item raw type: " + rawType + "\n Yield: " + yield);
+            //Debug.Log("Item to recycle: " + canHoldAmount + " " + item.itemType + "\n Item mass: " + mass + "\n Item raw type: " + rawType + "\n Yield: " + yield);
             
             if(canHoldAmount > 0)
             {
@@ -189,7 +189,7 @@ public class Inventory
             //if entire item was not recycled, remove item and replace with less items
             if(!canHoldAll)
             {
-                Debug.Log("recycling "+ canHoldAmount + " " + item.itemType);
+                //Debug.Log("recycling "+ canHoldAmount + " " + item.itemType);
                 Item dupeItem = new Item { itemType = item.itemType, amount = item.amount };
                 RemoveItem(item);
                 AddItem(new Item { itemType = dupeItem.itemType, amount = dupeItem.amount - canHoldAmount});
@@ -228,7 +228,7 @@ public class Inventory
         {
             if(i * item.GetRawMass() <= RecyclingInventory.GetAvailableCapacity())
             {
-                Debug.LogWarning("can recycle " + i + " " + item.itemType);
+                //.LogWarning("can recycle " + i + " " + item.itemType);
                 canHoldAmount = i;
             }
         }

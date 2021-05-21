@@ -59,8 +59,8 @@ public class QuestLogUI : MonoBehaviour
 
      public void SetSelectedQuest(RecyclingQuest quest)
     {
-        Debug.Log("SetSelectedQuest has been called");
-        Debug.Log(quest.GetQuestProgressString(quest.isBuildQuest));
+        //Debug.Log("SetSelectedQuest has been called");
+        //Debug.Log(quest.GetQuestProgressString(quest.isBuildQuest));
         selectedQuestDetail.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestLongDesc());
         selectedQuestProgress.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestProgressString(quest.isBuildQuest));
     }

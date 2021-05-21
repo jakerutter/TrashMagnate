@@ -52,7 +52,7 @@ public static class RecyclingInventory
     public static void SetRubberInventory(float inventory)
     {
         RubberInventory = inventory;
-        Debug.Log("rubber inv should = " + inventory);
+        //Debug.Log("rubber inv should = " + inventory);
         GameObject rubberInv = GameObject.FindGameObjectWithTag("RubberInv");
 
         Text rubberText = rubberInv.GetComponent<Text>();
@@ -71,7 +71,7 @@ public static class RecyclingInventory
     public static void SetMetalInventory(float inventory)
     {
         MetalInventory = inventory;
-        Debug.Log("metal inv should = " + inventory);
+        //Debug.Log("metal inv should = " + inventory);
         GameObject metalInv = GameObject.FindGameObjectWithTag("MetalInv");
 
         Text metalText = metalInv.GetComponent<Text>();
@@ -89,7 +89,7 @@ public static class RecyclingInventory
 
     public static void SetGlassInventory(float inventory)
     {
-        Debug.Log("glass inv should = " + inventory);
+        //Debug.Log("glass inv should = " + inventory);
         GlassInventory = inventory;
         GameObject glassInv = GameObject.FindGameObjectWithTag("GlassInv");
 
@@ -109,7 +109,7 @@ public static class RecyclingInventory
     public static void SetPaperInventory(float inventory)
     {
         PaperInventory = inventory;
-        Debug.Log("paper inv should = " + inventory);
+        //Debug.Log("paper inv should = " + inventory);
 
         GameObject paperInv = GameObject.FindGameObjectWithTag("PaperInv");
 
@@ -130,7 +130,7 @@ public static class RecyclingInventory
     {
         ElectronicInventory = inventory;
 
-        Debug.Log("Electronic inv should = " + inventory);
+        //Debug.Log("Electronic inv should = " + inventory);
 
         GameObject ElectronicInv = GameObject.FindGameObjectWithTag("ElectronicInv");
 
@@ -151,7 +151,7 @@ public static class RecyclingInventory
     {
         WoodInventory = inventory;
 
-        Debug.Log("wood inv should = " + inventory);
+        //Debug.Log("wood inv should = " + inventory);
 
         GameObject woodInv = GameObject.FindGameObjectWithTag("WoodInv");
 
