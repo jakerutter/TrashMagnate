@@ -141,11 +141,11 @@ public static class Quests
         // get active quests and add this new quest to the list
         List<RecyclingQuest> activeQuests = GetActiveRecyclingQuests();
 
-        Debug.LogWarning("active quest count before adding new = " + activeQuests.Count);
+        //Debug.LogWarning("active quest count before adding new = " + activeQuests.Count);
 
         activeQuests.Add(newQuest);
 
-        Debug.LogWarning("active quest count after adding new = " + activeQuests.Count);
+        //Debug.LogWarning("active quest count after adding new = " + activeQuests.Count);
 
         Quests.SetActiveRecyclingQuests(activeQuests);
 

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        Quests.InitialLoadRecyclingQuests();
+        //Quests.InitialLoadRecyclingQuests();
         activeRecyclingQuests = Quests.GetActiveRecyclingQuests();
 
         _audio = FindObjectOfType<AudioManager>();
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
 
                 if(questProgressed)
                 {
-                    Debug.Log("activeQuest number " + i + " was progressed");
+                    //Debug.Log("activeQuest number " + i + " was progressed");
                     questsUpdated.Add(i);
                 }
             }
@@ -62,14 +62,14 @@ public class Player : MonoBehaviour
                 {
                     RecyclingQuest thisQuest = activeRecyclingQuests[questsUpdated[z]];
 
-                    Debug.Log("checking complete status for " + questsUpdated[z]);
+                    //Debug.Log("checking complete status for " + questsUpdated[z]);
 
                     bool isComplete = thisQuest.IsQuestComplete(); 
 
                     if(isComplete)
                     {
                         RecyclingInventory.AddRocketTechPoints(thisQuest.GetRocketTechReward());
-                        Debug.Log("Quest complete!!" + " RT Points = " + RecyclingInventory.GetRocketTechPoints());
+                        //Debug.Log("Quest complete!!" + " RT Points = " + RecyclingInventory.GetRocketTechPoints());
                         RecyclingQuest newQuest = thisQuest.CompleteQuest();
                         
                         questComplete = true;
@@ -109,30 +109,30 @@ public class Player : MonoBehaviour
         //if the quest is tracking number of items collected iterate by 1
         if(quest.questItem.itemType == type && quest.questGoal == RecyclingQuest.QuestGoal.CollectItem)
         {
-            Debug.Log("Progressed type 1." + " Itemtype is " + type);
+            //Debug.Log("Progressed type 1." + " Itemtype is " + type);
             quest.goalProgress += currentItem.amount;
             string progressString = quest.GetQuestProgressString(quest.isBuildQuest);
-            Debug.Log(progressString);
+            //Debug.Log(progressString);
             progressed = true;
         }
         //if the quest is tracking the amount of item mass collected iterate by item mass
         if(quest.questItem.itemType == type && quest.questGoal == RecyclingQuest.QuestGoal.CollectItemAmount)
         {
-            Debug.Log("Progressed type 2." + " Item is " + type);
+            //Debug.Log("Progressed type 2." + " Item is " + type);
             quest.goalProgress += currentItem.GetRawMass();
             progressed = true;
         }
         //if the quest is tracking the number of items collected of a raw type then iterate by 1
             if(quest.questItem.RawType() == currentItem.RawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectType)
         {
-            Debug.Log("Progressed type 3." + " Itemtype is " + currentItem.RawType());
+            //Debug.Log("Progressed type 3." + " Itemtype is " + currentItem.RawType());
             quest.goalProgress += currentItem.amount;
             progressed = true;
         }
         //if the quest is tracking the amount of item mass collected iterate by item mass
         if(quest.questItem.RawType() == currentItem.RawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectTypeAmount)
         {
-            Debug.Log("Progressed type 4." + " Itemtype is " + currentItem.RawType());
+            //Debug.Log("Progressed type 4." + " Itemtype is " + currentItem.RawType());
             quest.goalProgress += currentItem.GetRawMass();
             progressed = true;
         }       

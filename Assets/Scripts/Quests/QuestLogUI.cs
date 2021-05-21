@@ -17,13 +17,15 @@ public class QuestLogUI : MonoBehaviour
 
     private List<RecyclingQuest> activeQuests;
 
-
-    private void Start()
+    private void Awake()
     {
         //load the start game qusts
         //TODO --only do this for new games, not loaded save games
-        //Quests.InitialLoadRecyclingQuests();
-
+        Quests.InitialLoadRecyclingQuests();
+    }
+    
+    private void Start()
+    {
         activeQuests = Quests.GetActiveRecyclingQuests();
 
         SetActiveQuestTabs(activeQuests);

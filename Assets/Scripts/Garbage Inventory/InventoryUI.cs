@@ -37,7 +37,6 @@ public class InventoryUI : MonoBehaviour
     {
         if(itemSlotContainer == null)
         {
-            Debug.Log("Item slot container was null in awake");
             itemSlotContainer = transform.Find("ItemSlotContainer");
         }
 
@@ -85,7 +84,7 @@ public class InventoryUI : MonoBehaviour
     {
         //Debug.Log("Refreshing Inventory Items");
         if(itemSlotContainer == null){
-            Debug.Log("item slot container is null in refreshInventoryItems");
+            //Debug.Log("item slot container is null in refreshInventoryItems");
         }
         foreach(Transform child in itemSlotContainer)
         {

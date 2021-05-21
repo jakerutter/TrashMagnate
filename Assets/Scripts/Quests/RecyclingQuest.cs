@@ -155,7 +155,7 @@ public class RecyclingQuest
     public bool IsQuestComplete()
     {
         isQuestComplete = goalProgress >= goalAmount;
-        Debug.Log("goalProgress = " + goalProgress + " && goalAmount = " + goalAmount);
+        //Debug.Log("goalProgress = " + goalProgress + " && goalAmount = " + goalAmount);
         return isQuestComplete;
     }
 

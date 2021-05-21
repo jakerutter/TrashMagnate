@@ -33,7 +33,7 @@ public static class RecyclingInventory
     public static void SetPlasticInventory(float inventory)
     {
         PlasticInventory = inventory;
-        Debug.Log("plastic inv should = " + inventory);
+        //Debug.Log("plastic inv should = " + inventory);
         GameObject plasticInv = GameObject.FindGameObjectWithTag("PlasticInv");
 
         Text plasticText = plasticInv.GetComponent<Text>();
