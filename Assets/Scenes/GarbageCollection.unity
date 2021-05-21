@@ -12042,7 +12042,7 @@ MonoBehaviour:
     source: {fileID: 0}
     loop: 0
   - name: RecycleMetal
-    clip: {fileID: 8300000, guid: bbfe4c28e081f423faa8d8d218425fc7, type: 3}
+    clip: {fileID: 8300000, guid: 1ba0834ca02b54fba87ee27ede377999, type: 3}
     volume: 0.1
     pitch: 1.5
     source: {fileID: 0}
@@ -12053,9 +12053,21 @@ MonoBehaviour:
     pitch: 1.5
     source: {fileID: 0}
     loop: 0
+  - name: RecycleRubber
+    clip: {fileID: 8300000, guid: 5361c47c392f944919955b36d1f91f2e, type: 3}
+    volume: 0.1
+    pitch: 1.5
+    source: {fileID: 0}
+    loop: 0
+  - name: RecycleElectronic
+    clip: {fileID: 8300000, guid: 1b45c50db60154d67a28bb9b0e261dcb, type: 3}
+    volume: 0.1
+    pitch: 1.5
+    source: {fileID: 0}
+    loop: 0
   - name: LevelUp
-    clip: {fileID: 8300000, guid: da9637aee99e843e7b82c7851b337da5, type: 3}
-    volume: 0.04
+    clip: {fileID: 8300000, guid: f091f200368a84f87becc1f7efb88007, type: 3}
+    volume: 0.1
     pitch: 1.5
     source: {fileID: 0}
     loop: 0

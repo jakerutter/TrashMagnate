@@ -170,18 +170,24 @@ public class Inventory
                 float totalPlastic = RecyclingInventory.GetPlasticInventory();
                 float newTotal = totalPlastic + mass * recycleAmt * yield;
                 RecyclingInventory.SetPlasticInventory(newTotal);
+                //play sound
+                 _audio.Play("RecyclePlastic");
             }
                 else if(rawType == "Rubber")
             {
                 float totalRubber = RecyclingInventory.GetRubberInventory();
                 float newTotal = totalRubber + mass * recycleAmt * yield;
                 RecyclingInventory.SetRubberInventory(newTotal);
+                //play sound
+                 _audio.Play("RecycleRubber");
             }
                 else if(rawType == "Electronic")
             {
                 float totalElectronic = RecyclingInventory.GetElectronicInventory();
                 float newTotal = totalElectronic + mass * recycleAmt * yield;
                 RecyclingInventory.SetElectronicInventory(newTotal);
+                //play sound
+                 _audio.Play("RecycleElectronic");
             }
             
             RecyclingInventory.AdjustAvailableCapacity(mass);
