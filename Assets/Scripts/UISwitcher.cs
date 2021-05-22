@@ -160,6 +160,8 @@ public class UISwitcher : MonoBehaviour
                  {
                     canva.alpha = 1;
                     canva.blocksRaycasts = true;
+                    StatsUI statsUI = panel.GetComponent<StatsUI>();
+                    statsUI.ShowStats();
                  } else{
                     canva.alpha = 0;
                     canva.blocksRaycasts = false;
