@@ -107,7 +107,9 @@ public class Inventory
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())
         {
-            Debug.LogWarning("Insufficient skill for recycling this item");
+            //send [failure] message saying cannot recycle
+            Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
+            messenger.SetMessage(Messenger.MessageType.Failure, "Insufficient skill for recycling this item.");
             return;
         }
 

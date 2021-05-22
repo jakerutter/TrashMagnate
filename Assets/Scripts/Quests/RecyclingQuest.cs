@@ -132,7 +132,13 @@ public class RecyclingQuest
 
         int rocketTechReward = quest.GetRocketTechReward();
 
-         // give player quest rewards
+         // give player recycling skill point reward
+         if(HasSkillPointUpgrade())
+         {
+             RecyclingInventory.AddRecyclingSkill(1);
+         }
+
+        //give player RTpoints reward
         RecyclingInventory.AddRocketTechPoints(rocketTechReward); 
 
         //Display current RT point total

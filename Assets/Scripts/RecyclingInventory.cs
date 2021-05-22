@@ -18,7 +18,7 @@ public static class RecyclingInventory
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
 
-    private static int RecyclingSkill = 2;
+    private static int RecyclingSkill = 1;
     private static int Currency;
     private static int RocketTechPoints;
 
@@ -171,6 +171,9 @@ public static class RecyclingInventory
     public static void AddRecyclingSkill(int skill)
     {
         RecyclingSkill += skill;
+         //send [success] message showing recycling skill increase
+        Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
+        messenger.SetMessage(Messenger.MessageType.Success, "Congrats! Recycling skill increased to " + RecyclingSkill.ToString() + ".");
     }
 
     public static int GetCurrency()
