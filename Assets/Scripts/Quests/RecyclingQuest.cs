@@ -128,11 +128,18 @@ public class RecyclingQuest
     public RecyclingQuest CompleteQuest()
     {
         RecyclingQuest quest = this;
+
+        int rocketTechReward = quest.GetRocketTechReward();
+         // give player quest rewards
+        RecyclingInventory.AddRocketTechPoints(rocketTechReward);
+        //Debug.Log("Quest complete!!" + " RT Points = " + RecyclingInventory.GetRocketTechPoints());
+
+        //send [success] message saying quest complete
+        Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
+        messenger.SetMessage(Messenger.MessageType.Success, "Quest complete. "+ rocketTechReward.ToString() + " rocket tech points awarded.");
+        
         //add quest to completed quest list
         AddQuestToCompletedQuests(quest);
-        
-        // give player quest rewards
-
 
         // inactivate quest
         quest.IsQuestActivated = false;
