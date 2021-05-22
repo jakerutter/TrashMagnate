@@ -30,6 +30,7 @@ TagManager:
   - MiscAmount
   - AudioManager
   - Messenger
+  - RTPointDisplay
   layers:
   - Default
   - TransparentFX

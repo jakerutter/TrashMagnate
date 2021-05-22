@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [Serializable]
 public class RecyclingQuest
@@ -130,9 +131,13 @@ public class RecyclingQuest
         RecyclingQuest quest = this;
 
         int rocketTechReward = quest.GetRocketTechReward();
+
          // give player quest rewards
-        RecyclingInventory.AddRocketTechPoints(rocketTechReward);
-        //Debug.Log("Quest complete!!" + " RT Points = " + RecyclingInventory.GetRocketTechPoints());
+        RecyclingInventory.AddRocketTechPoints(rocketTechReward); 
+
+        //Display current RT point total
+        GameObject RocketTechPoints = GameObject.FindGameObjectWithTag("RTPointDisplay");
+        RocketTechPoints.GetComponent<TextMeshProUGUI>().SetText(RecyclingInventory.GetRocketTechPoints().ToString());
 
         //send [success] message saying quest complete
         Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
