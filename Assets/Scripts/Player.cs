@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     [SerializeField] private InventoryUI inventoryUI;
     [SerializeField] private QuestLogUI questLogUI;
+    [SerializeField] private RecycleAll recycleAll;
 
     void Awake()
     {
@@ -83,6 +84,7 @@ public class Player : MonoBehaviour
 
             //Update inventory (not sure this is best place for this)
             inventoryUI.SetInventory(inventory);
+            recycleAll.SetRecycleAllInv(inventory);
         }
     }
 

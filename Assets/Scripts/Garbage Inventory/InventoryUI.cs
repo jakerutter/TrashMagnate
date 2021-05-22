@@ -11,7 +11,6 @@ public class InventoryUI : MonoBehaviour
     private Transform itemSlotTemplate;
     private Inventory inventory;
     private Player player;
-
     private Transform recycleSlotContainer;
     private Transform recycleSlotTemplate;
 
@@ -66,6 +65,8 @@ public class InventoryUI : MonoBehaviour
 
     public void SetInventory(Inventory inventory)
     {
+        //Debug.Log("Calling SetInventory. Inv item count = " + inventory.GetItemList().Count);
+
        this.inventory = inventory;
 
        inventory.OnItemListChanged += Inventory_OnItemListChanged;
