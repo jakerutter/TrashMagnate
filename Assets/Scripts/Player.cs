@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         bool questComplete = false;
+        
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
 
         if(itemWorld != null)
@@ -48,8 +49,15 @@ public class Player : MonoBehaviour
 
             for(int i = 0; i < activeRecyclingQuests.Count; i++)
             {
-                bool questProgressed = HandleQuestProgress(activeRecyclingQuests[i], currentItem);
-
+                bool questProgressed = false;
+                RecyclingQuest.QuestGoal thisGoal = activeRecyclingQuests[i].questGoal;
+                
+                //This quest could only have progressed if it is one of these  4 types
+                if(thisGoal == RecyclingQuest.QuestGoal.CollectItem || thisGoal == RecyclingQuest.QuestGoal.CollectType || thisGoal == RecyclingQuest.QuestGoal.CollectItemAmount || thisGoal == RecyclingQuest.QuestGoal.CollectTypeAmount)
+                {
+                    questProgressed = HandleQuestProgress(activeRecyclingQuests[i], currentItem);
+                }
+                
                 if(questProgressed)
                 {
                     //Debug.Log("activeQuest number " + i + " was progressed");
