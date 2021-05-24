@@ -4,17 +4,11 @@ using UnityEngine;
 
 public static class Quests
 {
-    // private static List<RecyclingQuest> RecyclingQuests;
     private static List<RecyclingQuest> ActiveRecyclingQuests;
     private static List<RecyclingQuest> CompleteRecyclingQuests;
     private static List<LaunchQuest> LaunchQuests;
     private static List<LaunchQuest> ActiveLaunchQuests;
     private static List<LaunchQuest> CompleteLaunchQuests;
-
-    // public static List<RecyclingQuest> GetRecyclingQuests()
-    // {
-    //     return RecyclingQuests;
-    // }
 
     public static List<RecyclingQuest> GetActiveRecyclingQuests()
     {

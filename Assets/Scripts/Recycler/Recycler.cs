@@ -81,4 +81,46 @@ public class Recycler : MonoBehaviour
             case RecyclerType.AdvancedRecycler:     return "Advanced Recycler";
         }
     }
+
+    public List<Item> GetCost()
+    {
+        switch (recyclerType)
+        {
+            default:
+            case RecyclerType.BasicRecycler:        return new List<Item>()
+                {
+                    new Item(){ itemType = Item.ItemType.Can, amount = 15 },
+                    new Item(){ itemType = Item.ItemType.BrownGlassBottle, amount = 15 },
+                    new Item(){ itemType = Item.ItemType.SmallTire, amount = 5 },
+                    new Item(){ itemType = Item.ItemType.Box, amount = 5 }
+                };
+
+            case RecyclerType.ModernRecycler:       return new List<Item>()
+                {
+                    new Item(){ itemType = Item.ItemType.SmallBattery, amount = 10 },
+                    new Item(){ itemType = Item.ItemType.GrowlerBottle, amount = 10 },
+                    new Item(){ itemType = Item.ItemType.LargeTire, amount = 20 },
+                    new Item(){ itemType = Item.ItemType.Book, amount = 20 }
+                };
+            //TODO make advanced and rare items required for this upgrade
+            case RecyclerType.AdvancedRecycler:     return new List<Item>()
+                {
+                    new Item(){ itemType = Item.ItemType.Can, amount = 15 },
+                    new Item(){ itemType = Item.ItemType.BrownGlassBottle, amount = 15 },
+                    new Item(){ itemType = Item.ItemType.SmallTire, amount = 5 },
+                    new Item(){ itemType = Item.ItemType.Box, amount = 5 }
+                };
+        }
+    }
+
+    public bool GetUnlocked()
+    {
+        switch (recyclerType)
+        {
+            default:
+            case RecyclerType.BasicRecycler:        return false;
+            case RecyclerType.ModernRecycler:       return RecyclingInventory.GetBasicRecyclerBuilt();
+            case RecyclerType.AdvancedRecycler:     return RecyclingInventory.GetModernRecyclerBuilt();
+        }
+    }
 }

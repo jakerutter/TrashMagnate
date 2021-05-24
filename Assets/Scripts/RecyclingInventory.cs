@@ -22,6 +22,9 @@ public static class RecyclingInventory
     private static int Currency;
     private static int RocketTechPoints;
 
+    private static bool BasicRecyclerBuilt;
+    private static bool ModernRecyclerBuilt;
+
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
 
@@ -266,14 +269,24 @@ public static class RecyclingInventory
         capText.text = "Carrying Capacity\n "+totalMass+" kg / "+carryLimit+ " kg";  
     }
 
-    // public static void SetRecyclerType(RecyclerType recType)
-    // {
-    //     recyclerType = recType;
-    // }
+    public static void SetBasicRecyclerBuilt(bool built)
+    {
+        BasicRecyclerBuilt = built;
+    }
 
-    // public static RecyclerType GetRecyclerType()
-    // {
-    //     return recyclerType;
-    // }
+    public static bool GetBasicRecyclerBuilt()
+    {
+        return BasicRecyclerBuilt;
+    }
+
+      public static void SetModernRecyclerBuilt(bool built)
+    {
+        ModernRecyclerBuilt = built;
+    }
+
+    public static bool GetModernRecyclerBuilt()
+    {
+        return ModernRecyclerBuilt;
+    }
 
 }
