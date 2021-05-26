@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class BuildingInventory
+public static class AssemblyInventory
 {
 
     private static int PartLimit;

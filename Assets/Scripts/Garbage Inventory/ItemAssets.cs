@@ -12,6 +12,7 @@ public class ItemAssets : MonoBehaviour
    }
 
     public Transform pfItemWorld;
+    public Transform pfRecyclerWorld;
 
     public Sprite PlasticBottleSprite;
     public Sprite PlasticJugSprite;

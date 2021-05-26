@@ -9,10 +9,8 @@ public class BuildUI : MonoBehaviour
 {
     private Transform buildSlotContainer;
     private Transform buildSlotTemplate;
-    private Inventory inventory;
+    private BuildingInventory buildingInventory;
     private Player player;
-    private Transform recycleSlotContainer;
-    private Transform recycleSlotTemplate;
 
     private void Awake()
     {
@@ -43,30 +41,24 @@ public class BuildUI : MonoBehaviour
         this.player = player;
     }
 
-    public void SetInventory(Inventory inventory)
+    public void SetBuildingInventory(BuildingInventory buildingInventory)
     {
-        //Debug.Log("Calling SetInventory. Inv item count = " + inventory.GetItemList().Count);
+        //Debug.Log("Calling SetBuildInventory. Inv item count = " + buildingInventory.GetBuildingList().Count);
 
-       this.inventory = inventory;
-
-       inventory.OnItemListChanged += Inventory_OnItemListChanged;
+       this.buildingInventory = buildingInventory;
+        //TODO below line should be un commented but was throwing an error
+       buildingInventory.OnBuildingListChanged += BuildingInventory_OnBuildingListChanged;
        
-       RefreshInventoryItems();
-       RefreshRecycleInventoryItems();
+       RefreshBuildingInventory();  
     }
 
-    private void Inventory_OnItemListChanged(object sender, System.EventArgs e)
+       private void RefreshBuildingInventory()
     {
-        RefreshInventoryItems();
-        RefreshRecycleInventoryItems();
-    }
-
-    private void RefreshInventoryItems()
-    {
-        //Debug.Log("Refreshing Inventory Items");
+        //Debug.Log("Refreshing BuildInventory Items");
         if(buildSlotContainer == null){
-            //Debug.Log("item slot container is null in refreshInventoryItems");
+            //Debug.Log("item slot container is null in RefreshBuildingInventory");
         }
+        
         foreach(Transform child in buildSlotContainer)
         {
             if (child == buildSlotTemplate)
@@ -78,38 +70,32 @@ public class BuildUI : MonoBehaviour
 
         int x = 0;
         int y = 0;
-        float itemSlotCellSize = 110f;
+        float buildSlotCellSize = 190f;
 
-        foreach (Item item in inventory.GetItemList())
+        foreach (Recycler recycler in buildingInventory.GetBuildingList())
         {       
-            RectTransform itemSlotRectTransform = Instantiate(buildSlotTemplate, buildSlotContainer).GetComponent<RectTransform>();
-            itemSlotRectTransform.gameObject.SetActive(true);
+            Debug.Log(buildingInventory.GetBuildingList().Count + " is building list count");
+            
+            RectTransform buildSlotRectTransform = Instantiate(buildSlotTemplate, buildSlotContainer).GetComponent<RectTransform>();
+            buildSlotRectTransform.gameObject.SetActive(true);
 
-            itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
+            buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                 //use item (convert to raw or place in recycler)
-                inventory.UseItem(item);
+                buildingInventory.UseBuilding(recycler);
                 //Debug.Log("raw type is " + item.RawType());
                 //Debug.Log("mass is " + item.GetRawMass());
 
             };
-            itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
-                //drop item
-                Item duplicateItem = new Item { itemType = item.itemType, amount = item.amount };
-                inventory.RemoveItem(item);
-                ItemWorld.DropItem(player.GetPosition(), duplicateItem);
-            };
+            // buildSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
+            //     //drop item
+            //     Recycler dupeRecycler = new Recycler { recyclerType = recycler.recyclerType };
+            //     buildingInventory.RemoveItem(recycler);
+            //     ItemWorld.DropItem(player.GetPosition(), duplicateItem);
+            // };
 
-            itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
-            Image image = itemSlotRectTransform.Find("image").GetComponent<Image>();
-            image.sprite = item.GetSprite();
-            
-            TextMeshProUGUI uiText = itemSlotRectTransform.Find("text").GetComponent<TextMeshProUGUI>();
-            if(item.amount > 1)
-            {
-                uiText.SetText(item.amount.ToString());   
-            } else {
-                uiText.SetText("");
-            }
+            buildSlotRectTransform.anchoredPosition = new Vector2(x * buildSlotCellSize, y * buildSlotCellSize);
+            Image image = buildSlotRectTransform.Find("image").GetComponent<Image>();
+            image.sprite = recycler.GetSprite();
             
             x++;
 
@@ -121,74 +107,8 @@ public class BuildUI : MonoBehaviour
         }
     }
 
-    private void RefreshRecycleInventoryItems()
+     private void BuildingInventory_OnBuildingListChanged(object sender, System.EventArgs e)
     {
-        foreach(Transform child in recycleSlotContainer)
-        {
-            if (child == recycleSlotTemplate)
-            {
-                continue;
-            }
-            Destroy(child.gameObject);
-        }
-
-        int x = 0;
-        int y = 0;
-        float itemSlotCellSize = 110f;
-
-        foreach (Item item in inventory.GetItemList())
-        {
-
-            // Debug.Log("item name is " + item.itemType);
-            // Debug.Log("skill = " + RecyclingInventory.GetRecyclingSkill() + ". requirement = " + item.RecycleRequirement());
-
-            if(item.CanRecycle() == false)
-            {
-                Debug.Log("skipping item, cannot recycle");
-                continue;
-            }
-
-            RectTransform itemSlotRectTransform = Instantiate(recycleSlotTemplate, recycleSlotContainer).GetComponent<RectTransform>();
-            itemSlotRectTransform.gameObject.SetActive(true);
-
-            itemSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
-                //use item (convert to raw or place in recycler)
-                inventory.RecycleItem(item);
-            };
-            // itemSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
-            //     //drop item
-            //     Item duplicateItem = new Item { itemType = item.itemType, amount = item.amount };
-            //     inventory.RemoveItem(item);
-            //     ItemWorld.DropItem(player.GetPosition(), duplicateItem);
-            // };
-
-        itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
-        Image image = itemSlotRectTransform.Find("image").GetComponent<Image>();
-        image.sprite = item.GetSprite();
-        
-        TextMeshProUGUI uiText = itemSlotRectTransform.Find("text").GetComponent<TextMeshProUGUI>();
-        if(item.amount > 1)
-        {
-            uiText.SetText(item.amount.ToString());   
-        } else {
-            uiText.SetText("");
-        }
-
-        //if player's recycling skill is high enough to recycle, highlight item green
-        if(RecyclingInventory.GetRecyclingSkill() >= item.RecycleRequirement())
-        {
-            GameObject rc = recycleSlotTemplate.gameObject;
-            Outline outline = rc.GetComponent<Outline>(); 
-            outline.enabled = true;
-        }
-
-            x++;
-
-            if(x > 4)
-            {
-                x=0;
-                y--;
-            }
-        }
+        RefreshBuildingInventory();
     }
 }

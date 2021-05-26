@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,18 @@ public class Player : MonoBehaviour
 {
     private Inventory inventory;
     private List<RecyclingQuest> activeRecyclingQuests;
+    private BuildingInventory buildingInventory;
     private AudioManager _audio;
 
     [SerializeField] private InventoryUI inventoryUI;
     [SerializeField] private QuestLogUI questLogUI;
     [SerializeField] private RecycleAll recycleAll;
+    [SerializeField] private BuildUI buildUI;
 
     void Awake()
     {
         inventory = new Inventory(UseItem);   
-
+        buildingInventory = new BuildingInventory(UseBuilding);
         inventoryUI.SetPlayer(this);
     } 
 
@@ -25,6 +28,14 @@ public class Player : MonoBehaviour
         activeRecyclingQuests = Quests.GetActiveRecyclingQuests();
 
         _audio = FindObjectOfType<AudioManager>();
+
+        List<Recycler> buildingList = new List<Recycler>();
+        Debug.Log(buildingInventory.GetBuildingList().Count);
+
+        buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.BasicRecycler });
+        buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.ModernRecycler });
+        
+        buildUI.SetBuildingInventory(buildingInventory);
     }
 
     private void OnTriggerEnter(Collider collider)
@@ -97,6 +108,15 @@ public class Player : MonoBehaviour
     }
 
     private void UseItem(Item item)
+    {
+        // switch(item.itemType)
+        // {
+        //     case Item.ItemType.PlasticBottle: return;
+        // }
+    }
+
+    
+    private void UseBuilding(Recycler recycler)
     {
         // switch(item.itemType)
         // {
