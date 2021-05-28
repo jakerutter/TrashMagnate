@@ -24,6 +24,10 @@ public static class RecyclingInventory
 
     private static bool BasicRecyclerBuilt;
     private static bool ModernRecyclerBuilt;
+    private static bool AdvancedRecyclerBuilt;
+    private static bool BasicRecyclerPurchased;
+    private static bool ModernRecyclerPurchased;
+    private static bool AdvancedRecyclerPurchased;
 
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
@@ -269,24 +273,72 @@ public static class RecyclingInventory
         capText.text = "Carrying Capacity\n "+totalMass+" kg / "+carryLimit+ " kg";  
     }
 
-    public static void SetBasicRecyclerBuilt(bool built)
+    public static void SetRecyclerBuilt(Recycler recycler)
     {
-        BasicRecyclerBuilt = built;
+         if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        {   
+            BasicRecyclerBuilt = true;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.ModernRecycler)
+        {
+            ModernRecyclerBuilt= true;
+        }
+        else if(recycler.recyclerType == Recycler.RecyclerType.AdvancedRecycler)
+        {
+            AdvancedRecyclerBuilt = true;
+        }
     }
 
-    public static bool GetBasicRecyclerBuilt()
+  
+      public static void SetRecyclerPurchased(Recycler recycler)
     {
-        return BasicRecyclerBuilt;
+        if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        {   
+            BasicRecyclerPurchased = true;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.ModernRecycler)
+        {
+            ModernRecyclerPurchased = true;
+        }
+        else if(recycler.recyclerType == Recycler.RecyclerType.AdvancedRecycler)
+        {
+            AdvancedRecyclerPurchased = true;
+        }
     }
 
-      public static void SetModernRecyclerBuilt(bool built)
+     public static bool GetIsRecyclerPurchased(Recycler recycler)
     {
-        ModernRecyclerBuilt = built;
+        if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        {   
+            return BasicRecyclerPurchased;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.ModernRecycler)
+        {
+            return ModernRecyclerPurchased;
+        }
+        else if(recycler.recyclerType == Recycler.RecyclerType.AdvancedRecycler)
+        {
+            return AdvancedRecyclerPurchased;
+        }
+
+        return false;
     }
 
-    public static bool GetModernRecyclerBuilt()
+      public static bool GetIsRecyclerBuilt(Recycler recycler)
     {
-        return ModernRecyclerBuilt;
-    }
+        if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        {   
+            return BasicRecyclerBuilt;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.ModernRecycler)
+        {
+            return ModernRecyclerBuilt;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.AdvancedRecycler)
+        {
+            return AdvancedRecyclerBuilt;
+        }
 
+        return false;
+    }
 }

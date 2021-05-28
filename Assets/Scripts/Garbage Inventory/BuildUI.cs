@@ -46,7 +46,7 @@ public class BuildUI : MonoBehaviour
         //Debug.Log("Calling SetBuildInventory. Inv item count = " + buildingInventory.GetBuildingList().Count);
 
        this.buildingInventory = buildingInventory;
-        //TODO below line should be un commented but was throwing an error
+
        buildingInventory.OnBuildingListChanged += BuildingInventory_OnBuildingListChanged;
        
        RefreshBuildingInventory();  
@@ -77,26 +77,25 @@ public class BuildUI : MonoBehaviour
             RectTransform buildSlotRectTransform = Instantiate(buildSlotTemplate, buildSlotContainer).GetComponent<RectTransform>();
             buildSlotRectTransform.gameObject.SetActive(true);
 
-            buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
-                //use item (convert to raw or place in recycler)
-                buildingInventory.UseBuilding(recycler);
-                //Debug.Log("raw type is " + item.RawType());
-                //Debug.Log("mass is " + item.GetRawMass());
+            if(RecyclingInventory.GetIsRecyclerPurchased(recycler))
+            {
+                //these Recyclers have been purchased -- can be built and placed onto the map
+                buildSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
 
-            };
-            buildSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
-                //drop item
-                Recycler dupeRecycler = new Recycler { recyclerType = recycler.recyclerType };
+                    Recycler dupeRecycler = new Recycler { recyclerType = recycler.recyclerType };
+                    buildingInventory.RemoveBuilding(recycler);
 
-                if(dupeRecycler == null){ Debug.Log("DupeRecycler is null in refreshBuildInv right click");}
-
-                buildingInventory.RemoveBuilding(recycler);
-
-                if(player == null) { Debug.Log("player is null in refreshBuildInv right click");}
-                
-                RecyclerWorld.DropRecycler(player.GetPosition(), dupeRecycler);
-            };
-
+                    RecyclerWorld.DropRecycler(player.GetPosition(), dupeRecycler);
+                };
+            }
+            else
+            {
+                buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
+                    //if player has the appropriate resources, create the building
+                    buildingInventory.CreateBuilding(recycler);
+                };
+            }
+        
             buildSlotRectTransform.anchoredPosition = new Vector2(x * buildSlotCellSize, y * buildSlotCellSize);
             Image image = buildSlotRectTransform.Find("image").GetComponent<Image>();
             image.sprite = recycler.GetSprite();

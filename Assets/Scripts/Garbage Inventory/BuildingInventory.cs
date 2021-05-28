@@ -41,9 +41,21 @@ public class BuildingInventory
         }
     }
 
-    public void UseBuilding(Recycler recycler)
+    public void CreateBuilding(Recycler recycler)
     {
+        //check if player has resources to build this
         useBuildingAction(recycler);
+
+        List<Item> costList = recycler.GetCost();
+
+        if(true)
+        {
+            //subtract resources from inventory
+
+            //set this recycler as purchased
+            RecyclingInventory.SetRecyclerPurchased(recycler);
+        }
+
     }
            
     public List<Recycler> GetBuildingList()

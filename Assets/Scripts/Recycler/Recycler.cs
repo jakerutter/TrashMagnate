@@ -20,26 +20,6 @@ public class Recycler
     private float startPosX;
     private float startPosY;
 
-    // private void Start()
-    // {
-    //     SpriteRenderer render = this.GetComponent<SpriteRenderer>();
-    //     render.sprite = GetSprite();
-    // }
-
-    // private void OnMouseDown()
-    // {
-    //     if(Input.GetMouseButtonDown(0))
-    //     {
-    //         //Debug.Log("Selecting item "+ this.gameObject.name);
-
-    //         if(recycleInventoryToggle != null)
-    //         {
-    //             recycleInventoryToggle.onClick.Invoke();
-    //             Cursor.SetCursor(recycleCursor, new Vector2(16,16), CursorMode.Auto);
-    //         }
-    //     }
-    // }
-
     public float GetYield()
     {
         switch (recyclerType)
@@ -101,17 +81,6 @@ public class Recycler
                     new Item(){ itemType = Item.ItemType.SmallTire, amount = 5 },
                     new Item(){ itemType = Item.ItemType.Box, amount = 5 }
                 };
-        }
-    }
-
-    public bool GetUnlocked()
-    {
-        switch (recyclerType)
-        {
-            default:
-            case RecyclerType.BasicRecycler:        return false;
-            case RecyclerType.ModernRecycler:       return RecyclingInventory.GetBasicRecyclerBuilt();
-            case RecyclerType.AdvancedRecycler:     return RecyclingInventory.GetModernRecyclerBuilt();
         }
     }
 }
