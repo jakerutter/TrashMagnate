@@ -122840,6 +122840,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: recycleInventoryToggle
       objectReference: {fileID: 0}
+    - target: {fileID: 48685136547366507, guid: e0c5a297a6c6c40d8be398705e76592e,
+        type: 3}
+      propertyPath: m_TagString
+      value: RecycleInventoryToggle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0c5a297a6c6c40d8be398705e76592e, type: 3}
 --- !u!1 &1413763361842822593

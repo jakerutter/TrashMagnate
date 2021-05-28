@@ -64,13 +64,11 @@ public class RecyclerWorld : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            //Debug.Log("Selecting item "+ this.gameObject.name);
+            Debug.Log("Selecting item "+ this.gameObject.name);
 
-            if(recycleInventoryToggle != null)
-            {
-                recycleInventoryToggle.onClick.Invoke();
-                Cursor.SetCursor(recycleCursor, new Vector2(16,16), CursorMode.Auto);
-            }
+            recycleInventoryToggle = GameObject.FindGameObjectWithTag("RecycleInventoryToggle").GetComponent<Button>();
+            recycleInventoryToggle.onClick.Invoke();
+            Cursor.SetCursor(recycleCursor, new Vector2(16,16), CursorMode.Auto);
         }
     }
 }
