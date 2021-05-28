@@ -70,6 +70,15 @@ public class MouseManager : MonoBehaviour
                 rawInventoryToggle.onClick.Invoke();
             }
         }
+
+           if(Input.GetKeyDown("y"))
+        {
+            if(recycleInventoryToggle != null)
+            {
+                _audio.Play("MenuAction");
+                recycleInventoryToggle.onClick.Invoke();
+            }
+        }
     }
 }
 

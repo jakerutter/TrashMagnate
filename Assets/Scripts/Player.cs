@@ -29,12 +29,6 @@ public class Player : MonoBehaviour
         activeRecyclingQuests = Quests.GetActiveRecyclingQuests();
 
         _audio = FindObjectOfType<AudioManager>();
-
-        // List<Recycler> buildingList = new List<Recycler>();
-        // Debug.Log(buildingInventory.GetBuildingList().Count);
-
-        // buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.BasicRecycler });
-        // buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.ModernRecycler });
         
         buildUI.SetBuildingInventory(buildingInventory);
     }
