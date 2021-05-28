@@ -163,4 +163,14 @@ public class Player : MonoBehaviour
 
         return progressed;
     }
+
+    public List<Item> GetInventory()
+    {
+        return inventory.GetItemList();
+    }
+
+    public void RefreshInventory()
+    {
+        inventoryUI.SetInventory(inventory);
+    }
 }

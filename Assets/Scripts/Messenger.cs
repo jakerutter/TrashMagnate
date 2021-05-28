@@ -44,7 +44,6 @@ public class Messenger : MonoBehaviour
 
             //set panel alpha to 1
             CanvasGroup canva = panel.GetComponent<CanvasGroup>();
-            canva.alpha = 1;
 
             if(messageType == MessageType.Success)
             {
@@ -91,6 +90,8 @@ public class Messenger : MonoBehaviour
                 //set MessageShown to true
                 messageShown = true;
             }
+            
+            canva.alpha = 1;
         } 
     }
 

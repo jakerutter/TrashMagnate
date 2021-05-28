@@ -60,10 +60,10 @@ public class Recycler
             default:
             case RecyclerType.BasicRecycler:        return new List<Item>()
                 {
-                    new Item(){ itemType = Item.ItemType.Can, amount = 15 },
-                    new Item(){ itemType = Item.ItemType.BrownGlassBottle, amount = 15 },
-                    new Item(){ itemType = Item.ItemType.SmallTire, amount = 5 },
-                    new Item(){ itemType = Item.ItemType.Box, amount = 5 }
+                    new Item(){ itemType = Item.ItemType.Can, amount = 10 },
+                    new Item(){ itemType = Item.ItemType.BrownGlassBottle, amount = 10 },
+                    new Item(){ itemType = Item.ItemType.SmallTire, amount = 10 },
+                    new Item(){ itemType = Item.ItemType.Box, amount = 10 }
                 };
 
             case RecyclerType.ModernRecycler:       return new List<Item>()
