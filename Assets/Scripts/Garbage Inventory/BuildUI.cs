@@ -56,7 +56,7 @@ public class BuildUI : MonoBehaviour
     {
         //Debug.Log("Refreshing BuildInventory Items");
         if(buildSlotContainer == null){
-            //Debug.Log("item slot container is null in RefreshBuildingInventory");
+            Debug.Log("item slot container is null in RefreshBuildingInventory");
         }
         
         foreach(Transform child in buildSlotContainer)
@@ -73,9 +73,7 @@ public class BuildUI : MonoBehaviour
         float buildSlotCellSize = 190f;
 
         foreach (Recycler recycler in buildingInventory.GetBuildingList())
-        {       
-            Debug.Log(buildingInventory.GetBuildingList().Count + " is building list count");
-            
+        {        
             RectTransform buildSlotRectTransform = Instantiate(buildSlotTemplate, buildSlotContainer).GetComponent<RectTransform>();
             buildSlotRectTransform.gameObject.SetActive(true);
 
@@ -86,12 +84,18 @@ public class BuildUI : MonoBehaviour
                 //Debug.Log("mass is " + item.GetRawMass());
 
             };
-            // buildSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
-            //     //drop item
-            //     Recycler dupeRecycler = new Recycler { recyclerType = recycler.recyclerType };
-            //     buildingInventory.RemoveItem(recycler);
-            //     ItemWorld.DropItem(player.GetPosition(), duplicateItem);
-            // };
+            buildSlotRectTransform.GetComponent<Button_UI>().MouseRightClickFunc = () => {
+                //drop item
+                Recycler dupeRecycler = new Recycler { recyclerType = recycler.recyclerType };
+
+                if(dupeRecycler == null){ Debug.Log("DupeRecycler is null in refreshBuildInv right click");}
+
+                buildingInventory.RemoveBuilding(recycler);
+
+                if(player == null) { Debug.Log("player is null in refreshBuildInv right click");}
+                
+                RecyclerWorld.DropRecycler(player.GetPosition(), dupeRecycler);
+            };
 
             buildSlotRectTransform.anchoredPosition = new Vector2(x * buildSlotCellSize, y * buildSlotCellSize);
             Image image = buildSlotRectTransform.Find("image").GetComponent<Image>();

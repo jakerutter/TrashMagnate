@@ -101,7 +101,17 @@ public class Inventory
         bool canHoldAll = true;
 
         GameObject recyclerGameObject = GameObject.FindGameObjectWithTag("Recycler");
-        Recycler rec = recyclerGameObject.GetComponent<Recycler>();
+
+        if(recyclerGameObject == null){ Debug.Log("recyclerGameObject is null in RecycleItem"); }
+
+        RecyclerWorld recWorld = recyclerGameObject.GetComponent<RecyclerWorld>();
+
+        if(recWorld == null){ Debug.Log("recWorld is null in RecycleItem"); }
+
+        Recycler rec = recWorld.GetRecycler();
+
+         if(rec == null){ Debug.Log("rec is null in RecycleItem"); }
+
         float yield = rec.GetYield();
         //Debug.Log("*** " + yield + " ***");
         //check item Recycle skill level

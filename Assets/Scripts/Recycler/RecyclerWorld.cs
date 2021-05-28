@@ -24,7 +24,7 @@ public class RecyclerWorld : MonoBehaviour
         return recyclerWorld;
     }
 
-    public static RecyclerWorld DropItem(Vector3 dropPosition, Recycler recycler)
+    public static RecyclerWorld DropRecycler(Vector3 dropPosition, Recycler recycler)
     {
         Vector3 randomDir = UtilsClass.GetRandomDir();
         randomDir.y = 0f;
@@ -48,7 +48,7 @@ public class RecyclerWorld : MonoBehaviour
         spriteRenderer.sprite = recycler.GetSprite();
     }
 
-    public Recycler GetItem()
+    public Recycler GetRecycler()
     {
         return recycler;
     }

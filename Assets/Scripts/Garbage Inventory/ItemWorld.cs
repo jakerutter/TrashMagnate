@@ -4,7 +4,6 @@ using UnityEngine;
 using TMPro;
 using CodeMonkey.Utils;
 
-
 public class ItemWorld : MonoBehaviour
 {
     public static ItemWorld SpawnItemWorld(Vector3 position, Item item)

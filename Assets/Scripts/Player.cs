@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
         inventory = new Inventory(UseItem);   
         buildingInventory = new BuildingInventory(UseBuilding);
         inventoryUI.SetPlayer(this);
+        buildUI.SetPlayer(this);
     } 
 
     void Start()
@@ -29,11 +30,11 @@ public class Player : MonoBehaviour
 
         _audio = FindObjectOfType<AudioManager>();
 
-        List<Recycler> buildingList = new List<Recycler>();
-        Debug.Log(buildingInventory.GetBuildingList().Count);
+        // List<Recycler> buildingList = new List<Recycler>();
+        // Debug.Log(buildingInventory.GetBuildingList().Count);
 
-        buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.BasicRecycler });
-        buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.ModernRecycler });
+        // buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.BasicRecycler });
+        // buildingInventory.AddBuilding(new Recycler { recyclerType = Recycler.RecyclerType.ModernRecycler });
         
         buildUI.SetBuildingInventory(buildingInventory);
     }
