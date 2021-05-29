@@ -11,6 +11,7 @@ public class BuildUI : MonoBehaviour
     private Transform buildSlotTemplate;
     private BuildingInventory buildingInventory;
     private Player player;
+    private Messenger messenger;
 
     private void Awake()
     {
@@ -34,6 +35,8 @@ public class BuildUI : MonoBehaviour
             if(buildSlotContainer == null) {return;}
             buildSlotTemplate = buildSlotContainer.Find("BuildSlotTemplate");
         }
+
+        messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
     }
 
     public void SetPlayer(Player player)
@@ -122,6 +125,15 @@ public class BuildUI : MonoBehaviour
 
     private void CreateBuilding(Recycler recycler)
     {
+        //first identify if this building has been purchased 
+        bool hasBeenPurchased = RecyclingInventory.GetIsRecyclerPurchased(recycler);
+
+        if(hasBeenPurchased) 
+        {
+            messenger.SetMessage(Messenger.MessageType.Info, "The " + recycler.GetName() + " has already been purchased. Right click to place.");
+            return;
+        }
+
         //check if player has resources to build this
         List<Item> costList = recycler.GetCost();
 
@@ -135,8 +147,7 @@ public class BuildUI : MonoBehaviour
             RecyclingInventory.SetRecyclerPurchased(recycler);
 
             //send message letting player know they've created building
-            Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
-            messenger.SetMessage(Messenger.MessageType.Success, "You have built the " + recycler.GetName() + ". Right click to place it.");
+            messenger.SetMessage(Messenger.MessageType.Success, "You have built the " + recycler.GetName() + ". Right click to place.");
 
             //get and reset build inventory
             BuildingInventory inv = GetBuildingInventory();
@@ -145,7 +156,6 @@ public class BuildUI : MonoBehaviour
         else 
         {
             //send message letting player know they're short resources
-            Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
             messenger.SetMessage(Messenger.MessageType.Failure, "Resources lacking. Gather required components.");
         }
 
