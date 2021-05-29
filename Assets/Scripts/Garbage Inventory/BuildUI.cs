@@ -157,9 +157,7 @@ public class BuildUI : MonoBehaviour
         bool hasResources = CheckHasResources(costList);
 
         if(hasResources)
-        {
-            //subtract resources from inventory
-            
+        {           
             //set this recycler as purchased
             RecyclingInventory.SetRecyclerPurchased(recycler);
             Debug.Log("Checking recycler purchased. " + recycler.GetName() + " purchased === " + RecyclingInventory.GetIsRecyclerPurchased(recycler));
@@ -167,13 +165,12 @@ public class BuildUI : MonoBehaviour
             //send message letting player know they've created building
             messenger.SetMessage(Messenger.MessageType.Success, "You have purchased the " + recycler.GetName() + ". Right click to build.");
 
-            //get and reset build inventory
-            // BuildingInventory inv = GetBuildingInventory();
-            // SetBuildingInventory(inv);
-            //TODO the above code wasn't refreshing inv after purchasing recycler.
-            RefreshBuildingInventory();
-            //player.RefreshBuildingInventory();
-            //TODO try above if RefreshBuildingInventory fails
+            //set statusIcon to check mark (Showing purchased)
+            Image statusIcon = buildStatusIcon.gameObject.GetComponent<Image>();
+            statusIcon.sprite = ItemAssets.Instance.CheckSprite;
+            //refresh build inventory
+            player.RefreshBuildingInventory();
+
         }
         else 
         {
