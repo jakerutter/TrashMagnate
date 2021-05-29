@@ -143,7 +143,7 @@ public class BuildUI : MonoBehaviour
             
             x++;
 
-            if(x > 10)
+            if(x > 5)
             {
                 x=0;
                 y--;

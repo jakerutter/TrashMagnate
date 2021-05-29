@@ -197,7 +197,7 @@ public class InventoryUI : MonoBehaviour
         //if player's recycling skill is high enough to recycle, highlight item green
         if(RecyclingInventory.GetRecyclingSkill() >= item.RecycleRequirement())
         {
-            GameObject rc = recycleSlotTemplate.gameObject;
+            GameObject rc = itemSlotRectTransform.gameObject;
             Outline outline = rc.GetComponent<Outline>(); 
             outline.enabled = true;
         }
