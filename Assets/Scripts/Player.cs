@@ -173,4 +173,9 @@ public class Player : MonoBehaviour
     {
         inventoryUI.SetInventory(inventory);
     }
+
+    public void RefreshBuildingInventory()
+    {
+        buildUI.SetBuildingInventory(buildingInventory);
+    }
 }

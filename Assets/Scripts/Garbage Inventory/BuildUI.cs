@@ -9,6 +9,7 @@ public class BuildUI : MonoBehaviour
 {
     private Transform buildSlotContainer;
     private Transform buildSlotTemplate;
+    private Transform buildStatusIcon;
     private BuildingInventory buildingInventory;
     private Player player;
     private Messenger messenger;
@@ -35,6 +36,8 @@ public class BuildUI : MonoBehaviour
             if(buildSlotContainer == null) {return;}
             buildSlotTemplate = buildSlotContainer.Find("BuildSlotTemplate");
         }
+
+        buildStatusIcon = buildSlotTemplate.Find("StatusImage");
 
         messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
     }
@@ -95,6 +98,15 @@ public class BuildUI : MonoBehaviour
 
                     RecyclerWorld.DropRecycler(player.GetPosition(), dupeRecycler);
                 };
+
+                 buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
+                    //if player has the appropriate resources, create the building
+                    CreateBuilding(recycler);
+                };
+
+                //place the checkmark sprite because this can be placed in the game
+                Image statusIcon = buildStatusIcon.gameObject.GetComponent<Image>();
+                statusIcon.sprite = ItemAssets.Instance.CheckSprite;
             }
             else
             {
@@ -102,6 +114,10 @@ public class BuildUI : MonoBehaviour
                     //if player has the appropriate resources, create the building
                     CreateBuilding(recycler);
                 };
+
+                  //place the hand sprite because this can be purchased
+                Image statusIcon = buildStatusIcon.gameObject.GetComponent<Image>();
+                statusIcon.sprite = ItemAssets.Instance.PurchaseHandSprite;
             }
         
             buildSlotRectTransform.anchoredPosition = new Vector2(x * buildSlotCellSize, y * buildSlotCellSize);
@@ -127,10 +143,11 @@ public class BuildUI : MonoBehaviour
     {
         //first identify if this building has been purchased 
         bool hasBeenPurchased = RecyclingInventory.GetIsRecyclerPurchased(recycler);
+        Debug.Log("HasBeenPurchased === " + hasBeenPurchased);
 
         if(hasBeenPurchased) 
         {
-            messenger.SetMessage(Messenger.MessageType.Info, "The " + recycler.GetName() + " has already been purchased. Right click to place.");
+            messenger.SetMessage(Messenger.MessageType.Info, recycler.GetName() + " already purchased. Right click to place.");
             return;
         }
 
@@ -145,13 +162,18 @@ public class BuildUI : MonoBehaviour
             
             //set this recycler as purchased
             RecyclingInventory.SetRecyclerPurchased(recycler);
+            Debug.Log("Checking recycler purchased. " + recycler.GetName() + " purchased === " + RecyclingInventory.GetIsRecyclerPurchased(recycler));
 
             //send message letting player know they've created building
-            messenger.SetMessage(Messenger.MessageType.Success, "You have built the " + recycler.GetName() + ". Right click to place.");
+            messenger.SetMessage(Messenger.MessageType.Success, "You have purchased the " + recycler.GetName() + ". Right click to build.");
 
             //get and reset build inventory
-            BuildingInventory inv = GetBuildingInventory();
-            SetBuildingInventory(inv);
+            // BuildingInventory inv = GetBuildingInventory();
+            // SetBuildingInventory(inv);
+            //TODO the above code wasn't refreshing inv after purchasing recycler.
+            RefreshBuildingInventory();
+            //player.RefreshBuildingInventory();
+            //TODO try above if RefreshBuildingInventory fails
         }
         else 
         {

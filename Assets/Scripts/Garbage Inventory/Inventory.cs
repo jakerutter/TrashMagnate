@@ -16,7 +16,7 @@ public class Inventory
         this.useItemAction = useItemAction;
         itemList = new List<Item>();
 
-        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 5});
+        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 10});
         itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 10});
         itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 10});
         itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 10});
@@ -255,7 +255,8 @@ public class Inventory
         _audio = GameObject.FindGameObjectWithTag("AudioManager").GetComponent<AudioManager>();
         
         GameObject recyclerGameObject = GameObject.FindGameObjectWithTag("Recycler");
-        Recycler rec = recyclerGameObject.GetComponent<Recycler>();
+        RecyclerWorld recWorld = recyclerGameObject.GetComponent<RecyclerWorld>();
+        Recycler rec = recWorld.GetRecycler();
         float yield = rec.GetYield();
 
         foreach (Item item in itemList)

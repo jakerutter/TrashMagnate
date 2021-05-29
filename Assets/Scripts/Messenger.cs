@@ -17,7 +17,6 @@ public class Messenger : MonoBehaviour
     public GameObject successMessagePrefab;
     public GameObject infoMessagePrefab;
     public GameObject failureMessagePrefab;
-
     private float duration = 3f;
     private bool messageShown = false;
     private List<GameObject> spawnedPanels;
@@ -90,7 +89,7 @@ public class Messenger : MonoBehaviour
                 //set MessageShown to true
                 messageShown = true;
             }
-            
+
             canva.alpha = 1;
         } 
     }
@@ -107,9 +106,19 @@ public class Messenger : MonoBehaviour
             yield return null;
         }
 
-        for(int i = spawnedPanels.Count-1; i>spawnedPanels.Count-2; i--)
+        //This was here-- but there was a messaging bug so testing the below code
+        // for(int i = spawnedPanels.Count-1; i>spawnedPanels.Count-2; i--)
+        // {
+        //     Destroy(spawnedPanels[i]);
+        // }      
+        
+        if(counter >= duration)
         {
-            Destroy(spawnedPanels[i]);
-        }      
+           for(int i = spawnedPanels.Count-1; i>=0; i--)
+            {
+                Destroy(spawnedPanels[i]);
+            }     
+        }
+          
     }
 }
