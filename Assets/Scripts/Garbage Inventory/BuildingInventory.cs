@@ -17,7 +17,7 @@ public class BuildingInventory
         buildingList = new List<Recycler>();
 
         buildingList.Add(new Recycler { recyclerType = Recycler.RecyclerType.BasicRecycler });
-        //buildingList.Add(new Recycler { recyclerType = Recycler.RecyclerType.ModernRecycler });
+        buildingList.Add(new Recycler { recyclerType = Recycler.RecyclerType.ModernRecycler });
     }
 
     public void AddBuilding(Recycler recycler)

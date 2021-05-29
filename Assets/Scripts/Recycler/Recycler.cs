@@ -52,6 +52,17 @@ public class Recycler
         }
     }
 
+    public string GetShortName()
+    {
+        switch (recyclerType)
+        {
+            default:
+            case RecyclerType.BasicRecycler:        return "Basic";
+            case RecyclerType.ModernRecycler:       return "Modern";
+            case RecyclerType.AdvancedRecycler:     return "Advanced";
+        }
+    }
+
     public List<Item> GetCost()
     {
         switch (recyclerType)

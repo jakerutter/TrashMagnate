@@ -10,6 +10,7 @@ public class BuildUI : MonoBehaviour
     private Transform buildSlotContainer;
     private Transform buildSlotTemplate;
     private Transform buildStatusIcon;
+    private Transform buildingName;
     private BuildingInventory buildingInventory;
     private Player player;
     private Messenger messenger;
@@ -37,8 +38,6 @@ public class BuildUI : MonoBehaviour
             buildSlotTemplate = buildSlotContainer.Find("BuildSlotTemplate");
         }
 
-        buildStatusIcon = buildSlotTemplate.Find("StatusImage");
-
         messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
     }
 
@@ -54,13 +53,13 @@ public class BuildUI : MonoBehaviour
 
     public void SetBuildingInventory(BuildingInventory buildingInventory)
     {
-        //Debug.Log("Calling SetBuildInventory. Inv item count = " + buildingInventory.GetBuildingList().Count);
+        Debug.Log("Calling SetBuildInventory. Inv item count = " + buildingInventory.GetBuildingList().Count);
 
-       this.buildingInventory = buildingInventory;
+        this.buildingInventory = buildingInventory;
 
-       buildingInventory.OnBuildingListChanged += BuildingInventory_OnBuildingListChanged;
+        buildingInventory.OnBuildingListChanged += BuildingInventory_OnBuildingListChanged;
        
-       RefreshBuildingInventory();  
+        RefreshBuildingInventory();  
     }
 
     private void RefreshBuildingInventory()
@@ -88,6 +87,15 @@ public class BuildUI : MonoBehaviour
             RectTransform buildSlotRectTransform = Instantiate(buildSlotTemplate, buildSlotContainer).GetComponent<RectTransform>();
             buildSlotRectTransform.gameObject.SetActive(true);
 
+            buildStatusIcon = buildSlotRectTransform.Find("StatusImage");
+            buildingName  = buildSlotRectTransform.Find("BuildingName");
+
+            //get the text area and set the short name
+            TextMeshProUGUI nameText = buildingName.gameObject.GetComponent<TextMeshProUGUI>();
+            Debug.Log("short name is " + recycler.GetShortName());
+            
+            nameText.SetText(recycler.GetShortName());
+
             if(RecyclingInventory.GetIsRecyclerPurchased(recycler))
             {
                 //these Recyclers have been purchased -- can be built and placed onto the map
@@ -107,8 +115,10 @@ public class BuildUI : MonoBehaviour
                 //place the checkmark sprite because this can be placed in the game
                 Image statusIcon = buildStatusIcon.gameObject.GetComponent<Image>();
                 statusIcon.sprite = ItemAssets.Instance.CheckSprite;
+
             }
-            else
+            //these recyclers are unlocked but not yet purchased
+            else if(RecyclingInventory.GetIsRecyclerUnlocked(recycler))
             {
                 buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                     //if player has the appropriate resources, create the building
@@ -118,6 +128,13 @@ public class BuildUI : MonoBehaviour
                   //place the hand sprite because this can be purchased
                 Image statusIcon = buildStatusIcon.gameObject.GetComponent<Image>();
                 statusIcon.sprite = ItemAssets.Instance.PurchaseHandSprite;
+            }
+            //these buildings are not unlocked
+            else
+            {
+                //place the locked sprite because this can be purchased
+                Image statusIcon = buildStatusIcon.gameObject.GetComponent<Image>();
+                statusIcon.sprite = ItemAssets.Instance.LockSprite;
             }
         
             buildSlotRectTransform.anchoredPosition = new Vector2(x * buildSlotCellSize, y * buildSlotCellSize);

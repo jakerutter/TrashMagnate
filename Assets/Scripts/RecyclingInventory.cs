@@ -28,6 +28,9 @@ public static class RecyclingInventory
     private static bool BasicRecyclerPurchased;
     private static bool ModernRecyclerPurchased;
     private static bool AdvancedRecyclerPurchased;
+    private static bool BasicRecyclerUnlocked = true;
+    private static bool ModernRecyclerUnlocked;
+    private static bool AdvancedRecyclerUnlocked;
 
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
@@ -340,5 +343,38 @@ public static class RecyclingInventory
         }
 
         return false;
+    }
+
+    public static bool GetIsRecyclerUnlocked(Recycler recycler)
+    {
+         if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        {   
+            return BasicRecyclerUnlocked;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.ModernRecycler)
+        {
+            return ModernRecyclerUnlocked;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.AdvancedRecycler)
+        {
+            return AdvancedRecyclerUnlocked;
+        }
+        return false;
+    }
+       
+    public static void SetRecyclerUnlocked(Recycler recycler)
+    {
+        if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        {   
+            BasicRecyclerUnlocked = true;
+        }
+        else if (recycler.recyclerType == Recycler.RecyclerType.ModernRecycler)
+        {
+            ModernRecyclerUnlocked = true;
+        }
+        else if(recycler.recyclerType == Recycler.RecyclerType.AdvancedRecycler)
+        {
+            AdvancedRecyclerUnlocked = true;
+        }
     }
 }

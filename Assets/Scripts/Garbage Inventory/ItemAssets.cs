@@ -52,4 +52,5 @@ public class ItemAssets : MonoBehaviour
     public Sprite BackpackFlippedSprite;
     public Sprite WoodTitleSprite;
     public Sprite PurchaseHandSprite;
+    public Sprite LockSprite;
 }
