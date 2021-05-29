@@ -40,12 +40,6 @@ public class BuildingInventory
             OnBuildingListChanged.Invoke(this, EventArgs.Empty);
         }
     }
-
-    // public void CreateBuilding(Recycler recycler)
-    // {
-    //     //check if player has resources to build this
-    //     useBuildingAction(recycler);
-    // }
            
     public List<Recycler> GetBuildingList()
     {

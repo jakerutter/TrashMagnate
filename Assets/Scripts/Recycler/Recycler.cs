@@ -15,7 +15,6 @@ public class Recycler
     }
 
     public RecyclerType recyclerType;
-    
     private GameObject selectedObject;
     private float startPosX;
     private float startPosY;
@@ -76,10 +75,10 @@ public class Recycler
             //TODO make advanced and rare items required for this upgrade
             case RecyclerType.AdvancedRecycler:     return new List<Item>()
                 {
-                    new Item(){ itemType = Item.ItemType.Can, amount = 15 },
-                    new Item(){ itemType = Item.ItemType.BrownGlassBottle, amount = 15 },
-                    new Item(){ itemType = Item.ItemType.SmallTire, amount = 5 },
-                    new Item(){ itemType = Item.ItemType.Box, amount = 5 }
+                    new Item(){ itemType = Item.ItemType.Can, amount = 75 },
+                    new Item(){ itemType = Item.ItemType.BrownGlassBottle, amount = 75 },
+                    new Item(){ itemType = Item.ItemType.SmallTire, amount = 75 },
+                    new Item(){ itemType = Item.ItemType.Box, amount = 75 }
                 };
         }
     }
