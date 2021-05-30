@@ -105,11 +105,15 @@ public class BuildUI : MonoBehaviour
                     buildingInventory.RemoveBuilding(recycler);
 
                     RecyclerWorld.DropRecycler(player.GetPosition(), dupeRecycler);
+
+                    //handle build quests
+                    player.CheckBuildQuest(recycler);
+
                 };
 
                  buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                     //if player has the appropriate resources, create the building
-                    CreateBuilding(recycler);
+                    PurchaseBuilding(recycler);
                 };
 
                 //place the checkmark sprite because this can be placed in the game
@@ -122,7 +126,7 @@ public class BuildUI : MonoBehaviour
             {
                 buildSlotRectTransform.GetComponent<Button_UI>().ClickFunc = () => {
                     //if player has the appropriate resources, create the building
-                    CreateBuilding(recycler);
+                    PurchaseBuilding(recycler);
                 };
 
                   //place the hand sprite because this can be purchased
@@ -156,7 +160,7 @@ public class BuildUI : MonoBehaviour
         RefreshBuildingInventory();
     }
 
-    private void CreateBuilding(Recycler recycler)
+    private void PurchaseBuilding(Recycler recycler)
     {
         //first identify if this building has been purchased 
         bool hasBeenPurchased = RecyclingInventory.GetIsRecyclerPurchased(recycler);

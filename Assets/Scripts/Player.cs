@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
                 //This quest could only have progressed if it is one of these  4 types
                 if(thisGoal == RecyclingQuest.QuestGoal.CollectItem || thisGoal == RecyclingQuest.QuestGoal.CollectType || thisGoal == RecyclingQuest.QuestGoal.CollectItemAmount || thisGoal == RecyclingQuest.QuestGoal.CollectTypeAmount)
                 {
-                    questProgressed = HandleQuestProgress(activeRecyclingQuests[i], currentItem);
+                    questProgressed = HandleCollectionQuestProgress(activeRecyclingQuests[i], currentItem);
                 }
                 
                 if(questProgressed)
@@ -124,7 +124,7 @@ public class Player : MonoBehaviour
         return gameObject.transform.position;
     }
 
-    private bool HandleQuestProgress(RecyclingQuest quest, Item currentItem)
+    private bool HandleCollectionQuestProgress(RecyclingQuest quest, Item currentItem)
     {
         bool progressed = false;
 
@@ -147,14 +147,14 @@ public class Player : MonoBehaviour
             progressed = true;
         }
         //if the quest is tracking the number of items collected of a raw type then iterate by 1
-            if(quest.questItem.RawType() == currentItem.RawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectType)
+            if(quest.questRawType == currentItem.GetItemRawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectType)
         {
             //Debug.Log("Progressed type 3." + " Itemtype is " + currentItem.RawType());
             quest.goalProgress += currentItem.amount;
             progressed = true;
         }
         //if the quest is tracking the amount of item mass collected iterate by item mass
-        if(quest.questItem.RawType() == currentItem.RawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectTypeAmount)
+        if(quest.questRawType == currentItem.GetItemRawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectTypeAmount)
         {
             //Debug.Log("Progressed type 4." + " Itemtype is " + currentItem.RawType());
             quest.goalProgress += currentItem.GetRawMass();
@@ -163,6 +163,29 @@ public class Player : MonoBehaviour
 
         return progressed;
     }
+
+    public void CheckBuildQuest(Recycler recycler)
+    {
+        bool questUpdated = false;
+        //get active quests
+        for(int i=0; i<activeRecyclingQuests.Count-1; i++)
+        {
+            //if not a build quest then continue
+            if(activeRecyclingQuests[i].questGoal != RecyclingQuest.QuestGoal.BuildObject)
+            {
+                continue;
+            }
+
+            //if questBuilding equals type built then quest is complete
+            if(activeRecyclingQuests[i].questBuilding.recyclerType == recycler.recyclerType)
+            {
+                _audio.Play("LevelUp");
+                RecyclingQuest newQuest = activeRecyclingQuests[i].CompleteQuest();
+                questLogUI.GetComponent<QuestLogUI>().SetActiveQuestTabs(activeRecyclingQuests);
+            }
+        }
+    }
+    
 
     public List<Item> GetInventory()
     {

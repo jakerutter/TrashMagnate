@@ -28,6 +28,7 @@ public class Item
         BrownGlassBottle,
         GreenGlassBottle,
         GrowlerBottle,
+        None,
     }
 
     public ItemType itemType;
@@ -156,7 +157,7 @@ public class Item
         }
     }
 
-     public string RawType()
+     public RecyclingQuest.RawType GetItemRawType()
     {
         switch(itemType)
         {
@@ -164,37 +165,37 @@ public class Item
             case ItemType.PlasticBottle:        
             case ItemType.PlasticJug:
             case ItemType.GroceryBag:
-                return "Plastic";          
+                return RecyclingQuest.RawType.Plastic;          
                        
             case ItemType.SmallTire:
             case ItemType.LargeTire:
             case ItemType.Shoe:                
             case ItemType.Boot:  
-                return "Rubber";
+                return RecyclingQuest.RawType.Rubber;
 
             case ItemType.NewsPaper:
             case ItemType.Box:
             case ItemType.Book:
-                return "Paper";
+                return RecyclingQuest.RawType.Paper;
 
             case ItemType.Computer:          
             case ItemType.CellPhone:           
             case ItemType.Fan:                  
             case ItemType.SmallBattery:        
             case ItemType.LargeBattery:
-                return "Electronic";
+                return RecyclingQuest.RawType.Electronic;
 
             case ItemType.SmallWood:
             case ItemType.LargeWood:
-                return "Wood";
+                return RecyclingQuest.RawType.Wood;
 
             case ItemType.Can:
-                return "Metal";
+                return RecyclingQuest.RawType.Metal;
 
             case ItemType.BrownGlassBottle:     
             case ItemType.GreenGlassBottle:
             case ItemType.GrowlerBottle:
-                return "Glass";   
+                return RecyclingQuest.RawType.Glass;   
         }
     }
 

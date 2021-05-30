@@ -98,14 +98,13 @@ public static class Quests
         
         initialQuests.Add(new RecyclingQuest 
         {
-            //questName = RecyclingQuest.QuestName.BuildObject, 
-            questName = RecyclingQuest.QuestName.CollectItem,
+            questName = RecyclingQuest.QuestName.BuildObject,
+            questGoal = RecyclingQuest.QuestGoal.BuildObject,
             questLevel = 1,
             goalAmount = 1,
-            //isBuildQuest = true,
-            //questItem = null,
-            questItem = new Item {itemType = Item.ItemType.GroceryBag},
-            //questBuilding = new Recycler {recyclerType = Recycler.RecyclerType.BasicRecycler}
+            isBuildQuest = true,
+            questItem = new Item { itemType = Item.ItemType.None },
+            questBuilding = new Recycler {recyclerType = Recycler.RecyclerType.BasicRecycler}
         });
 
         ActiveRecyclingQuests = initialQuests;
@@ -121,16 +120,26 @@ public static class Quests
         //iterate level by 1 until max level is reached
         int newLevel = GetNewQuestLevel(quest.questLevel);
 
-        //cardSuit = (CardSuit)Random.Range(0, 3);
-        int randInt = Random.Range(0,5);
+        int randInt = Random.Range(0,9);
+        int randomRawType = Random.Range(0, 8);
         int randItem = Random.Range(0, 22);
-        RecyclingQuest newQuest = new RecyclingQuest {
+
+        //create newQuest -- then fill in the missing pieces
+         RecyclingQuest newQuest = new RecyclingQuest {
             questLevel = newLevel,
             questName = (RecyclingQuest.QuestName)randInt,
-            questGoal = (RecyclingQuest.QuestGoal)randInt,
-            questItem = new Item{ itemType = (Item.ItemType)randItem },
-            goalAmount = GetAmountByLevel(newLevel)
+            questGoal = (RecyclingQuest.QuestGoal)randInt
         };
+
+        //if questGoal needs item generate random item
+        Item newItem = newQuest.GetQuestNeed() == "item" ? new Item { itemType = (Item.ItemType)randItem } : new Item { itemType = Item.ItemType.None };
+        
+        //if questGoal needs type generate random type
+        RecyclingQuest.RawType newRawType = newQuest.GetQuestNeed() == "type" ? (RecyclingQuest.RawType)randomRawType : RecyclingQuest.RawType.None;
+        
+        newQuest.questItem = newItem;
+        newQuest.questRawType = newRawType;
+        newQuest.goalAmount = GetAmountByLevel(newLevel);
         
         // get active quests and add this new quest to the list
         List<RecyclingQuest> activeQuests = GetActiveRecyclingQuests();
@@ -159,6 +168,8 @@ public static class Quests
 
     private static int GetAmountByLevel(int level)
     {
+        //TODO this should return a different amound for # items
+        //than amount [kgs] to collect /recycle etc
         return level * 10;
     }
 }

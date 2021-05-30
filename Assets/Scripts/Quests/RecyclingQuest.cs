@@ -12,6 +12,7 @@ public class RecyclingQuest
     public bool IsQuestActivated = false;
     public int questLevel;
     public Item questItem;
+    public RawType questRawType;
     public QuestGoal questGoal;
     public QuestName questName;
     public int goalAmount;
@@ -32,6 +33,18 @@ public class RecyclingQuest
         BuildObject,
     }
 
+    public enum RawType
+    {
+        Plastic,        
+        Rubber,
+        Paper,
+        Electronic,
+        Wood,
+        Metal,
+        Glass,
+        None
+    }
+
     public enum QuestGoal 
     {
         CollectItem,            //specific item collected (# of items)
@@ -45,16 +58,37 @@ public class RecyclingQuest
         BuildObject,            //build a specific thing  
     }
 
+       public string GetQuestNeed()
+    {
+        switch (questGoal)
+        {
+            default:
+            case QuestGoal.CollectItem:                 return "item";
+            case QuestGoal.RecycleItem:                 return "item";
+            case QuestGoal.RecycleType:                 return "type";
+            case QuestGoal.CollectType:                 return "type";
+            case QuestGoal.BuildObject:                 return "build";
+            case QuestGoal.CollectItemAmount:           return "item";
+            case QuestGoal.CollectTypeAmount:           return "type";
+            case QuestGoal.RecycleItemAmount:           return "item";
+            case QuestGoal.RecycleTypeAmount:           return "type";
+        }
+    }
+
     public string GetQuestShortDesc()
     {
         switch (questName)
         {
             default:
-            case QuestName.CollectItem:     return $"Gather {goalAmount} {questItem.GetName()}";
-            case QuestName.RecycleItem:     return $"Recycle {goalAmount} {questItem.GetName()}";
-            case QuestName.RecycleType:     return $"Recycle {goalAmount} {questItem.RawType()}";
-            case QuestName.CollectType:     return $"Gather {goalAmount} {questItem.RawType()}";
-            case QuestName.BuildObject:     return $"Build {questBuilding.recyclerType.ToString()}";
+            case QuestName.CollectItem:               return $"Gather {goalAmount} {questItem.GetName()}";
+            case QuestName.RecycleItem:               return $"Recycle {goalAmount} {questItem.GetName()}";
+            case QuestName.RecycleType:               return $"Recycle {goalAmount} {questItem.GetItemRawType()}";
+            case QuestName.CollectType:               return $"Gather {goalAmount} {questItem.GetItemRawType()}";
+            case QuestName.BuildObject:               return $"Build {questBuilding.recyclerType.ToString()}";
+            case QuestName.CollectItemAmount:         return $"Collect {goalAmount}kg {questItem.GetName()}";    
+            case QuestName.CollectTypeAmount:         return $"Collect {goalAmount}kg {questRawType} items";   
+            case QuestName.RecycleItemAmount:         return $"Recycle {goalAmount}kg {questItem.GetName()}";      
+            case QuestName.RecycleTypeAmount:         return $"Recycle {goalAmount}kg {questRawType} items";
         }
     }
 
@@ -63,11 +97,15 @@ public class RecyclingQuest
         switch(questName)
         {
              default:                               
-            case QuestName.CollectItem:      return $"Search the landscape for {questItem.GetName()} until you have gathered {goalAmount} total.";
-            case QuestName.RecycleItem:      return $"Using a recycler, recycle {goalAmount} {questItem.GetName()}.";
-            case QuestName.RecycleType:      return $"Using a recycler, recycle {goalAmount} items made of {questItem.RawType()}.";
-            case QuestName.CollectType:      return $"Search the landscape and collect {goalAmount} items made of {questItem.RawType()}.";
-            case QuestName.BuildObject:      return $"Collect the required materials and build a {questBuilding.GetName()}.";
+            case QuestName.CollectItem:               return $"Search the landscape for {questItem.GetName()} until you have gathered {goalAmount} total.";
+            case QuestName.RecycleItem:               return $"Using a recycler, recycle {goalAmount} {questItem.GetName()}.";
+            case QuestName.RecycleType:               return $"Using a recycler, recycle {goalAmount} items made of {questRawType}.";
+            case QuestName.CollectType:               return $"Search the landscape and collect {goalAmount} items made of {questRawType}.";
+            case QuestName.BuildObject:               return $"Collect the required materials and build a {questBuilding.GetName()}.";
+            case QuestName.CollectItemAmount:         return $"Collect {goalAmount}kg {questItem.GetName()}";    
+            case QuestName.CollectTypeAmount:         return $"Collect {goalAmount}kg {questRawType} items";   
+            case QuestName.RecycleItemAmount:         return $"Recycle {goalAmount}kg {questItem.GetName()}";      
+            case QuestName.RecycleTypeAmount:         return $"Recycle {goalAmount}kg {questRawType} items";
         }
     }
 
@@ -103,16 +141,20 @@ public class RecyclingQuest
         }
     }
 
-       public string QuestCompleteMessage()
+    public string QuestCompleteMessage()
     {
         switch(questName)
         {
             default:
-            case QuestName.CollectItem:      return $"Quest complete. You gathered {goalAmount} {questItem.GetName()}.";
-            case QuestName.RecycleItem:      return $"{goalAmount} {questItem.GetName()} recycled. Quest complete.";
-            case QuestName.RecycleType:      return $"Quest complete. Recycled {goalAmount} {questItem.RawType()} items.";
-            case QuestName.CollectType:      return $"{goalAmount} {questItem.RawType()} items collected. Quest complete.";
-            case QuestName.BuildObject:      return $"You have built the {questBuilding.recyclerType.ToString()}. Place it anywhere on the ground.";
+            case QuestName.CollectItem:               return $"Quest complete. You gathered {goalAmount} {questItem.GetName()}. " + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
+            case QuestName.RecycleItem:               return $"{goalAmount} {questItem.GetName()} recycled. Quest complete." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
+            case QuestName.RecycleType:               return $"Quest complete. Recycled {goalAmount} {questItem.GetItemRawType()} items." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
+            case QuestName.CollectType:               return $"{goalAmount} {questItem.GetItemRawType()} items collected. Quest complete." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
+            case QuestName.BuildObject:               return $"You have built the {questBuilding.GetName()}." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
+            case QuestName.CollectItemAmount:         return $"Quest Complete. Collected {goalAmount}kg {questItem.GetName()}";    
+            case QuestName.CollectTypeAmount:         return $"Quest Complete. Collected {goalAmount}kg {questRawType} items";   
+            case QuestName.RecycleItemAmount:         return $"Quest Complete. Recycled {goalAmount}kg {questItem.GetName()}";      
+            case QuestName.RecycleTypeAmount:         return $"Quests Complete. Recycled {goalAmount}kg {questRawType} items";
         }
     }
 
@@ -130,13 +172,13 @@ public class RecyclingQuest
     {
         RecyclingQuest quest = this;
 
-        int rocketTechReward = quest.GetRocketTechReward();
-
          // give player recycling skill point reward
          if(HasSkillPointUpgrade())
          {
              RecyclingInventory.AddRecyclingSkill(1);
          }
+
+        int rocketTechReward = quest.GetRocketTechReward();
 
         //give player RTpoints reward
         RecyclingInventory.AddRocketTechPoints(rocketTechReward); 
@@ -147,8 +189,8 @@ public class RecyclingQuest
 
         //send [success] message saying quest complete
         Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
-        messenger.SetMessage(Messenger.MessageType.Success, "Quest complete. "+ rocketTechReward.ToString() + " rocket tech points awarded.");
-        
+        //messenger.SetMessage(Messenger.MessageType.Success, "Quest complete. "+ rocketTechReward.ToString() + " rocket tech points awarded.");
+        messenger.SetMessage(Messenger.MessageType.Success, QuestCompleteMessage());
         //add quest to completed quest list
         AddQuestToCompletedQuests(quest);
 

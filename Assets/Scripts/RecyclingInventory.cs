@@ -18,7 +18,7 @@ public static class RecyclingInventory
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
 
-    private static int RecyclingSkill = 1;
+    private static int RecyclingSkill = 0;
     private static int Currency;
     private static int RocketTechPoints;
 

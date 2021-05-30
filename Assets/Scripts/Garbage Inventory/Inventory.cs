@@ -98,7 +98,7 @@ public class Inventory
 
         int requirement = item.RecycleRequirement();
         float mass = item.GetRawMass();
-        string rawType = item.RawType();
+        RecyclingQuest.RawType rawType = item.GetItemRawType();
         bool stackable = item.IsStackable();
         int canHoldAmount = 0;
         bool canHoldAll = true;
@@ -152,7 +152,7 @@ public class Inventory
             }
 
             //play sound for item recycled (by type)
-            if(rawType == "Paper")
+            if(rawType == RecyclingQuest.RawType.Paper)
             {
                 float totalPaper = RecyclingInventory.GetPaperInventory();
                 float newTotal = totalPaper + mass * recycleAmt * yield;
@@ -160,7 +160,7 @@ public class Inventory
                  //play sound
                 _audio.Play("RecyclePaper");
             }
-            else if(rawType == "Glass")
+            else if(rawType == RecyclingQuest.RawType.Glass)
             {
                 float totalGlass = RecyclingInventory.GetGlassInventory();
                 float newTotal = totalGlass + mass * recycleAmt * yield;
@@ -168,7 +168,7 @@ public class Inventory
                 //play sound
                 _audio.Play("RecycleGlass");
             }
-                else if(rawType == "Metal")
+                else if(rawType == RecyclingQuest.RawType.Metal)
             {
                 float totalMetal = RecyclingInventory.GetMetalInventory();
                 float newTotal = totalMetal + mass * recycleAmt * yield;
@@ -176,7 +176,7 @@ public class Inventory
                 //play sound
                 _audio.Play("RecycleMetal");
             }
-                else if(rawType == "Wood")
+                else if(rawType == RecyclingQuest.RawType.Wood)
             {
                 float totalWood = RecyclingInventory.GetWoodInventory();
                 float newTotal = totalWood + mass * recycleAmt * yield;
@@ -184,7 +184,7 @@ public class Inventory
                  //play sound
                 _audio.Play("RecycleWood");
             }
-                else if(rawType == "Plastic")
+                else if(rawType == RecyclingQuest.RawType.Plastic)
             {
                 float totalPlastic = RecyclingInventory.GetPlasticInventory();
                 float newTotal = totalPlastic + mass * recycleAmt * yield;
@@ -192,7 +192,7 @@ public class Inventory
                 //play sound
                  _audio.Play("RecyclePlastic");
             }
-                else if(rawType == "Rubber")
+                else if(rawType == RecyclingQuest.RawType.Rubber)
             {
                 float totalRubber = RecyclingInventory.GetRubberInventory();
                 float newTotal = totalRubber + mass * recycleAmt * yield;
@@ -200,7 +200,7 @@ public class Inventory
                 //play sound
                  _audio.Play("RecycleRubber");
             }
-                else if(rawType == "Electronic")
+                else if(rawType == RecyclingQuest.RawType.Electronic)
             {
                 float totalElectronic = RecyclingInventory.GetElectronicInventory();
                 float newTotal = totalElectronic + mass * recycleAmt * yield;
@@ -263,11 +263,11 @@ public class Inventory
         {
             float mass = item.GetRawMass();
             int recycleAmt = item.amount;
-            string rawType = item.RawType();
+            RecyclingQuest.RawType rawType = item.GetItemRawType();
             bool stackable = item.IsStackable();
 
              //play sound for item recycled (by type)
-            if(rawType == "Paper")
+            if(rawType == RecyclingQuest.RawType.Paper)
             {
                 float totalPaper = RecyclingInventory.GetPaperInventory();
                 float newTotal = totalPaper + mass * recycleAmt * yield;
@@ -275,7 +275,7 @@ public class Inventory
                  //play sound
                 _audio.Play("RecyclePaper");
             }
-            else if(rawType == "Glass")
+            else if(rawType == RecyclingQuest.RawType.Glass)
             {
                 float totalGlass = RecyclingInventory.GetGlassInventory();
                 float newTotal = totalGlass + mass * recycleAmt * yield;
@@ -283,7 +283,7 @@ public class Inventory
                 //play sound
                 _audio.Play("RecycleGlass");
             }
-                else if(rawType == "Metal")
+                else if(rawType == RecyclingQuest.RawType.Metal)
             {
                 float totalMetal = RecyclingInventory.GetMetalInventory();
                 float newTotal = totalMetal + mass * recycleAmt * yield;
@@ -291,7 +291,7 @@ public class Inventory
                 //play sound
                 _audio.Play("RecycleMetal");
             }
-                else if(rawType == "Wood")
+                else if(rawType == RecyclingQuest.RawType.Wood)
             {
                 float totalWood = RecyclingInventory.GetWoodInventory();
                 float newTotal = totalWood + mass * recycleAmt * yield;
@@ -299,7 +299,7 @@ public class Inventory
                  //play sound
                 _audio.Play("RecycleWood");
             }
-                else if(rawType == "Plastic")
+                else if(rawType == RecyclingQuest.RawType.Plastic)
             {
                 float totalPlastic = RecyclingInventory.GetPlasticInventory();
                 float newTotal = totalPlastic + mass * recycleAmt * yield;
@@ -307,7 +307,7 @@ public class Inventory
                 //play sound
                  _audio.Play("RecyclePlastic");
             }
-                else if(rawType == "Rubber")
+                else if(rawType == RecyclingQuest.RawType.Rubber)
             {
                 float totalRubber = RecyclingInventory.GetRubberInventory();
                 float newTotal = totalRubber + mass * recycleAmt * yield;
@@ -315,7 +315,7 @@ public class Inventory
                 //play sound
                  _audio.Play("RecycleRubber");
             }
-                else if(rawType == "Electronic")
+                else if(rawType == RecyclingQuest.RawType.Electronic)
             {
                 float totalElectronic = RecyclingInventory.GetElectronicInventory();
                 float newTotal = totalElectronic + mass * recycleAmt * yield;
