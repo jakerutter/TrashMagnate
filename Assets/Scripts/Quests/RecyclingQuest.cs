@@ -66,11 +66,11 @@ public class RecyclingQuest
             case QuestGoal.RecycleItem:                 return "item";
             case QuestGoal.RecycleType:                 return "type";
             case QuestGoal.CollectType:                 return "type";
-            case QuestGoal.BuildObject:                 return "build";
             case QuestGoal.CollectItemAmount:           return "item";
             case QuestGoal.CollectTypeAmount:           return "type";
             case QuestGoal.RecycleItemAmount:           return "item";
             case QuestGoal.RecycleTypeAmount:           return "type";
+            case QuestGoal.BuildObject:                 return "build";
         }
     }
 
@@ -132,7 +132,6 @@ public class RecyclingQuest
         switch(questName)
         {
             default:
-            case QuestName.BuildObject:                 return true;
             case QuestName.CollectItem:                 return false;
             case QuestName.RecycleItem:                 return false;
             case QuestName.RecycleType:                 return false;
@@ -141,23 +140,24 @@ public class RecyclingQuest
             case QuestName.CollectTypeAmount:           return false;   
             case QuestName.RecycleItemAmount:           return false;      
             case QuestName.RecycleTypeAmount:           return false;
+            case QuestName.BuildObject:                 return true;
         }
     }
 
-    public string QuestCompleteMessage()
+    public string QuestCompleteMessage()    
     {
         switch(questName)
         {
             default:
-            case QuestName.CollectItem:               return $"Quest complete. You gathered {goalAmount} {questItem.GetName()}. " + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
-            case QuestName.RecycleItem:               return $"{goalAmount} {questItem.GetName()} recycled. Quest complete." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
-            case QuestName.RecycleType:               return $"Quest complete. Recycled {goalAmount} {questItem.GetItemRawType()} items." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
-            case QuestName.CollectType:               return $"{goalAmount} {questItem.GetItemRawType()} items collected. Quest complete." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
-            case QuestName.BuildObject:               return $"You have built the {questBuilding.GetName()}." + this.GetRocketTechReward().ToString() + " rocket tech points awarded.";
-            case QuestName.CollectItemAmount:         return $"Quest Complete. Collected {goalAmount}kg {questItem.GetName()}";    
-            case QuestName.CollectTypeAmount:         return $"Quest Complete. Collected {goalAmount}kg {questRawType} items";   
-            case QuestName.RecycleItemAmount:         return $"Quest Complete. Recycled {goalAmount}kg {questItem.GetName()}";      
-            case QuestName.RecycleTypeAmount:         return $"Quests Complete. Recycled {goalAmount}kg {questRawType} items";
+            case QuestName.CollectItem:               return $"Quest complete. You gathered {goalAmount} {questItem.GetName()}. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";
+            case QuestName.RecycleItem:               return $"{goalAmount} {questItem.GetName()} recycled. Quest complete. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";
+            case QuestName.RecycleType:               return $"Quest complete. Recycled {goalAmount} {questItem.GetItemRawType()} items. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";
+            case QuestName.CollectType:               return $"{goalAmount} {questItem.GetItemRawType()} items collected. Quest complete. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";
+            case QuestName.CollectItemAmount:         return $"Quest Complete. Collected {goalAmount}kg {questItem.GetName()} {this.GetRocketTechReward().ToString()} rocket tech points awarded.";    
+            case QuestName.CollectTypeAmount:         return $"Quest Complete. Collected {goalAmount}kg {questRawType} items. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";   
+            case QuestName.RecycleItemAmount:         return $"Quest Complete. Recycled {goalAmount}kg {questItem.GetName()}. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";      
+            case QuestName.RecycleTypeAmount:         return $"Quests Complete. Recycled {goalAmount}kg {questRawType} items. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";
+            case QuestName.BuildObject:               return $"You have built the {questBuilding.GetName()}. {this.GetRocketTechReward().ToString()} rocket tech points awarded.";
         }
     }
 
@@ -256,13 +256,11 @@ public class RecyclingQuest
 
         newQuest.IsQuestActivated = true;
 
-        List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
         // remove completed quest from active quests
         //RemoveQuestFromAcitveQuests(quest);
-        activeQuests.Remove(quest);
 
-        activeQuests.Add(newQuest);
-        Quests.SetActiveRecyclingQuests(activeQuests);
+        //activeQuests.Add(newQuest);
+        // Quests.SetActiveRecyclingQuests(activeQuests);
 
         return newQuest;
     }

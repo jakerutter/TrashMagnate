@@ -122,7 +122,7 @@ public static class Quests
 
         int randInt = Random.Range(0,9);
         int randomRawType = Random.Range(0, 8);
-        int randItem = Random.Range(0, 22);
+        int randItem = Random.Range(0, 21);
 
         //create newQuest -- then fill in the missing pieces
          RecyclingQuest newQuest = new RecyclingQuest {
@@ -162,12 +162,15 @@ public static class Quests
         
         // get active quests and add this new quest to the list
         List<RecyclingQuest> activeQuests = GetActiveRecyclingQuests();
+        Debug.LogWarning("active quest count before anything = " + activeQuests.Count);
 
-        //Debug.LogWarning("active quest count before adding new = " + activeQuests.Count);
+        activeQuests.Remove(quest);
+
+        Debug.LogWarning("active quest count after removing new = " + activeQuests.Count);
 
         activeQuests.Add(newQuest);
 
-        //Debug.LogWarning("active quest count after adding new = " + activeQuests.Count);
+        Debug.LogWarning("active quest count after adding new = " + activeQuests.Count);
 
         Quests.SetActiveRecyclingQuests(activeQuests);
 
