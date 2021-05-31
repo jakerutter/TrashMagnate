@@ -53,7 +53,7 @@ public class BuildUI : MonoBehaviour
 
     public void SetBuildingInventory(BuildingInventory buildingInventory)
     {
-        Debug.Log("Calling SetBuildInventory. Inv item count = " + buildingInventory.GetBuildingList().Count);
+        //Debug.Log("Calling SetBuildInventory. Inv item count = " + buildingInventory.GetBuildingList().Count);
 
         this.buildingInventory = buildingInventory;
 
@@ -92,7 +92,7 @@ public class BuildUI : MonoBehaviour
 
             //get the text area and set the short name
             TextMeshProUGUI nameText = buildingName.gameObject.GetComponent<TextMeshProUGUI>();
-            Debug.Log("short name is " + recycler.GetShortName());
+            //Debug.Log("short name is " + recycler.GetShortName());
             
             nameText.SetText(recycler.GetShortName());
 
@@ -164,7 +164,6 @@ public class BuildUI : MonoBehaviour
     {
         //first identify if this building has been purchased 
         bool hasBeenPurchased = RecyclingInventory.GetIsRecyclerPurchased(recycler);
-        Debug.Log("HasBeenPurchased === " + hasBeenPurchased);
 
         if(hasBeenPurchased) 
         {
@@ -181,7 +180,6 @@ public class BuildUI : MonoBehaviour
         {           
             //set this recycler as purchased
             RecyclingInventory.SetRecyclerPurchased(recycler);
-            Debug.Log("Checking recycler purchased. " + recycler.GetName() + " purchased === " + RecyclingInventory.GetIsRecyclerPurchased(recycler));
 
             //send message letting player know they've created building
             messenger.SetMessage(Messenger.MessageType.Success, "You have purchased the " + recycler.GetName() + ". Right click to build.");

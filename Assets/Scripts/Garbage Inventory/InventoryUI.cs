@@ -141,7 +141,7 @@ public class InventoryUI : MonoBehaviour
         }
     }
 
-    private void RefreshRecycleInventoryItems()
+    public void RefreshRecycleInventoryItems()
     {
         foreach(Transform child in recycleSlotContainer)
         {

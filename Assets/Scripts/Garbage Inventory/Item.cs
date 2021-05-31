@@ -255,6 +255,7 @@ public class Item
             case ItemType.BrownGlassBottle:     return "Brown Glass Bottles";
             case ItemType.GreenGlassBottle:     return "Green Glass Bottles";
             case ItemType.GrowlerBottle:        return "Growler Bottle";
+            case ItemType.None:            return "None";
 
         }
     }

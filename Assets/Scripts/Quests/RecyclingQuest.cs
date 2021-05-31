@@ -8,7 +8,6 @@ using TMPro;
 public class RecyclingQuest
 {
     private bool isQuestComplete;
-
     public bool IsQuestActivated = false;
     public int questLevel;
     public Item questItem;
@@ -82,13 +81,13 @@ public class RecyclingQuest
             default:
             case QuestName.CollectItem:               return $"Gather {goalAmount} {questItem.GetName()}";
             case QuestName.RecycleItem:               return $"Recycle {goalAmount} {questItem.GetName()}";
-            case QuestName.RecycleType:               return $"Recycle {goalAmount} {questItem.GetItemRawType()}";
-            case QuestName.CollectType:               return $"Gather {goalAmount} {questItem.GetItemRawType()}";
-            case QuestName.BuildObject:               return $"Build {questBuilding.recyclerType.ToString()}";
+            case QuestName.RecycleType:               return $"Recycle {goalAmount} {questRawType} Items";
+            case QuestName.CollectType:               return $"Gather {goalAmount} {questRawType} Items";
             case QuestName.CollectItemAmount:         return $"Collect {goalAmount}kg {questItem.GetName()}";    
-            case QuestName.CollectTypeAmount:         return $"Collect {goalAmount}kg {questRawType} items";   
+            case QuestName.CollectTypeAmount:         return $"Collect {goalAmount}kg {questRawType} Items";   
             case QuestName.RecycleItemAmount:         return $"Recycle {goalAmount}kg {questItem.GetName()}";      
-            case QuestName.RecycleTypeAmount:         return $"Recycle {goalAmount}kg {questRawType} items";
+            case QuestName.RecycleTypeAmount:         return $"Recycle {goalAmount}kg {questRawType} Items";
+            case QuestName.BuildObject:               return $"Build {questBuilding.GetName()}";
         }
     }
 
@@ -96,16 +95,16 @@ public class RecyclingQuest
     {
         switch(questName)
         {
-             default:                               
+            default:                               
             case QuestName.CollectItem:               return $"Search the landscape for {questItem.GetName()} until you have gathered {goalAmount} total.";
             case QuestName.RecycleItem:               return $"Using a recycler, recycle {goalAmount} {questItem.GetName()}.";
             case QuestName.RecycleType:               return $"Using a recycler, recycle {goalAmount} items made of {questRawType}.";
             case QuestName.CollectType:               return $"Search the landscape and collect {goalAmount} items made of {questRawType}.";
-            case QuestName.BuildObject:               return $"Collect the required materials and build a {questBuilding.GetName()}.";
             case QuestName.CollectItemAmount:         return $"Collect {goalAmount}kg {questItem.GetName()}";    
             case QuestName.CollectTypeAmount:         return $"Collect {goalAmount}kg {questRawType} items";   
             case QuestName.RecycleItemAmount:         return $"Recycle {goalAmount}kg {questItem.GetName()}";      
             case QuestName.RecycleTypeAmount:         return $"Recycle {goalAmount}kg {questRawType} items";
+            case QuestName.BuildObject:               return $"Collect the required materials and build a {questBuilding.GetName()}.";
         }
     }
 
@@ -133,11 +132,15 @@ public class RecyclingQuest
         switch(questName)
         {
             default:
-            case QuestName.BuildObject:      return true;
-            case QuestName.CollectItem:      return false;
-            case QuestName.RecycleItem:      return false;
-            case QuestName.RecycleType:      return false;
-            case QuestName.CollectType:      return false;
+            case QuestName.BuildObject:                 return true;
+            case QuestName.CollectItem:                 return false;
+            case QuestName.RecycleItem:                 return false;
+            case QuestName.RecycleType:                 return false;
+            case QuestName.CollectType:                 return false;
+            case QuestName.CollectItemAmount:           return false;    
+            case QuestName.CollectTypeAmount:           return false;   
+            case QuestName.RecycleItemAmount:           return false;      
+            case QuestName.RecycleTypeAmount:           return false;
         }
     }
 
@@ -158,14 +161,55 @@ public class RecyclingQuest
         }
     }
 
-    public string GetQuestProgressString(bool isBuildQuest)
+    public string GetQuestProgressString(RecyclingQuest.QuestGoal goal)
     {
-        if (isBuildQuest)
+        //build object goal
+        if (goal == QuestGoal.BuildObject)
         {
             return $"{goalProgress} / {goalAmount} {questBuilding.GetName()}";
         }
+        //collect items goal
+        else if(goal == QuestGoal.CollectItem)
+        {
+          return $"{goalProgress} / {goalAmount} {questItem.GetName()}";  
+        }
+         //collect item amount [1kg / 5kg cans] goal
+        else if(goal == QuestGoal.CollectItemAmount)
+        {
+          return $"{goalProgress}kg / {goalAmount}kg {questItem.GetName()}";  
+        }
+         //collect type [1 / 5  glass items]
+        else if(goal == QuestGoal.CollectType)
+        {
+          return $"{goalProgress} / {goalAmount} {questRawType.ToString()  + " Items"}";  
+        }
+         //collect type amount [1kg / 5kg glass items]
+        else if(goal == QuestGoal.CollectTypeAmount)
+        {
+          return $"{goalProgress}kg / {goalAmount}kg {questRawType.ToString() + " Items"}";  
+        }
+        //recycle item [1 / 5 cans]
+        else if(goal == QuestGoal.RecycleItem)
+        {
+          return $"{goalProgress} / {goalAmount} {questItem.GetName()}";  
+        }
+        //recycle item amount [1kg / 5kg cans]
+        else if(goal == QuestGoal.RecycleItemAmount)
+        {
+          return $"{goalProgress}kg / {goalAmount}kg {questItem.GetName()}";  
+        }
+         //recycle type [1 / 5 glass items]
+        else if(goal == QuestGoal.RecycleType)
+        {
+          return $"{goalProgress} / {goalAmount} {questRawType.ToString()}";  
+        }
+         //recycle type amount [1kg / 5kg glass items]
+        else if(goal == QuestGoal.RecycleTypeAmount)
+        {
+          return $"{goalProgress}kg / {goalAmount}kg {questRawType.ToString()}";  
+        }
 
-        return $"{goalProgress} / {goalAmount} {questItem.GetName()}";
+        return "Whoops";
     }
 
     public RecyclingQuest CompleteQuest()
@@ -190,22 +234,33 @@ public class RecyclingQuest
         //send [success] message saying quest complete
         Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
         //messenger.SetMessage(Messenger.MessageType.Success, "Quest complete. "+ rocketTechReward.ToString() + " rocket tech points awarded.");
-        messenger.SetMessage(Messenger.MessageType.Success, QuestCompleteMessage());
+        messenger.SetMessage(Messenger.MessageType.Success, this.QuestCompleteMessage());
+        Debug.Log("This Q message: " + this.QuestCompleteMessage());
+
         //add quest to completed quest list
         AddQuestToCompletedQuests(quest);
 
         // inactivate quest
         quest.IsQuestActivated = false;
-
-         // remove completed quest from active quests
-        RemoveQuestFromAcitveQuests(quest);
         
         // generate new quest
         RecyclingQuest newQuest = Quests.GenerateNewRecyclingQuest(quest);
 
+        // Debug.LogWarning("New Quest Info:");
+        // Debug.LogWarning(newQuest.questGoal.ToString());
+        // Debug.LogWarning("item is " + newQuest.questItem.GetName());
+        // Debug.LogWarning("type is " + newQuest.questRawType.ToString());
+        // Debug.LogWarning(newQuest.GetQuestLongDesc());
+        // Debug.LogWarning(newQuest.GetQuestShortDesc());
+        // Debug.LogWarning(newQuest.GetQuestProgressString(newQuest.questGoal));
+
         newQuest.IsQuestActivated = true;
 
         List<RecyclingQuest> activeQuests = Quests.GetActiveRecyclingQuests();
+        // remove completed quest from active quests
+        //RemoveQuestFromAcitveQuests(quest);
+        activeQuests.Remove(quest);
+
         activeQuests.Add(newQuest);
         Quests.SetActiveRecyclingQuests(activeQuests);
 

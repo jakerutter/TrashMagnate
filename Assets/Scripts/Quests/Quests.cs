@@ -65,7 +65,7 @@ public static class Quests
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
             questGoal = RecyclingQuest.QuestGoal.CollectItem,
-            goalAmount = 15,
+            goalAmount = 10,
             questItem = new Item {itemType = Item.ItemType.Can}
         });
 
@@ -74,7 +74,7 @@ public static class Quests
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
             questGoal = RecyclingQuest.QuestGoal.CollectItem,
-            goalAmount = 15,
+            goalAmount = 10,
             questItem = new Item {itemType = Item.ItemType.BrownGlassBottle}
         });
 
@@ -83,7 +83,7 @@ public static class Quests
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
             questGoal = RecyclingQuest.QuestGoal.CollectItem,
-            goalAmount = 5,
+            goalAmount = 10,
             questItem = new Item {itemType = Item.ItemType.SmallTire}
         });
 
@@ -92,7 +92,7 @@ public static class Quests
             questName = RecyclingQuest.QuestName.CollectItem, 
             questLevel = 1,
             questGoal = RecyclingQuest.QuestGoal.CollectItem,
-            goalAmount = 5,
+            goalAmount = 10,
             questItem = new Item {itemType = Item.ItemType.Box}
         });
         
@@ -131,11 +131,30 @@ public static class Quests
             questGoal = (RecyclingQuest.QuestGoal)randInt
         };
 
+        Debug.LogWarning("Quest Need is " + newQuest.GetQuestNeed());
+
         //if questGoal needs item generate random item
-        Item newItem = newQuest.GetQuestNeed() == "item" ? new Item { itemType = (Item.ItemType)randItem } : new Item { itemType = Item.ItemType.None };
-        
+        Item newItem;
+        string questNeed = newQuest.GetQuestNeed();
+        if (questNeed == "item")
+        {
+           newItem = new Item { itemType = (Item.ItemType)randItem };
+        } 
+        else 
+        {
+            newItem = new Item { itemType = Item.ItemType.None };
+        }
+
         //if questGoal needs type generate random type
-        RecyclingQuest.RawType newRawType = newQuest.GetQuestNeed() == "type" ? (RecyclingQuest.RawType)randomRawType : RecyclingQuest.RawType.None;
+        RecyclingQuest.RawType newRawType;
+        if(questNeed == "type")
+        {
+            newRawType = (RecyclingQuest.RawType)randomRawType;
+        }
+        else 
+        {
+            newRawType =  RecyclingQuest.RawType.None;
+        }
         
         newQuest.questItem = newItem;
         newQuest.questRawType = newRawType;

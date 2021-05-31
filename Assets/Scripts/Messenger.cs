@@ -17,7 +17,7 @@ public class Messenger : MonoBehaviour
     public GameObject successMessagePrefab;
     public GameObject infoMessagePrefab;
     public GameObject failureMessagePrefab;
-    private float duration = 3f;
+    private float duration = 4f;
     private bool messageShown = false;
     private List<GameObject> spawnedPanels;
 

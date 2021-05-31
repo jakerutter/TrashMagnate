@@ -50,8 +50,6 @@ public class RecyclerWorld : MonoBehaviour
 
     public Recycler GetRecycler()
     {
-        Debug.Log("GetRecycler has been called");
-        Debug.Log(recycler.GetName());
         return recycler;
     }
 

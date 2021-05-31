@@ -13,15 +13,12 @@ public static class RecyclingInventory
     private static float ElectronicInventory;
     private static float WoodInventory;
     private static float GlassInventory;
-
     private static float CarryingCapacity = 50f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
-
     private static int RecyclingSkill = 0;
     private static int Currency;
     private static int RocketTechPoints;
-
     private static bool BasicRecyclerBuilt;
     private static bool ModernRecyclerBuilt;
     private static bool AdvancedRecyclerBuilt;
@@ -31,7 +28,6 @@ public static class RecyclingInventory
     private static bool BasicRecyclerUnlocked = true;
     private static bool ModernRecyclerUnlocked;
     private static bool AdvancedRecyclerUnlocked;
-
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
 
@@ -92,7 +88,7 @@ public static class RecyclingInventory
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
 
-     public static float GetGlassInventory()
+    public static float GetGlassInventory()
     {
         return GlassInventory;
     }
@@ -184,6 +180,7 @@ public static class RecyclingInventory
          //send [success] message showing recycling skill increase
         Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
         messenger.SetMessage(Messenger.MessageType.Success, "Congrats! Recycling skill increased to " + RecyclingSkill.ToString() + ".");
+        Debug.Log("Recycling skill == "+ RecyclingSkill);
     }
 
     public static int GetCurrency()
@@ -196,7 +193,7 @@ public static class RecyclingInventory
         Currency += currency;
     }
 
-     public static int GetRocketTechPoints()
+    public static int GetRocketTechPoints()
     {
         return RocketTechPoints;
     }
@@ -293,7 +290,7 @@ public static class RecyclingInventory
     }
 
   
-      public static void SetRecyclerPurchased(Recycler recycler)
+    public static void SetRecyclerPurchased(Recycler recycler)
     {
         if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
         {   
@@ -327,7 +324,7 @@ public static class RecyclingInventory
         return false;
     }
 
-      public static bool GetIsRecyclerBuilt(Recycler recycler)
+    public static bool GetIsRecyclerBuilt(Recycler recycler)
     {
         if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
         {   

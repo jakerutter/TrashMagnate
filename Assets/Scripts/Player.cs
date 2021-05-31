@@ -84,16 +84,12 @@ public class Player : MonoBehaviour
                     if(isComplete)
                     {
                         _audio.Play("LevelUp");
-                        RecyclingQuest newQuest = thisQuest.CompleteQuest();
+                        thisQuest.CompleteQuest();
                         
                         questComplete = true;
+                        questLogUI.GetComponent<QuestLogUI>().SetActiveQuestTabs();
                     }
                 }
-            }
-
-            if(questComplete)
-            {
-                 questLogUI.GetComponent<QuestLogUI>().SetActiveQuestTabs(activeRecyclingQuests);
             }
 
             //Update inventory (not sure this is best place for this)
@@ -135,7 +131,7 @@ public class Player : MonoBehaviour
         {
             //Debug.Log("Progressed type 1." + " Itemtype is " + type);
             quest.goalProgress += currentItem.amount;
-            string progressString = quest.GetQuestProgressString(quest.isBuildQuest);
+            string progressString = quest.GetQuestProgressString(quest.questGoal);
             //Debug.Log(progressString);
             progressed = true;
         }
@@ -147,7 +143,7 @@ public class Player : MonoBehaviour
             progressed = true;
         }
         //if the quest is tracking the number of items collected of a raw type then iterate by 1
-            if(quest.questRawType == currentItem.GetItemRawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectType)
+        if(quest.questRawType == currentItem.GetItemRawType() && quest.questGoal == RecyclingQuest.QuestGoal.CollectType)
         {
             //Debug.Log("Progressed type 3." + " Itemtype is " + currentItem.RawType());
             quest.goalProgress += currentItem.amount;
@@ -166,9 +162,8 @@ public class Player : MonoBehaviour
 
     public void CheckBuildQuest(Recycler recycler)
     {
-        bool questUpdated = false;
         //get active quests
-        for(int i=0; i<activeRecyclingQuests.Count-1; i++)
+        for(int i=0; i<5; i++)
         {
             //if not a build quest then continue
             if(activeRecyclingQuests[i].questGoal != RecyclingQuest.QuestGoal.BuildObject)
@@ -181,11 +176,11 @@ public class Player : MonoBehaviour
             {
                 _audio.Play("LevelUp");
                 RecyclingQuest newQuest = activeRecyclingQuests[i].CompleteQuest();
-                questLogUI.GetComponent<QuestLogUI>().SetActiveQuestTabs(activeRecyclingQuests);
+                questLogUI.GetComponent<QuestLogUI>().SetActiveQuestTabs();
+                inventoryUI.RefreshRecycleInventoryItems();
             }
         }
     }
-    
 
     public List<Item> GetInventory()
     {
