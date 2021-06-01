@@ -35,6 +35,14 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
+        //put this here because im seeing null ref of inventory
+        if (inventory == null)
+        {
+            Debug.Log("inventory is null in OnTriggerEnter");
+            Inventory newInventory = new Inventory(UseItem);
+            inventory = newInventory;
+        }
+
         bool questComplete = false;
         
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();

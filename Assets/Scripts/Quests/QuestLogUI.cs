@@ -47,12 +47,9 @@ public class QuestLogUI : MonoBehaviour
 
             if(thisQuest.HasSkillPointUpgrade() == true)
             {
-                Debug.Log("quest has skill upgrade " + i);
-                Debug.Log(thisQuest.questName.ToString());
                 text += " & +1 recycling skill";
             }
 
-            Debug.Log("rt text = " + text);
             questReward.SetText(text);
 
             questTemplate.GetComponent<Button_UI>().ClickFunc = () => {

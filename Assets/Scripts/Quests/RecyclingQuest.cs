@@ -216,11 +216,11 @@ public class RecyclingQuest
     {
         RecyclingQuest quest = this;
 
-         // give player recycling skill point reward
-         if(HasSkillPointUpgrade())
-         {
-             RecyclingInventory.AddRecyclingSkill(1);
-         }
+        // give player recycling skill point reward
+        if(HasSkillPointUpgrade())
+        {
+            RecyclingInventory.AddRecyclingSkill(1);
+        }
 
         int rocketTechReward = quest.GetRocketTechReward();
 
@@ -233,7 +233,7 @@ public class RecyclingQuest
 
         //send [success] message saying quest complete
         Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
-        //messenger.SetMessage(Messenger.MessageType.Success, "Quest complete. "+ rocketTechReward.ToString() + " rocket tech points awarded.");
+       
         messenger.SetMessage(Messenger.MessageType.Success, this.QuestCompleteMessage());
         Debug.Log("This Q message: " + this.QuestCompleteMessage());
 
@@ -255,12 +255,6 @@ public class RecyclingQuest
         // Debug.LogWarning(newQuest.GetQuestProgressString(newQuest.questGoal));
 
         newQuest.IsQuestActivated = true;
-
-        // remove completed quest from active quests
-        //RemoveQuestFromAcitveQuests(quest);
-
-        //activeQuests.Add(newQuest);
-        // Quests.SetActiveRecyclingQuests(activeQuests);
 
         return newQuest;
     }

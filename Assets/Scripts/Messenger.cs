@@ -51,7 +51,10 @@ public class Messenger : MonoBehaviour
                 spawnedPanels.Add(thisPanel);
 
                 //insert text
-                Transform textObj = successMessagePrefab.transform.Find("SuccessText");
+                // Transform textObj = successMessagePrefab.transform.Find("SuccessText");
+                Transform textObj = thisPanel.transform.Find("SuccessText");
+                Debug.Log("Message in SetMessage: " + message);
+
                 textObj.GetComponent<TextMeshProUGUI>().SetText(message);
                 
                 //call FadeOut coRoutine 
@@ -96,7 +99,6 @@ public class Messenger : MonoBehaviour
 
     private IEnumerator FadeOut(CanvasGroup canvasGrp, float start, float end)
     {
-        // Debug.Log("fading out " + canvasGrp.gameObject.name);
         float counter = 0f;
 
         while(counter < duration)
@@ -105,17 +107,12 @@ public class Messenger : MonoBehaviour
             canvasGrp.alpha = Mathf.Lerp(start, end, counter / duration);
             yield return null;
         }
-
-        //This was here-- but there was a messaging bug so testing the below code
-        // for(int i = spawnedPanels.Count-1; i>spawnedPanels.Count-2; i--)
-        // {
-        //     Destroy(spawnedPanels[i]);
-        // }      
         
         if(counter >= duration)
         {
            for(int i = spawnedPanels.Count-1; i>=0; i--)
             {
+                Debug.LogWarning("Destroying spawnedPanel "  + i);
                 Destroy(spawnedPanels[i]);
             }     
         }
