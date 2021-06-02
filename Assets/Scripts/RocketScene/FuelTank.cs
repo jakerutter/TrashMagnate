@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FuelTank : RocketTech
+public class FuelTank : MonoBehaviour
 {
+
     public int fuelAmount;
     public string fuelType;
 
@@ -16,4 +17,5 @@ public class FuelTank : RocketTech
     // fuelConsumptionRate: 5/sec;
     // gimbalRange:  10deg;
     // launchRewardValue: $50;
+
 }

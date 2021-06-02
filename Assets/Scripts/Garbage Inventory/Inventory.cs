@@ -116,7 +116,7 @@ public class Inventory
          if(rec == null){ Debug.Log("rec is null in RecycleItem"); }
 
         float yield = rec.GetYield();
-        //Debug.Log("*** " + yield + " ***");
+
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())
         {
@@ -143,8 +143,6 @@ public class Inventory
         if(canHold)
         {
             int recycleAmt = item.amount;
-
-            //Debug.Log("Item to recycle: " + canHoldAmount + " " + item.itemType + "\n Item mass: " + mass + "\n Item raw type: " + rawType + "\n Yield: " + yield);
             
             if(canHoldAmount > 0)
             {

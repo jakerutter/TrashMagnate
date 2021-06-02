@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider collider)
-    {
+    {   
         //put this here because im seeing null ref of inventory
         if (inventory == null)
         {

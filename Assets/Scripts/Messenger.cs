@@ -112,7 +112,7 @@ public class Messenger : MonoBehaviour
         {
            for(int i = spawnedPanels.Count-1; i>=0; i--)
             {
-                Debug.LogWarning("Destroying spawnedPanel "  + i);
+                //Debug.LogWarning("Destroying spawnedPanel "  + i);
                 Destroy(spawnedPanels[i]);
             }     
         }

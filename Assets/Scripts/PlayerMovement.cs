@@ -9,8 +9,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 movement3d;
     private bool hasWheelbarrow = false;
     private AudioManager _audio;
-
-    //public Rigidbody2D rb;
     public Rigidbody rb;
     public Animator animator;
 
@@ -58,6 +56,6 @@ public class PlayerMovement : MonoBehaviour
         
         Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 
-         rb.MovePosition(rb.position + m_Input * movementSpeed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + m_Input * movementSpeed * Time.fixedDeltaTime);
     }
 }
