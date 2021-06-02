@@ -32,8 +32,8 @@ public class MouseManager : MonoBehaviour
         Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
         //Do not remove these onClick invokes. They "prime" the buttons so a single click opens the menus
         mainInventoryToggle.onClick.Invoke();
-        questInventoryToggle.onClick.Invoke();
-        rawInventoryToggle.onClick.Invoke();
+        // questInventoryToggle.onClick.Invoke();
+        // rawInventoryToggle.onClick.Invoke();
         recycleInventoryToggle.onClick.Invoke();
 
         _audio = FindObjectOfType<AudioManager>();
@@ -53,25 +53,25 @@ public class MouseManager : MonoBehaviour
             }
         }
 
-         if(Input.GetKeyDown("q"))
-        {
-            if(questInventoryToggle != null)
-            {
-                _audio.Play("MenuAction");
-                questInventoryToggle.onClick.Invoke();
-            }
-        }
+        //  if(Input.GetKeyDown("q"))
+        // {
+        //     if(questInventoryToggle != null)
+        //     {
+        //         _audio.Play("MenuAction");
+        //         questInventoryToggle.onClick.Invoke();
+        //     }
+        // }
 
-         if(Input.GetKeyDown("r"))
-        {
-            if(rawInventoryToggle != null)
-            {
-                _audio.Play("MenuAction");
-                rawInventoryToggle.onClick.Invoke();
-            }
-        }
+        //  if(Input.GetKeyDown("r"))
+        // {
+        //     if(rawInventoryToggle != null)
+        //     {
+        //         _audio.Play("MenuAction");
+        //         rawInventoryToggle.onClick.Invoke();
+        //     }
+        // }
 
-           if(Input.GetKeyDown("y"))
+           if(Input.GetKeyDown("r"))
         {
             if(recycleInventoryToggle != null)
             {
