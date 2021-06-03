@@ -40,12 +40,6 @@ public static class RecyclingInventory
     {
         PlasticInventory = inventory;
         //Debug.Log("plastic inv should = " + inventory);
-        GameObject plasticInv = GameObject.FindGameObjectWithTag("PlasticInv");
-
-        Text plasticText = plasticInv.GetComponent<Text>();
-
-        plasticText.text = "Plastic: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("PlasticAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -59,12 +53,6 @@ public static class RecyclingInventory
     {
         RubberInventory = inventory;
         //Debug.Log("rubber inv should = " + inventory);
-        GameObject rubberInv = GameObject.FindGameObjectWithTag("RubberInv");
-
-        Text rubberText = rubberInv.GetComponent<Text>();
-
-        rubberText.text = "Rubber: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("RubberAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -78,12 +66,6 @@ public static class RecyclingInventory
     {
         MetalInventory = inventory;
         //Debug.Log("metal inv should = " + inventory);
-        GameObject metalInv = GameObject.FindGameObjectWithTag("MetalInv");
-
-        Text metalText = metalInv.GetComponent<Text>();
-
-        metalText.text = "Meetal: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("MetalAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -97,12 +79,6 @@ public static class RecyclingInventory
     {
         //Debug.Log("glass inv should = " + inventory);
         GlassInventory = inventory;
-        GameObject glassInv = GameObject.FindGameObjectWithTag("GlassInv");
-
-        Text glassText = glassInv.GetComponent<Text>();
-
-        glassText.text = "Glass: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("GlassAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -116,13 +92,6 @@ public static class RecyclingInventory
     {
         PaperInventory = inventory;
         //Debug.Log("paper inv should = " + inventory);
-
-        GameObject paperInv = GameObject.FindGameObjectWithTag("PaperInv");
-
-        Text paperText = paperInv.GetComponent<Text>();
-
-        paperText.text = "Paper: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("PaperAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -135,15 +104,7 @@ public static class RecyclingInventory
     public static void SetElectronicInventory(float inventory)
     {
         ElectronicInventory = inventory;
-
         //Debug.Log("Electronic inv should = " + inventory);
-
-        GameObject ElectronicInv = GameObject.FindGameObjectWithTag("ElectronicInv");
-
-        Text ElectronicText = ElectronicInv.GetComponent<Text>();
-
-        ElectronicText.text = "Electronic: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("ElectronicAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -156,15 +117,7 @@ public static class RecyclingInventory
     public static void SetWoodInventory(float inventory)
     {
         WoodInventory = inventory;
-
         //Debug.Log("wood inv should = " + inventory);
-
-        GameObject woodInv = GameObject.FindGameObjectWithTag("WoodInv");
-
-        Text woodText = woodInv.GetComponent<Text>();
-
-        woodText.text = "Wood: \n "+string.Format("{0:F2}",inventory)+ "kg";
-
         TextMeshProUGUI text = GameObject.FindGameObjectWithTag("WoodAmount").GetComponent<TextMeshProUGUI>();
         text.SetText(string.Format("{0:F2}",inventory)+ " kg");
     }
@@ -177,7 +130,7 @@ public static class RecyclingInventory
     public static void AddRecyclingSkill(int skill)
     {
         RecyclingSkill += skill;
-         //send [success] message showing recycling skill increase
+        //send [success] message showing recycling skill increase
         Messenger messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
         messenger.SetMessage(Messenger.MessageType.Success, "Congrats! Recycling skill increased to " + RecyclingSkill.ToString() + ".");
         Debug.Log("Recycling skill == "+ RecyclingSkill);
@@ -268,14 +221,14 @@ public static class RecyclingInventory
 
         AvailableCapcity = Mathf.Max(AvailableCapcity, 0f);
 
-        GameObject cap = GameObject.FindGameObjectWithTag("GarbageCapacityText");
-        Text capText = cap.GetComponent<Text>();
-        capText.text = "Carrying Capacity\n "+totalMass+" kg / "+carryLimit+ " kg";  
+        // GameObject cap = GameObject.FindGameObjectWithTag("GarbageCapacityText");
+        // Text capText = cap.GetComponent<Text>();
+        // capText.text = "Carrying Capacity\n "+totalMass+" kg / "+carryLimit+ " kg";  
     }
 
     public static void SetRecyclerBuilt(Recycler recycler)
     {
-         if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
+        if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
         {   
             BasicRecyclerBuilt = true;
         }
