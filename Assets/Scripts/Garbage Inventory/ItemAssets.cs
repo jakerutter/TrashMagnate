@@ -53,4 +53,6 @@ public class ItemAssets : MonoBehaviour
     public Sprite WoodTitleSprite;
     public Sprite PurchaseHandSprite;
     public Sprite LockSprite;
+
+    public GameObject coin;
 }
