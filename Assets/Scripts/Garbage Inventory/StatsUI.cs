@@ -7,7 +7,6 @@ public class StatsUI : MonoBehaviour
 {
     public List<GameObject> generalStats;
     public List<GameObject> recyclingStats;
-    public List<GameObject> launchStats;
 
    public void ShowStats()
    {
@@ -69,33 +68,33 @@ public class StatsUI : MonoBehaviour
            }
        }
 
-        foreach (GameObject item in launchStats)
-       {
-           //time played
-           if(item.name == "LS1")
-           {
-               item.GetComponent<TextMeshProUGUI>().SetText("1 launch");
-           }
-           else if (item.name == "LS2")
-           {
-               item.GetComponent<TextMeshProUGUI>().SetText("2 launch");
-           }
-            else if (item.name == "LS3")
-           {
-               item.GetComponent<TextMeshProUGUI>().SetText("3 launch");
-           }
-            else if (item.name == "LS4")
-           {
-               item.GetComponent<TextMeshProUGUI>().SetText("4 launch");
-           }
-            else if (item.name == "LS5")
-           {
-               item.GetComponent<TextMeshProUGUI>().SetText("5 launch");
-           }
-            else if (item.name == "LS6")
-           {
-               item.GetComponent<TextMeshProUGUI>().SetText("6 launch");
-           }
-       }
+    //     foreach (GameObject item in launchStats)
+    //    {
+    //        //time played
+    //        if(item.name == "LS1")
+    //        {
+    //            item.GetComponent<TextMeshProUGUI>().SetText("1 launch");
+    //        }
+    //        else if (item.name == "LS2")
+    //        {
+    //            item.GetComponent<TextMeshProUGUI>().SetText("2 launch");
+    //        }
+    //         else if (item.name == "LS3")
+    //        {
+    //            item.GetComponent<TextMeshProUGUI>().SetText("3 launch");
+    //        }
+    //         else if (item.name == "LS4")
+    //        {
+    //            item.GetComponent<TextMeshProUGUI>().SetText("4 launch");
+    //        }
+    //         else if (item.name == "LS5")
+    //        {
+    //            item.GetComponent<TextMeshProUGUI>().SetText("5 launch");
+    //        }
+    //         else if (item.name == "LS6")
+    //        {
+    //            item.GetComponent<TextMeshProUGUI>().SetText("6 launch");
+    //        }
+    //    }
    }
 }

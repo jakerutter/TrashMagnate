@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
 
         Debug.Log("In OnTriggerEnter in Player script");
         bool questComplete = false;
-            
+        
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
 
         if(itemWorld != null)
