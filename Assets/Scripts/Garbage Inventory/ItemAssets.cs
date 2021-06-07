@@ -55,7 +55,29 @@ public class ItemAssets : MonoBehaviour
     public Sprite LockSprite;
 
     public GameObject PlasticBottlePrefab;
-    public GameObject LaptopPrefab;
-    public GameObject SoupCanPrefab;
+ 
+    public GameObject PlasticJugPrefab;
+    public GameObject GroceryBagPrefab;
+    public GameObject SmallTirePrefab;
+    public GameObject LargeTirePrefab;
+    public GameObject ShoePrefab;
+    public GameObject BootPrefab;
+    public GameObject NewsPaperPrefab;
+    public GameObject BookPrefab;
+    public GameObject BoxPrefab;
+    public GameObject ComputerPrefab;
+    public GameObject CellPhonePrefab;
+    public GameObject FanPrefab;
+    public GameObject SmallBatteryPrefab;
+    public GameObject LargeBatteryPrefab;
+    public GameObject SmallWoodPrefab;
+    public GameObject LargeWoodPrefab;
     public GameObject CanPrefab;
+    public GameObject BrownGlassBottlePrefab;
+    public GameObject GreenGlassBottlePrefab;
+    public GameObject GrowlerBottlePrefab;
+    public GameObject BasicRecyclerPrefab;
+    public GameObject ModernRecyclerPrefab;
+    public GameObject AdvancedRecyclerPrefab;
+    public GameObject SoupCanPrefab;
 }

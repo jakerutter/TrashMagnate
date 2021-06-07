@@ -49,6 +49,7 @@ public class ItemWorld : MonoBehaviour
     public void SetItem(Item item, Vector3 position, Transform trans)
     {
         this.item = item;
+        Debug.Log("Item is " + item.GetName());
         GameObject prefab = item.GetPrefab();
         
         GameObject model = Instantiate(prefab, position, Quaternion.identity);

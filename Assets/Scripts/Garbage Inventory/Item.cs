@@ -71,6 +71,26 @@ public class Item
         {
             default:
             case ItemType.PlasticBottle:        return ItemAssets.Instance.PlasticBottlePrefab;
+            case ItemType.PlasticJug:           return ItemAssets.Instance.PlasticJugPrefab;
+            case ItemType.GroceryBag:           return ItemAssets.Instance.GroceryBagPrefab;
+            case ItemType.SmallTire:            return ItemAssets.Instance.SmallTirePrefab;
+            case ItemType.LargeTire:            return ItemAssets.Instance.LargeTirePrefab;
+            case ItemType.Shoe:                 return ItemAssets.Instance.ShoePrefab;
+            case ItemType.Boot:                 return ItemAssets.Instance.BootPrefab;
+            case ItemType.NewsPaper:            return ItemAssets.Instance.NewsPaperPrefab;
+            case ItemType.Book:                 return ItemAssets.Instance.BookPrefab;
+            case ItemType.Box:                  return ItemAssets.Instance.BoxPrefab;
+            case ItemType.Computer:             return ItemAssets.Instance.ComputerPrefab;
+            case ItemType.CellPhone:            return ItemAssets.Instance.CellPhonePrefab;
+            case ItemType.Fan:                  return ItemAssets.Instance.FanPrefab;
+            case ItemType.SmallBattery:         return ItemAssets.Instance.SmallBatteryPrefab;
+            case ItemType.LargeBattery:         return ItemAssets.Instance.LargeBatteryPrefab;
+            case ItemType.SmallWood:            return ItemAssets.Instance.SmallWoodPrefab;
+            case ItemType.LargeWood:            return ItemAssets.Instance.LargeWoodPrefab;
+            case ItemType.Can:                  return ItemAssets.Instance.CanPrefab;
+            case ItemType.BrownGlassBottle:     return ItemAssets.Instance.BrownGlassBottlePrefab;
+            case ItemType.GreenGlassBottle:     return ItemAssets.Instance.GreenGlassBottlePrefab;
+            case ItemType.GrowlerBottle:        return ItemAssets.Instance.GrowlerBottlePrefab;
         }
     }
 

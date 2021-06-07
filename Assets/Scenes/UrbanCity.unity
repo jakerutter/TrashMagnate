@@ -35178,11 +35178,32 @@ MonoBehaviour:
   LockSprite: {fileID: 21300000, guid: 22fb3eb5bb0174dd09c23122a7e73b6e, type: 3}
   PlasticBottlePrefab: {fileID: 1692969726285566658, guid: 52ff4baa2b86648da828b76f8adbd4ba,
     type: 3}
-  LaptopPrefab: {fileID: 8228630602395542304, guid: 8cd37835677f74e8ebec2d8a195f5548,
+  PlasticJugPrefab: {fileID: 0}
+  GroceryBagPrefab: {fileID: 0}
+  SmallTirePrefab: {fileID: 0}
+  LargeTirePrefab: {fileID: 0}
+  ShoePrefab: {fileID: 0}
+  BootPrefab: {fileID: 0}
+  NewsPaperPrefab: {fileID: 0}
+  BookPrefab: {fileID: 0}
+  BoxPrefab: {fileID: 0}
+  ComputerPrefab: {fileID: 8228630602395542304, guid: 8cd37835677f74e8ebec2d8a195f5548,
     type: 3}
-  SoupCanPrefab: {fileID: 4381162428781867934, guid: ee12e74aa16b4489dac77f1ec32f97f4,
-    type: 3}
+  CellPhonePrefab: {fileID: 0}
+  FanPrefab: {fileID: 0}
+  SmallBatteryPrefab: {fileID: 0}
+  LargeBatteryPrefab: {fileID: 0}
+  SmallWoodPrefab: {fileID: 0}
+  LargeWoodPrefab: {fileID: 0}
   CanPrefab: {fileID: 4381162428781867934, guid: ee12e74aa16b4489dac77f1ec32f97f4,
+    type: 3}
+  BrownGlassBottlePrefab: {fileID: 0}
+  GreenGlassBottlePrefab: {fileID: 0}
+  GrowlerBottlePrefab: {fileID: 0}
+  BasicRecyclerPrefab: {fileID: 0}
+  ModernRecyclerPrefab: {fileID: 0}
+  AdvancedRecyclerPrefab: {fileID: 0}
+  SoupCanPrefab: {fileID: 4381162428781867934, guid: ee12e74aa16b4489dac77f1ec32f97f4,
     type: 3}
 --- !u!4 &2096687106
 Transform:
