@@ -7,6 +7,8 @@ public class CalendarMailUI : MonoBehaviour
     
     public GameObject CalendarIcon;
     public GameObject MailIcon;
+    public List<GameObject> CalendarDays;
+    public GameObject CalendarDate;
 
     void Start()
     {
