@@ -55,4 +55,7 @@ public class ItemAssets : MonoBehaviour
     public Sprite LockSprite;
 
     public GameObject PlasticBottlePrefab;
+    public GameObject LaptopPrefab;
+    public GameObject SoupCanPrefab;
+    public GameObject CanPrefab;
 }
