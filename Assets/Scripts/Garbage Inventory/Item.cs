@@ -32,6 +32,7 @@ public class Item
     }
 
     public ItemType itemType;
+    //public GameObject prefab;
     public int amount;
 
     public Sprite GetSprite()
@@ -64,6 +65,15 @@ public class Item
         }
     }
 
+    public GameObject GetPrefab()
+    {
+        switch (itemType)
+        {
+            default:
+            case ItemType.PlasticBottle:        return ItemAssets.Instance.PlasticBottlePrefab;
+        }
+    }
+
     public bool IsStackable()
     {
         switch(itemType)
@@ -86,12 +96,11 @@ public class Item
             case ItemType.LargeBattery:         
             case ItemType.SmallWood:            
             case ItemType.LargeWood:            
-            case ItemType.Can:
-                return true;                 
+            case ItemType.Can:             
             case ItemType.BrownGlassBottle:     
             case ItemType.GreenGlassBottle:     
             case ItemType.GrowlerBottle:   
-                return false;     
+            return true;      
                 //the  above should be stackable, it is just this way for an example
         }
     }

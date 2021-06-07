@@ -25,6 +25,7 @@ public class MouseManager : MonoBehaviour
     private float startPosX;
     private float startPosY;
     private AudioManager _audio;
+    private bool _showInventory = false;
     //private bool isBegingHeld = false;
 
     void Start()
@@ -41,35 +42,40 @@ public class MouseManager : MonoBehaviour
 
     void Update()
     {
+        //TODO -- this bit isnt working is throwing an error. it is intended to prevent UI clickthrough
+        // if(Input.GetMouseButtonDown(0))
+        // {
+        //     if(EventSystem.current.IsPointerOverGameObject())
+        //     {
+        //         //prevent clicking through UI and ignoring it by returning
+        //         return;
+        //     }
+        // }
+        //END TODO
+       
+        // if(Input.GetKeyDown("t"))
+        // {
+        //     if(mainInventoryToggle != null)
+        //     {
+        //         _audio.Play("MenuAction");
+        //         mainInventoryToggle.onClick.Invoke();
 
-        if(Input.GetKeyDown("t"))
-        {
-            if(mainInventoryToggle != null)
-            {
-                _audio.Play("MenuAction");
-                mainInventoryToggle.onClick.Invoke();
+                // _showInventory = !_showInventory;
+                // if (_showInventory)
+                // {
+                //     Debug.Log("showInvntory is " + _showInventory.ToString());
+                //     Cursor.lockState = CursorLockMode.None;
+                //     Cursor.visible = true;
+                // } else
+                // {
+                //     Debug.Log("showInvntory is " + _showInventory.ToString());
+                //     Cursor.lockState = CursorLockMode.Locked;
+                //     Cursor.visible = false;
+                // }        
 
                 //should open up on first tab (inventory tab) can do this by calling the Invoke() for the inventory tab button
-            }
-        }
-
-        //  if(Input.GetKeyDown("q"))
-        // {
-        //     if(questInventoryToggle != null)
-        //     {
-        //         _audio.Play("MenuAction");
-        //         questInventoryToggle.onClick.Invoke();
-        //     }
-        // }
-
-        //  if(Input.GetKeyDown("r"))
-        // {
-        //     if(rawInventoryToggle != null)
-        //     {
-        //         _audio.Play("MenuAction");
-        //         rawInventoryToggle.onClick.Invoke();
-        //     }
-        // }
+            //}
+        //}
 
            if(Input.GetKeyDown("r"))
         {

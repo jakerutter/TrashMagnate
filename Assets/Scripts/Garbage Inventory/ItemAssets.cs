@@ -54,5 +54,5 @@ public class ItemAssets : MonoBehaviour
     public Sprite PurchaseHandSprite;
     public Sprite LockSprite;
 
-    public GameObject coin;
+    public GameObject PlasticBottlePrefab;
 }

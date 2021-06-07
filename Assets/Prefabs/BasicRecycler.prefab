@@ -24,13 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473662851176617209}
-  m_LocalRotation: {x: -0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.056, z: -0.056}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2386, z: 0.51691}
   m_Children: []
   m_Father: {fileID: 3968455808453188462}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -45, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1473662851176617211
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 3968455808453188462}
   - component: {fileID: 3968455808453188463}
   - component: {fileID: 8922357514158879777}
-  - component: {fileID: 1473662850692326249}
   m_Layer: 8
   m_Name: BasicRecycler
   m_TagString: Recycler
@@ -152,25 +151,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 3}
   m_EdgeRadius: 0
---- !u!114 &1473662850692326249
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3968455808453188465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86891f972e856485786edb1a59b2bee5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recyclerType: 0
-  clickableLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  pointer: {fileID: 2800000, guid: 14fc8483bc49a40b98358f3e1fc97220, type: 3}
-  recycleCursor: {fileID: 2800000, guid: 9e483426836cb4935a452d3fd1835c23, type: 3}
-  OnClickEnvironment:
-    m_PersistentCalls:
-      m_Calls: []
-  recycleInventoryToggle: {fileID: 0}

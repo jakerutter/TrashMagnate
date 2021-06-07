@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
 using Random = UnityEngine.Random;
+using UnityEngine.UI;
 
 #pragma warning disable 618, 649
 namespace UnityStandardAssets.Characters.FirstPerson
@@ -42,6 +43,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private float m_NextStep;
         private bool m_Jumping;
         private AudioSource m_AudioSource;
+        public Button mainInventoryToggle;
 
         // Use this for initialization
         private void Start()
@@ -57,7 +59,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_AudioSource = GetComponent<AudioSource>();
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
-
 
         // Update is called once per frame
         private void Update()
@@ -82,8 +83,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
 
             m_PreviouslyGrounded = m_CharacterController.isGrounded;
-        }
 
+            //test
+            if(Input.GetKeyDown(KeyCode.T))
+            {
+                mainInventoryToggle.onClick.Invoke();
+
+                //m_MouseLook.lockCursor = !m_MouseLook.lockCursor;
+                // if (!m_MouseLook.lockCursor)
+                // {
+                //     Cursor.lockState = CursorLockMode.None;
+                //     Cursor.visible = true;
+                // }
+            }
+            //end test
+        }
 
         private void PlayLandingSound()
         {
@@ -131,7 +145,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             ProgressStepCycle(speed);
             UpdateCameraPosition(speed);
 
-            m_MouseLook.UpdateCursorLock();
+            //m_MouseLook.UpdateCursorLock();
         }
 
 

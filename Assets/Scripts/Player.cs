@@ -43,8 +43,9 @@ public class Player : MonoBehaviour
             inventory = newInventory;
         }
 
+        Debug.Log("In OnTriggerEnter in Player script");
         bool questComplete = false;
-        
+            
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();
 
         if(itemWorld != null)
@@ -103,6 +104,8 @@ public class Player : MonoBehaviour
             //Update inventory (not sure this is best place for this)
             inventoryUI.SetInventory(inventory);
             recycleAll.SetRecycleAllInv(inventory);
+        } else {
+            Debug.Log("ItemWorld is null in player script");
         }
     }
 
