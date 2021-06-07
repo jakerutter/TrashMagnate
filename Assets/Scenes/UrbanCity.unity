@@ -2972,6 +2972,8 @@ MonoBehaviour:
   - {fileID: 578682979}
   - {fileID: 1489848223}
   CalendarDate: {fileID: 324792211}
+  FontAssetWhite: {fileID: 11400000, guid: 4b0e0058f960e45ae9c834a345c540f6, type: 2}
+  FontAssetBlue: {fileID: 11400000, guid: 085ad56f1e1dc43c08ef8028b14abb76, type: 2}
 --- !u!1001 &239921370
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10875,7 +10877,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 22
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c3b1e5399e83741e78ee05e48a54a1d9, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: c3b1e5399e83741e78ee05e48a54a1d9, type: 2}
@@ -13796,7 +13798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &729407915
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25603,7 +25605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.5882353, b: 0.09488511, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -39115,7 +39117,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -39381,8 +39383,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 11
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 085ad56f1e1dc43c08ef8028b14abb76, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 085ad56f1e1dc43c08ef8028b14abb76, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -39412,7 +39414,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
