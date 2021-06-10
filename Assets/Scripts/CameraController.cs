@@ -17,8 +17,8 @@ public class CameraController : MonoBehaviour
         Vector3 pos = cam.transform.position;
         Vector3 playerPos = playerLocation.position;
         pos.x = playerPos.x;
-        pos.y = playerPos.y+.6f;
-        pos.z = playerPos.z-1;
+        pos.y = playerPos.y+2.4f;
+        pos.z = playerPos.z-3;
 
         cam.transform.position = pos;
         cam.transform.LookAt(playerLocation);           
@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour
         Vector3 playerPos = playerLocation.position;
 
         pos.x = playerPos.x;
-        pos.z = playerPos.z-2;
+        pos.z = playerPos.z-3;
 
         cam.transform.position = pos;
 

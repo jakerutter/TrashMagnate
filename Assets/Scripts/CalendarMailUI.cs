@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using CodeMonkey.Utils;
 
 public class CalendarMailUI : MonoBehaviour
 {
-    private static int CurrentDay = 7;
+    private static int CurrentDay = 5;
     private static int CurrentYear = 1;
-    private static List<int> DecisionDay = new List<int>() { 9, 13 };
+    private static List<int> DecisionDay = new List<int>() { 7, 13 };
 
     public GameObject CalendarIcon;
     public GameObject MailIcon;
@@ -16,19 +17,24 @@ public class CalendarMailUI : MonoBehaviour
     public GameObject CalendarDate;
     public TMP_FontAsset FontAssetWhite;
     public TMP_FontAsset FontAssetBlue;
+    public List<Tab> Tabs;
+    public List<GameObject> UIPanels;
 
     void Start()
     {
         UpdateCalendarColors();
+
+        //set the button click functions for toggling the calendar/mail ui and setting the active tab/panel
+         foreach (Tab tab in Tabs)
+        {
+            tab.GetComponent<Button_UI>().ClickFunc = () => {
+                SetTab(tab);
+                SetPanel(tab);
+            };
+        }
     }
 
-    
-    void Update()
-    {
-        
-    }
-
-    public int GetCurrentDay()
+    public static int GetCurrentDay()
     {
         return CurrentDay;
     }
@@ -49,14 +55,18 @@ public class CalendarMailUI : MonoBehaviour
         CurrentYear += 1;
     }
 
-    private void UpdateCalendarColors()
+    public void UpdateCalendarColors()
     {
+        //set day and year
+        TextMeshProUGUI textUI = CalendarDate.GetComponent<TextMeshProUGUI>();
+        textUI.SetText("Day " + CurrentDay + " - Year " + CurrentYear);
+
         for(int i=0; i<CalendarDays.Count; i++)
         {
             //current date has white background -- blue text
             if(i+1 == CurrentDay)
             {
-                Debug.Log("Current day is " + i);
+                Debug.Log("Current day is " + i+1);
                 Image thisDay = CalendarDays[i].GetComponent<Image>();
                 thisDay.GetComponent<Image>().color = new Color32(255,255,225,255);
                 TMP_Text dayText = CalendarDays[i].transform.Find("Text").GetComponent<TMP_Text>();
@@ -79,7 +89,22 @@ public class CalendarMailUI : MonoBehaviour
                 TMP_Text dayText = CalendarDays[i].transform.Find("Text").GetComponent<TMP_Text>();
                 dayText.font = FontAssetWhite;
             }
-
         }
     }
+
+    public void AddDecisionDay(int day)
+    {
+        DecisionDay.Add(day);
+    }
+
+    public void SetTab(Tab tab)
+    {
+
+    }
+                
+    public void SetPanel(Tab tab)
+    {
+
+    }
+
 }

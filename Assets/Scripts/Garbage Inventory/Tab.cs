@@ -14,6 +14,10 @@ public class Tab : MonoBehaviour
         BuildLog,
         Collectables,
         Stats,
+        TechTree,
+        Calendar,
+        Mail
+
     }
 
     public TabType tabType;
@@ -29,6 +33,8 @@ public class Tab : MonoBehaviour
             case TabType.BuildLog:                  return ItemAssets.Instance.WrenchSprite;
             case TabType.Collectables:              return ItemAssets.Instance.TrophySprite;
             case TabType.Stats:                     return ItemAssets.Instance.GraphSprite;
+            case TabType.Calendar:                  return ItemAssets.Instance.CalendarSprite;
+            case TabType.Mail:                      return ItemAssets.Instance.MailSprite;
 
         }
     }
