@@ -58,8 +58,9 @@ public class QuestLogUI : MonoBehaviour
         }
     }
 
-     public void SetSelectedQuest(RecyclingQuest quest)
+    public void SetSelectedQuest(RecyclingQuest quest)
     {
+        Debug.Log("Setting Selected quest");
         selectedQuestDetail.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestLongDesc());
         selectedQuestProgress.GetComponent<TextMeshProUGUI>().SetText(quest.GetQuestProgressString(quest.questGoal));
     }

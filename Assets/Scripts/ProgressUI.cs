@@ -28,7 +28,7 @@ public class ProgressUI : MonoBehaviour
             if(progressInt >= 230) {
                 progressInt = 0;
             }
-            personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, progressInt*2);
+            personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt*1.5f, 230));
             pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, progressInt);
             publicOpinionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, 165-progressInt);
 

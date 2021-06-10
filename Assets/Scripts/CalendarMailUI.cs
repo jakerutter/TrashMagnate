@@ -7,7 +7,7 @@ using CodeMonkey.Utils;
 
 public class CalendarMailUI : MonoBehaviour
 {
-    private static int CurrentDay = 5;
+    private static int CurrentDay = 15;
     private static int CurrentYear = 1;
     private static List<int> DecisionDay = new List<int>() { 7, 13 };
 
@@ -42,6 +42,14 @@ public class CalendarMailUI : MonoBehaviour
     public void UpdateCurrentDay()
     {
         CurrentDay += 1;
+
+        //if current day > 16 increment year
+        if (CurrentDay > 16)
+        {
+            CurrentDay = 1;
+            UpdateCurrentYear();
+        }
+
         UpdateCalendarColors();
     }
 
@@ -99,10 +107,6 @@ public class CalendarMailUI : MonoBehaviour
     public void SetPanel(Tab tab)
     {
         Debug.Log("Setting panel");
-
-        CanvasGroup mainCanva = MainPanel.GetComponent<CanvasGroup>();
-        mainCanva.alpha = 1;
-        mainCanva.blocksRaycasts = true;
 
         if (tab.tabType == Tab.TabType.Calendar)
         {
