@@ -58,7 +58,7 @@ public class ItemWorld : MonoBehaviour
 
         if(item.amount > 1)
         {
-            Debug.Log(item.amount.ToString());
+            //Debug.Log(item.amount.ToString());
             textMeshPro.SetText(item.amount.ToString());
         }
         else 

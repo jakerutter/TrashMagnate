@@ -19,16 +19,16 @@ public class CalendarMailUI : MonoBehaviour
     public TMP_FontAsset FontAssetBlue;
     public List<Tab> Tabs;
     public List<GameObject> UIPanels;
+    public GameObject MainPanel;
 
     void Start()
     {
         UpdateCalendarColors();
 
         //set the button click functions for toggling the calendar/mail ui and setting the active tab/panel
-         foreach (Tab tab in Tabs)
+        foreach (Tab tab in Tabs)
         {
             tab.GetComponent<Button_UI>().ClickFunc = () => {
-                SetTab(tab);
                 SetPanel(tab);
             };
         }
@@ -66,7 +66,6 @@ public class CalendarMailUI : MonoBehaviour
             //current date has white background -- blue text
             if(i+1 == CurrentDay)
             {
-                Debug.Log("Current day is " + i+1);
                 Image thisDay = CalendarDays[i].GetComponent<Image>();
                 thisDay.GetComponent<Image>().color = new Color32(255,255,225,255);
                 TMP_Text dayText = CalendarDays[i].transform.Find("Text").GetComponent<TMP_Text>();
@@ -96,15 +95,47 @@ public class CalendarMailUI : MonoBehaviour
     {
         DecisionDay.Add(day);
     }
-
-    public void SetTab(Tab tab)
-    {
-
-    }
                 
     public void SetPanel(Tab tab)
     {
+        Debug.Log("Setting panel");
 
+        CanvasGroup mainCanva = MainPanel.GetComponent<CanvasGroup>();
+        mainCanva.alpha = 1;
+        mainCanva.blocksRaycasts = true;
+
+        if (tab.tabType == Tab.TabType.Calendar)
+        {
+             foreach(GameObject panel in UIPanels)
+             {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
+                 if(panel.name == "CalendarUI")
+                 {
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
+                 } else{
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
+                 }
+             }
+        }
+        else if(tab.tabType == Tab.TabType.Mail)
+        {
+             foreach(GameObject panel in UIPanels)
+             {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
+                 if(panel.name == "MailUI")
+                 {
+                     canva.alpha = 1;
+                     canva.blocksRaycasts = true;
+                 } else{
+                     canva.alpha = 0;
+                     canva.blocksRaycasts = false;
+                 }
+             }
+        }
     }
 
 }

@@ -201,6 +201,7 @@ MonoBehaviour:
   FontAssetBlue: {fileID: 11400000, guid: 085ad56f1e1dc43c08ef8028b14abb76, type: 2}
   Tabs: []
   UIPanels: []
+  MainPanel: {fileID: 0}
 --- !u!1001 &10044255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3204,8 +3205,13 @@ MonoBehaviour:
   CalendarDate: {fileID: 324792211}
   FontAssetWhite: {fileID: 11400000, guid: 4b0e0058f960e45ae9c834a345c540f6, type: 2}
   FontAssetBlue: {fileID: 11400000, guid: 085ad56f1e1dc43c08ef8028b14abb76, type: 2}
-  Tabs: []
-  UIPanels: []
+  Tabs:
+  - {fileID: 1602398374}
+  - {fileID: 1568993554}
+  UIPanels:
+  - {fileID: 344458858}
+  - {fileID: 477452379}
+  MainPanel: {fileID: 215088374}
 --- !u!225 &215088379
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3214,7 +3220,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 215088374}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -4008,9 +4014,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mainInventoryToggle: {fileID: 1847441275}
-  questInventoryToggle: {fileID: 0}
-  rawInventoryToggle: {fileID: 0}
   recycleInventoryToggle: {fileID: 1654104784}
+  calendarMailToggle: {fileID: 0}
 --- !u!4 &285055942
 Transform:
   m_ObjectHideFlags: 0
@@ -5383,7 +5388,7 @@ GameObject:
   - component: {fileID: 344458860}
   - component: {fileID: 344458862}
   m_Layer: 5
-  m_Name: Calendar
+  m_Name: CalendarUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5468,7 +5473,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344458858}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -6006,18 +6011,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372588797}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1847441274}
-  m_Father: {fileID: 729407915}
+  m_Father: {fileID: 978451022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: -100, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &372588799
 MonoBehaviour:
@@ -8400,12 +8405,12 @@ GameObject:
   - component: {fileID: 477452381}
   - component: {fileID: 477452383}
   m_Layer: 5
-  m_Name: Mail
+  m_Name: MailUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &477452380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8472,7 +8477,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477452379}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -10940,7 +10945,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -14, y: -11}
-  m_SizeDelta: {x: 800, y: 100}
+  m_SizeDelta: {x: 350, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &584596082
 MonoBehaviour:
@@ -10987,8 +10992,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 52
-  m_fontSizeBase: 52
+  m_fontSize: 44
+  m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -14657,7 +14662,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 372588798}
   - {fileID: 1623495167}
   - {fileID: 1966893596}
   m_Father: {fileID: 372986853}
@@ -15905,85 +15909,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769618526}
-  m_CullTransparentMesh: 0
---- !u!1 &773067749
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 773067750}
-  - component: {fileID: 773067752}
-  - component: {fileID: 773067751}
-  m_Layer: 5
-  m_Name: Text (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &773067750
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773067749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1847441274}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &773067751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773067749}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: '
-
-'
---- !u!222 &773067752
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773067749}
   m_CullTransparentMesh: 0
 --- !u!1 &773982091
 GameObject:
@@ -18034,6 +17959,7 @@ GameObject:
   - component: {fileID: 859808074}
   - component: {fileID: 859808073}
   - component: {fileID: 859808075}
+  - component: {fileID: 859808076}
   m_Layer: 5
   m_Name: MailIcon
   m_TagString: Untagged
@@ -18054,11 +17980,11 @@ RectTransform:
   m_Children:
   - {fileID: 951131529}
   m_Father: {fileID: 978451022}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 100, y: 0}
+  m_AnchoredPosition: {x: 200, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &859808073
@@ -18117,6 +18043,19 @@ MonoBehaviour:
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
   triggerMouseOutFuncOnClick: 0
+--- !u!114 &859808076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859808071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d562916b3a47bca1ca1aa629bdb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 8
 --- !u!1 &864183851
 GameObject:
   m_ObjectHideFlags: 0
@@ -19864,8 +19803,9 @@ GameObject:
   - component: {fileID: 978451022}
   - component: {fileID: 978451024}
   - component: {fileID: 978451023}
+  - component: {fileID: 978451025}
   m_Layer: 5
-  m_Name: CMIconPanel
+  m_Name: MenuIcons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19882,16 +19822,17 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 372588798}
   - {fileID: 1980191311}
   - {fileID: 859808072}
   m_Father: {fileID: 372986853}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 532, y: 0}
-  m_SizeDelta: {x: 200, y: 100}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 100}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &978451023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19927,6 +19868,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978451021}
   m_CullTransparentMesh: 0
+--- !u!114 &978451025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978451021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 695574c3020804751a887da7987be45e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CalendarIcon: {fileID: 1980191310}
+  MailIcon: {fileID: 859808071}
+  CalendarDays: []
+  CalendarDate: {fileID: 324792211}
+  FontAssetWhite: {fileID: 0}
+  FontAssetBlue: {fileID: 0}
+  Tabs: []
+  UIPanels: []
+  MainPanel: {fileID: 215088374}
 --- !u!1001 &979839021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -30216,6 +30178,7 @@ GameObject:
   - component: {fileID: 1568993552}
   - component: {fileID: 1568993551}
   - component: {fileID: 1568993553}
+  - component: {fileID: 1568993554}
   m_Layer: 5
   m_Name: MailSwitch
   m_TagString: Untagged
@@ -30298,6 +30261,19 @@ MonoBehaviour:
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
   triggerMouseOutFuncOnClick: 0
+--- !u!114 &1568993554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568993549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d562916b3a47bca1ca1aa629bdb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 8
 --- !u!1001 &1570123399
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31035,6 +31011,7 @@ GameObject:
   - component: {fileID: 1602398372}
   - component: {fileID: 1602398371}
   - component: {fileID: 1602398373}
+  - component: {fileID: 1602398374}
   m_Layer: 5
   m_Name: CalendarSwitch
   m_TagString: Untagged
@@ -31117,6 +31094,19 @@ MonoBehaviour:
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
   triggerMouseOutFuncOnClick: 0
+--- !u!114 &1602398374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602398369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d562916b3a47bca1ca1aa629bdb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 7
 --- !u!1 &1605421966
 GameObject:
   m_ObjectHideFlags: 0
@@ -31418,7 +31408,7 @@ RectTransform:
   - {fileID: 1587181134}
   - {fileID: 703522526}
   m_Father: {fileID: 729407915}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -31474,7 +31464,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623495166}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -31741,7 +31731,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Stats
+  m_Text: Tech
 --- !u!222 &1634778953
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35817,15 +35807,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 773067750}
+  m_Children: []
   m_Father: {fileID: 372588798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 60, y: 60}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847441275
 MonoBehaviour:
@@ -35848,8 +35837,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.8113208, g: 0.46405935, b: 0, a: 1}
-    m_PressedColor: {r: 0.8113208, g: 0.46405935, b: 0, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -35896,7 +35885,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4a3169ab3005041ff8a00714d96136a3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c4a213fcbe8364ef9919085553500cda, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -37804,7 +37793,7 @@ RectTransform:
   - {fileID: 1511929401}
   - {fileID: 717797278}
   m_Father: {fileID: 729407915}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -38455,6 +38444,7 @@ GameObject:
   - component: {fileID: 1980191313}
   - component: {fileID: 1980191312}
   - component: {fileID: 1980191314}
+  - component: {fileID: 1980191315}
   m_Layer: 5
   m_Name: CalendarIcon
   m_TagString: Untagged
@@ -38474,11 +38464,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 978451022}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1980191312
@@ -38537,6 +38527,19 @@ MonoBehaviour:
   hoverBehaviour_Move: 0
   hoverBehaviour_Move_Amount: {x: 0, y: 0}
   triggerMouseOutFuncOnClick: 0
+--- !u!114 &1980191315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1980191310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 983d562916b3a47bca1ca1aa629bdb88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tabType: 7
 --- !u!1001 &1986859114
 PrefabInstance:
   m_ObjectHideFlags: 0

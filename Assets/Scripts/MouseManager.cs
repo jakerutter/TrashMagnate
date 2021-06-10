@@ -17,9 +17,10 @@ public class MouseManager : MonoBehaviour
     
     //inventory toggle buttons
     public Button mainInventoryToggle;
-    public Button questInventoryToggle;
-    public Button rawInventoryToggle;
+    // public Button questInventoryToggle;
+    // public Button rawInventoryToggle;
     public Button recycleInventoryToggle;
+    public Button calendarMailToggle;
 
     private GameObject selectedObject;
     private float startPosX;
@@ -33,8 +34,7 @@ public class MouseManager : MonoBehaviour
         Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
         //Do not remove these onClick invokes. They "prime" the buttons so a single click opens the menus
         mainInventoryToggle.onClick.Invoke();
-        // questInventoryToggle.onClick.Invoke();
-        // rawInventoryToggle.onClick.Invoke();
+
         recycleInventoryToggle.onClick.Invoke();
 
         _audio = FindObjectOfType<AudioManager>();
@@ -77,12 +77,20 @@ public class MouseManager : MonoBehaviour
             //}
         //}
 
-           if(Input.GetKeyDown("r"))
+        if(Input.GetKeyDown("r"))
         {
             if(recycleInventoryToggle != null)
             {
                 _audio.Play("MenuAction");
                 recycleInventoryToggle.onClick.Invoke();
+            }
+        }
+         if(Input.GetKeyDown("c"))
+        {
+            if(calendarMailToggle != null)
+            {
+                _audio.Play("MenuAction");
+                calendarMailToggle.onClick.Invoke();
             }
         }
     }

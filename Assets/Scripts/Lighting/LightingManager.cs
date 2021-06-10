@@ -38,7 +38,7 @@ public class LightingManager : MonoBehaviour
             resetNewDay = false;
             nightHasCome = false;
             CalendarMailUI cal = gameObject.GetComponent<CalendarMailUI>();
-            Debug.Log("Calling UpdatCurrentDay");
+            Debug.Log("Calling UpdateCurrentDay");
             cal.UpdateCurrentDay();
         }
 
@@ -46,13 +46,13 @@ public class LightingManager : MonoBehaviour
         if(TimeOfDay < 1 && !resetNewDay)
         {
             resetNewDay = true;
-            Debug.Log("Set resetNewDay to TRUE");
+            //Debug.Log("Set resetNewDay to TRUE");
         }
         
         if(TimeOfDay > 23)
         {
             nightHasCome = true;
-            Debug.Log("Set nightHasCome to TRUE");
+            //Debug.Log("Set nightHasCome to TRUE");
         }
     }
 
