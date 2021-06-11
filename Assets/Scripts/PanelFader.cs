@@ -9,11 +9,6 @@ public class PanelFader : MonoBehaviour
     public float duration = .4f;
     public Texture2D pointer; // normal pointer cursor
 
-    private void Start()
-    {
-        
-    }
-
     public void Fade()
     {
         CanvasGroup canvasGrp = GetComponent<CanvasGroup>();

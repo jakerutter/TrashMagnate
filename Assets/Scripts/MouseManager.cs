@@ -52,30 +52,6 @@ public class MouseManager : MonoBehaviour
         //     }
         // }
         //END TODO
-       
-        // if(Input.GetKeyDown("t"))
-        // {
-        //     if(mainInventoryToggle != null)
-        //     {
-        //         _audio.Play("MenuAction");
-        //         mainInventoryToggle.onClick.Invoke();
-
-                // _showInventory = !_showInventory;
-                // if (_showInventory)
-                // {
-                //     Debug.Log("showInvntory is " + _showInventory.ToString());
-                //     Cursor.lockState = CursorLockMode.None;
-                //     Cursor.visible = true;
-                // } else
-                // {
-                //     Debug.Log("showInvntory is " + _showInventory.ToString());
-                //     Cursor.lockState = CursorLockMode.Locked;
-                //     Cursor.visible = false;
-                // }        
-
-                //should open up on first tab (inventory tab) can do this by calling the Invoke() for the inventory tab button
-            //}
-        //}
 
         if(Input.GetKeyDown("r"))
         {
