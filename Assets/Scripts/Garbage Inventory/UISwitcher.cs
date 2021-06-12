@@ -65,6 +65,12 @@ public class UISwitcher : MonoBehaviour
             titleImage.sprite = ItemAssets.Instance.GraphFlippedSprite;
             titleImage2.sprite = ItemAssets.Instance.GraphSprite;
         }
+        else if (tab.tabType == Tab.TabType.TechTree)
+        {
+            titleText.SetText("Recycling Tech"); 
+            titleImage.sprite = ItemAssets.Instance.RTLogo;
+            titleImage2.sprite = ItemAssets.Instance.RTLogo;
+        }
     }
 
       public void SetPanel(Tab tab)
@@ -165,6 +171,22 @@ public class UISwitcher : MonoBehaviour
                     canva.blocksRaycasts = true;
                     StatsUI statsUI = panel.GetComponent<StatsUI>();
                     statsUI.ShowStats();
+                 } else{
+                    canva.alpha = 0;
+                    canva.blocksRaycasts = false;
+                 }
+             }
+        }
+        else if (tab.tabType == Tab.TabType.TechTree)
+        {
+            foreach(GameObject panel in tabPanels)
+             {
+                 CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
+                 if(panel.name == "TechTreeUI")
+                 {
+                    canva.alpha = 1;
+                    canva.blocksRaycasts = true;
                  } else{
                     canva.alpha = 0;
                     canva.blocksRaycasts = false;

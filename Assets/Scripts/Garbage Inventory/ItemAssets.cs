@@ -55,6 +55,7 @@ public class ItemAssets : MonoBehaviour
     public Sprite LockSprite;
     public Sprite CalendarSprite;
     public Sprite MailSprite;
+    public Sprite RTLogo;
 
     public GameObject PlasticBottlePrefab;
  

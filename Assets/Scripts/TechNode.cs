@@ -8,8 +8,8 @@ public class TechNode : MonoBehaviour
     [SerializeField] private bool unlocked;
     [SerializeField] private string description;
     [SerializeField] private int id;
-    [SerializeField] private List<int> predcessors;
-    [SerializeField] private List<int> successors;
+    [SerializeField] private int unlockedBy;
+    [SerializeField] private int unlocks;
 
     private bool isUnlocked;
 

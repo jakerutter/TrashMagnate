@@ -35,6 +35,7 @@ public class Tab : MonoBehaviour
             case TabType.Stats:                     return ItemAssets.Instance.GraphSprite;
             case TabType.Calendar:                  return ItemAssets.Instance.CalendarSprite;
             case TabType.Mail:                      return ItemAssets.Instance.MailSprite;
+            case TabType.TechTree:                  return ItemAssets.Instance.RTLogo;
 
         }
     }
