@@ -18,7 +18,7 @@ public static class RecyclingInventory
     private static float TotalInventoryMass;
     private static int RecyclingSkill = 0;
     private static int Currency;
-    private static int RocketTechPoints;
+    private static int RecyclingTechPoints;
     private static bool BasicRecyclerBuilt;
     private static bool ModernRecyclerBuilt;
     private static bool AdvancedRecyclerBuilt;
@@ -146,14 +146,14 @@ public static class RecyclingInventory
         Currency += currency;
     }
 
-    public static int GetRocketTechPoints()
+    public static int GetRecyclingTechPoints()
     {
-        return RocketTechPoints;
+        return RecyclingTechPoints;
     }
 
-    public static void AddRocketTechPoints(int rtPoints)
+    public static void AddRecyclingTechPoints(int rtPoints)
     {
-        RocketTechPoints += rtPoints;
+        RecyclingTechPoints += rtPoints;
     }
 
     public static ManualRecyclingUpgrade[] GetManualRecyclingUpgrades()

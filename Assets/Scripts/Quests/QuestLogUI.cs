@@ -42,7 +42,7 @@ public class QuestLogUI : MonoBehaviour
             TextMeshProUGUI questReward = questRewards[i].GetComponent<TextMeshProUGUI>();
 
             questShortDesc.SetText(thisQuest.GetQuestShortDesc());
-            int rocketTechPoints = thisQuest.GetRocketTechReward();
+            int rocketTechPoints = thisQuest.GetRecyclingTechReward();
             string text = "Reward: " + rocketTechPoints + " rocket tech points";
 
             if(thisQuest.HasSkillPointUpgrade() == true)
