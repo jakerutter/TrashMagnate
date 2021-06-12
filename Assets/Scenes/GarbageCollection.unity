@@ -79401,9 +79401,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   mainInventoryToggle: {fileID: 814110753}
-  questInventoryToggle: {fileID: 0}
-  rawInventoryToggle: {fileID: 0}
   recycleInventoryToggle: {fileID: 1137990561}
+  calendarMailToggle: {fileID: 0}
 --- !u!1 &1455654047
 GameObject:
   m_ObjectHideFlags: 0
@@ -91993,6 +91992,7 @@ MonoBehaviour:
   LockSprite: {fileID: 21300000, guid: 22fb3eb5bb0174dd09c23122a7e73b6e, type: 3}
   CalendarSprite: {fileID: 0}
   MailSprite: {fileID: 0}
+  RTLogo: {fileID: 0}
   PlasticBottlePrefab: {fileID: 1692969726285566658, guid: 37a3e2076b2ed413e8f10de4518e3531,
     type: 3}
   PlasticJugPrefab: {fileID: 0}
@@ -103126,7 +103126,7 @@ Transform:
   - {fileID: 1447926374}
   - {fileID: 1853211845}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1871744891
 GameObject:
@@ -119925,7 +119925,7 @@ PrefabInstance:
     - target: {fileID: 1436767279866401988, guid: 9f6229004758049ae9f99cd001bb7489,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1436767279866401988, guid: 9f6229004758049ae9f99cd001bb7489,
         type: 3}
