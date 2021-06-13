@@ -30,7 +30,7 @@ public static class RecyclingInventory
     private static bool AdvancedRecyclerUnlocked;
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
-    private static List<int> UnlockedTechNodes;
+    private static List<int> UnlockedTechNodes = new List<int>() {-1, 0, 15};
 
     public static float GetPlasticInventory()
     {
@@ -336,7 +336,6 @@ public static class RecyclingInventory
 
     public static void SetUnlockedTechNodes(int ID)
     {
-        UnlockedTechNodes = UnlockedTechNodes.Add(ID);
+        UnlockedTechNodes.Add(ID);
     }
 }
-    

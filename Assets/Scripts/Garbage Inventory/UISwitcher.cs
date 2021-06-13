@@ -28,7 +28,7 @@ public class UISwitcher : MonoBehaviour
 
     public void SetTab(Tab tab)
     {
-        Debug.Log("Trying to set tab");
+        //Debug.Log("Trying to set tab");
         if (tab.tabType == Tab.TabType.InventoryItems)
         {
             titleText.SetText("Item Inventory");

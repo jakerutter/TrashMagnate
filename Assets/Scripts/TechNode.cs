@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TechNode : MonoBehaviour
 {
@@ -21,11 +23,7 @@ public class TechNode : MonoBehaviour
 
     private int RTPoints;
     private List<int> unlockedTechNodes;
-
-    private void Start()
-    {
-        unlockedTechNodes = RecyclingInventory.GetUnlockedTechNodes();
-    }
+    private Color green = new Color(0f, 255f, 34f, 255f);
 
     public void PurchaseTechUpgrade()
     {
@@ -48,16 +46,23 @@ public class TechNode : MonoBehaviour
         // send negative cost to subtract recyclingTechPoints
        RecyclingInventory.AddRecyclingTechPoints(-cost);
 
-       RecyclingInventory.AddUnlockedTechNode(unlocks);
+       RecyclingInventory.SetUnlockedTechNodes(unlocks);
 
        purchased = true;
 
        UpdateNodeUI();
+       UpdateArrowNode();
+       UpdateRTPointDisplay();
     }
 
     private bool CheckUnlocked()
     {
-        List<int> unlockedTechNodes = RecyclingInventory.GetUnlockedTechNodes();
+        unlockedTechNodes = RecyclingInventory.GetUnlockedTechNodes();
+        
+        if(unlockedTechNodes == null)
+        {
+            unlockedTechNodes = new List<int>();
+        }
 
         for(int i = 0; i < unlockedTechNodes.Count; i++)
         {
@@ -86,7 +91,38 @@ public class TechNode : MonoBehaviour
 
     private void UpdateNodeUI()
     {
+        Debug.Log("trying to set outline to active");
         //update tech node to indicate it has been purchased
+        gameObject.GetComponent<Outline>().enabled = true;
     }
+
+    private void UpdateArrowNode()
+    {
+        Transform nextChild = NextChild();
+        Image img = nextChild.gameObject.GetComponent<Image>();
+        img.color = green;
+    }
+
+    public void UpdateRTPointDisplay()
+    {
+        //Display current RT point total
+        GameObject RecyclingTechPoints = GameObject.FindGameObjectWithTag("RTPointDisplay");
+        RecyclingTechPoints.GetComponent<TextMeshProUGUI>().SetText(RecyclingInventory.GetRecyclingTechPoints().ToString());
+    }
+
+     private Transform NextChild()
+     {
+         // Check where we are
+         int thisIndex = this.transform.GetSiblingIndex ();
+ 
+         // We have a few cases to rule out
+         if ( this.transform.parent == null )
+             return null;
+         if ( this.transform.parent.childCount <= thisIndex + 1 )
+             return null;
+ 
+         // Then return whatever was next, now that we're sure it's there
+         return this.transform.parent.GetChild (thisIndex + 1);
+     }
 
 }

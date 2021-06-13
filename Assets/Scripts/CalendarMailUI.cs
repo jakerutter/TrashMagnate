@@ -10,6 +10,7 @@ public class CalendarMailUI : MonoBehaviour
     private static int CurrentDay = 15;
     private static int CurrentYear = 1;
     private static List<int> DecisionDay = new List<int>() { 7, 13 };
+    private float countDown = 0f;
 
     public GameObject CalendarIcon;
     public GameObject MailIcon;
@@ -34,6 +35,11 @@ public class CalendarMailUI : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        countDown -= Time.deltaTime;
+    }
+
     public static int GetCurrentDay()
     {
         return CurrentDay;
@@ -41,8 +47,18 @@ public class CalendarMailUI : MonoBehaviour
 
     public void UpdateCurrentDay()
     {
-        CurrentDay += 1;
+        //prevent nearly instant double calls
+        if(countDown > 0f)
+        {
+            //Debug.Log("Rejected current day update");
+            return;
+        }
 
+        //set countdown
+        countDown = 3f;
+
+        CurrentDay += 1;
+        
         //if current day > 16 increment year
         if (CurrentDay > 16)
         {
@@ -106,7 +122,7 @@ public class CalendarMailUI : MonoBehaviour
                 
     public void SetPanel(Tab tab)
     {
-        Debug.Log("Setting panel");
+        //Debug.Log("Setting panel");
 
         if (tab.tabType == Tab.TabType.Calendar)
         {
