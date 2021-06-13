@@ -18,7 +18,7 @@ public static class RecyclingInventory
     private static float TotalInventoryMass;
     private static int RecyclingSkill = 0;
     private static int Currency;
-    private static int RecyclingTechPoints;
+    private static int RecyclingTechPoints = 1500;
     private static bool BasicRecyclerBuilt;
     private static bool ModernRecyclerBuilt;
     private static bool AdvancedRecyclerBuilt;
@@ -30,6 +30,7 @@ public static class RecyclingInventory
     private static bool AdvancedRecyclerUnlocked;
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
+    private static List<int> UnlockedTechNodes;
 
     public static float GetPlasticInventory()
     {
@@ -327,4 +328,15 @@ public static class RecyclingInventory
             AdvancedRecyclerUnlocked = true;
         }
     }
+
+    public static List<int> GetUnlockedTechNodes()
+    {
+        return UnlockedTechNodes;
+    }
+
+    public static void SetUnlockedTechNodes(int ID)
+    {
+        UnlockedTechNodes = UnlockedTechNodes.Add(ID);
+    }
 }
+    

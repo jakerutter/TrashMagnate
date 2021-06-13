@@ -56,6 +56,10 @@ public class InventoryUI : MonoBehaviour
             if(recycleSlotContainer == null){return;}
             recycleSlotTemplate = recycleSlotContainer.transform.Find("RecycleSlotTemplate");  
         }
+
+         //Display current RT point total
+        GameObject RecyclingTechPoints = GameObject.FindGameObjectWithTag("RTPointDisplay");
+        RecyclingTechPoints.GetComponent<TextMeshProUGUI>().SetText(RecyclingInventory.GetRecyclingTechPoints().ToString());
     }
 
     public void SetPlayer(Player player)
