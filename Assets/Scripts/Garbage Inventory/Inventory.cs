@@ -116,6 +116,13 @@ public class Inventory
          if(rec == null){ Debug.Log("rec is null in RecycleItem"); }
 
         float yield = rec.GetYield();
+        Debug.Log("Initial yield is "+ yield.ToString());
+
+        float VariableYield = RecyclingInventory.GetVariableYield();
+        Debug.Log("Variable yield is "+ VariableYield.ToString());
+        
+        yield = yield * VariableYield;
+        Debug.Log("Final yield calculated to be "+ yield.ToString());
 
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())

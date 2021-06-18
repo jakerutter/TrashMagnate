@@ -27,21 +27,32 @@ public class TechNode : MonoBehaviour
 
     public void PurchaseTechUpgrade()
     {
-       Debug.Log("purchase attempt ID " + id.ToString());
+        if(purchased)
+        {
+            return;
+        }
+
+        AudioManager _audio;
+        _audio = FindObjectOfType<AudioManager>();
+
+       //Debug.Log("purchase attempt ID " + id.ToString());
 
        if(!CheckUnlocked())
        {
            Debug.Log("This upgrade is locked.");
+           //play reject sound
+           _audio.Play("PurchaseRejection");
            return;
        }
 
        if(!CanAfford())
        {
            Debug.Log("Can not afford");
+           _audio.Play("PurchaseRejection");
            return;
        }
 
-       Debug.Log("Price is " + cost.ToString());
+       //Debug.Log("Price is " + cost.ToString());
 
         // send negative cost to subtract recyclingTechPoints
        RecyclingInventory.AddRecyclingTechPoints(-cost);
@@ -49,6 +60,13 @@ public class TechNode : MonoBehaviour
        RecyclingInventory.SetUnlockedTechNodes(unlocks);
 
        purchased = true;
+       
+       //play tech tree upgrade sound (levelUp)
+       _audio.Play("TechTreeUpgrade");
+
+       //show particle effect
+       ParticleSystem ps = gameObject.transform.Find("Effect").GetComponent<ParticleSystem>();
+       ps.Play();
 
        UpdateNodeUI();
        UpdateArrowNode();
@@ -91,7 +109,6 @@ public class TechNode : MonoBehaviour
 
     private void UpdateNodeUI()
     {
-        Debug.Log("trying to set outline to active");
         //update tech node to indicate it has been purchased
         gameObject.GetComponent<Outline>().enabled = true;
     }

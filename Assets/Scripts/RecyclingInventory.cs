@@ -31,6 +31,11 @@ public static class RecyclingInventory
     private static ManualRecyclingUpgrade[] ManualRecyclingUpgrades;
     private static RecyclingVehicle[] RecyclingVehicles;
     private static List<int> UnlockedTechNodes = new List<int>() {-1, 0, 15};
+    private static float PickupRadius;
+    public static float VariableYield = 1f;
+    public static float Pollution = 0f;
+    public static float Waste = 0f;
+    public static float Energy = 0f;
 
     public static float GetPlasticInventory()
     {
@@ -338,4 +343,141 @@ public static class RecyclingInventory
     {
         UnlockedTechNodes.Add(ID);
     }
+
+      public static float GetPickupRadius()
+    {
+        return PickupRadius;
+    }
+
+    public static void AdjustPickupRadiusByPercent(float percent, bool isPositive)
+    {
+        //adjust pickup raius by percent and set its value to the static variable
+        Debug.Log("PickupRadius was " + PickupRadius.ToString());
+        if (isPositive)
+        {
+            PickupRadius = (PickupRadius + PickupRadius * percent);    
+        }
+        else
+        {
+            PickupRadius = (PickupRadius - PickupRadius * percent); 
+        }
+
+        Debug.Log("PickupRadius is now " + PickupRadius.ToString());
+        
+    }
+
+    public static float GetVariableYield()
+    {
+        return VariableYield;
+    }
+
+    public static void  AdjustVariableYieldByPercent(float percent, bool isPositive)
+    {
+        //adjust yield by percent and set its value to the static variable
+        Debug.Log("VariableYield was " + VariableYield.ToString());
+        if (isPositive)
+        {
+            VariableYield = (VariableYield + VariableYield * percent);    
+        }
+        else
+        {
+            VariableYield = (VariableYield - VariableYield * percent); 
+        }
+
+        Debug.Log("VariableYield is now " + VariableYield.ToString());
+    }
+
+    public static float GetPollution()
+    {
+        return Pollution;
+    }
+
+    public static void AdjustPollutionByPercent(float percent, bool isPositive)
+    {
+        //adjust Pollution by percent and set its value to the static variable
+        Debug.Log("Pollution was " + Pollution.ToString());
+        if (isPositive)
+        {
+            Pollution = (Pollution + Pollution * percent);    
+        }
+        else
+        {
+            Pollution = (Pollution - Pollution * percent); 
+        }
+
+        Debug.Log("Pollution is now " + Pollution.ToString());
+    }
+
+    public static void AdjustPollutionByAmount(int amount)
+    {
+        //adjust Pollution by percent and set its value to the static variable
+        Debug.Log("Pollution was " + Pollution.ToString());
+        
+        Pollution += amount;
+
+        Debug.Log("Pollution is now " + Pollution.ToString());
+    }
+
+    public static float GetWaste()
+    {
+        return Waste;
+    }
+
+    public static void AdjustWasteByPercent(float percent, bool isPositive)
+    {
+        //adjust Waste by percent and set its value to the static variable
+        Debug.Log("Waste was " + Waste.ToString());
+        if (isPositive)
+        {
+            Waste = (Waste + Waste * percent);    
+        }
+        else
+        {
+            Waste = (Waste - Waste * percent); 
+        }
+
+        Debug.Log("Waste is now " + Waste.ToString());
+    }
+
+    public static void AdjustWasteByAmount(int amount)
+    {
+        //adjust Waste by percent and set its value to the static variable
+        Debug.Log("Waste was " + Waste.ToString());
+        
+        Waste += amount;
+
+        Debug.Log("Waste is now " + Waste.ToString());
+    }
+
+     public static float GetEnergy()
+    {
+        return Energy;
+    }
+
+    public static void AdjustEnergyByPercent(float percent, bool isPositive)
+    {
+        //adjust Energy by percent and set its value to the static variable
+        Debug.Log("Energy was " + Energy.ToString());
+        if (isPositive)
+        {
+            Energy = (Energy + Energy * percent);    
+        }
+        else
+        {
+            Energy = (Energy - Energy * percent); 
+        }
+
+        Debug.Log("Energy is now " + Energy.ToString());
+    }
+
+    public static void AdjustEnergyByAmount(int amount)
+    {
+        //adjust Energy by percent and set its value to the static variable
+        Debug.Log("Energy was " + Energy.ToString());
+        
+        Energy += amount;
+
+        Debug.Log("Energy is now " + Energy.ToString());
+    }
+
 }

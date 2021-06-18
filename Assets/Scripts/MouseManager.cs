@@ -17,8 +17,6 @@ public class MouseManager : MonoBehaviour
     
     //inventory toggle buttons
     public Button mainInventoryToggle;
-    // public Button questInventoryToggle;
-    // public Button rawInventoryToggle;
     public Button recycleInventoryToggle;
     public Button calendarMailToggle;
 
@@ -27,7 +25,6 @@ public class MouseManager : MonoBehaviour
     private float startPosY;
     private AudioManager _audio;
     private bool _showInventory = false;
-    //private bool isBegingHeld = false;
 
     void Start()
     {
@@ -36,6 +33,8 @@ public class MouseManager : MonoBehaviour
         mainInventoryToggle.onClick.Invoke();
 
         recycleInventoryToggle.onClick.Invoke();
+
+        calendarMailToggle.onClick.Invoke();
 
         _audio = FindObjectOfType<AudioManager>();
     }
@@ -52,6 +51,10 @@ public class MouseManager : MonoBehaviour
         //     }
         // }
         //END TODO
+        if(Input.GetMouseButtonDown(0))
+        {
+            Debug.Log(gameObject.name);
+        }
 
         if(Input.GetKeyDown("r"))
         {

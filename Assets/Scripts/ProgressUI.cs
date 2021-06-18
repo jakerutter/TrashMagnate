@@ -8,7 +8,7 @@ public class ProgressUI : MonoBehaviour
     public GameObject pollutionBar;
     public GameObject publicOpinionBar;
 
-    private float counter = .5f;
+    private float counter = .75f;
     private int progressInt;
 
     void Start()
@@ -25,11 +25,13 @@ public class ProgressUI : MonoBehaviour
 
             progressInt += 1;
 
-            if(progressInt >= 230) {
+            if(progressInt >= 230) 
+            {
                 progressInt = 0;
             }
-            personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt*1.5f, 230));
-            pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, progressInt);
+
+            personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt*1.25f, 230));
+            pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, .5f * progressInt);
             publicOpinionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, 165-progressInt);
 
 
