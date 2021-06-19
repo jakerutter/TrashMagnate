@@ -16,14 +16,14 @@ public class Inventory
         this.useItemAction = useItemAction;
         itemList = new List<Item>();
 
-        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.SmallWood, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 10});
-        itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 10});
+        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.SmallWood, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 100});
     }
 
     public void AddItem(Item item)
@@ -120,13 +120,13 @@ public class Inventory
          if(rec == null){ Debug.Log("rec is null in RecycleItem"); }
 
         float yield = rec.GetYield();
-        Debug.Log("Initial yield is "+ yield.ToString());
+        //Debug.Log("Initial yield is "+ yield.ToString());
 
         float VariableYield = RecyclingInventory.GetVariableYield();
-        Debug.Log("Variable yield is "+ VariableYield.ToString());
+        //Debug.Log("Variable yield is "+ VariableYield.ToString());
 
         yield = yield * VariableYield;
-        Debug.Log("Final yield calculated to be "+ yield.ToString());
+        //Debug.Log("Final yield calculated to be "+ yield.ToString());
 
         //check item Recycle skill level
         if(requirement > RecyclingInventory.GetRecyclingSkill())
@@ -160,6 +160,20 @@ public class Inventory
             {
                 recycleAmt = canHoldAmount;
             }
+
+            //calculate waste and pollution
+            float pollutionYield = RecyclingInventory.GetPollutionYield();
+            //Pollution = item.mass * pollutionYield
+            float pollution = mass * pollutionYield;
+            //Waste = item.mass - (item.mass *  yield) + (item.mass * pollution)
+            float waste = mass - (mass * yield + mass * pollutionYield);
+
+            //set statics for pollution and waste
+            // Debug.Log("pollution is " + pollution);
+            // Debug.Log("waste is " + waste);
+
+            RecyclingInventory.SetPollution(pollution);
+            RecyclingInventory.SetWaste(waste);
 
             //play sound for item recycled (by type)
             if(rawType == RecyclingQuest.RawType.Paper)

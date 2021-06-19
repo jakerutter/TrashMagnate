@@ -9,7 +9,7 @@ public class ProgressUI : MonoBehaviour
     public GameObject publicOpinionBar;
 
     private float counter = 2.5f;
-    //private int progressInt;
+    private int progressInt;
 
     void Start()
     {
@@ -28,16 +28,16 @@ public class ProgressUI : MonoBehaviour
             float pollution = progressList[1];
             float opinion = progressList[2];
             
-            personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt*1.25f, 230));
-            pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, .5f * progressInt);
-            publicOpinionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, 165-progressInt);
+            personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt, 230));
+            pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(pollution, 230));
+            publicOpinionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(opinion, 230));
 
-            // progressInt += 1;
+            progressInt += 1;
 
-            // if(progressInt >= 230) 
-            // {
-            //     progressInt = 0;
-            // }
+            if(progressInt >= 230) 
+            {
+                progressInt = 0;
+            }
 
             // personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt*1.25f, 230));
             // pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, .5f * progressInt);

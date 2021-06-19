@@ -13,7 +13,7 @@ public static class RecyclingInventory
     private static float ElectronicInventory;
     private static float WoodInventory;
     private static float GlassInventory;
-    private static float CarryingCapacity = 500f;
+    private static float CarryingCapacity = 5000f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
     private static int RecyclingSkill = 0;
@@ -34,6 +34,7 @@ public static class RecyclingInventory
     private static float PickupRadius;
     public static float VariableYield = 1f;
     public static float Pollution = 0f;
+    public static float PollutionYield = 10f;
     public static float Waste = 0f;
     public static float Energy = 0f;
     public static float Opinion = 0f;
@@ -409,7 +410,7 @@ public static class RecyclingInventory
         Debug.Log("Pollution is now " + Pollution.ToString());
     }
 
-    public static void AdjustPollutionByAmount(int amount)
+    public static void SetPollution(float amount)
     {
         //adjust Pollution by percent and set its value to the static variable
         Debug.Log("Pollution was " + Pollution.ToString());
@@ -417,6 +418,37 @@ public static class RecyclingInventory
         Pollution += amount;
 
         Debug.Log("Pollution is now " + Pollution.ToString());
+    }
+
+    public static float GetPollutionYield()
+    {
+        return PollutionYield;
+    }
+
+    public static void AdjustPollutionYieldByPercent(float percent, bool isPositive)
+    {
+        //adjust Pollution by percent and set its value to the static variable
+        Debug.Log("PollutionYield was " + PollutionYield.ToString());
+        if (isPositive)
+        {
+            PollutionYield = (PollutionYield + PollutionYield * percent);    
+        }
+        else
+        {
+            PollutionYield = (PollutionYield - PollutionYield * percent); 
+        }
+
+        Debug.Log("PollutionYield is now " + PollutionYield.ToString());
+    }
+
+    public static void AdjustPollutionYieldByAmount(float amount)
+    {
+        //adjust Pollution by percent and set its value to the static variable
+        Debug.Log("PollutionYield was " + PollutionYield.ToString());
+        
+        PollutionYield += amount;
+
+        Debug.Log("PollutionYield is now " + PollutionYield.ToString());
     }
 
     public static float GetWaste()
@@ -440,7 +472,7 @@ public static class RecyclingInventory
         Debug.Log("Waste is now " + Waste.ToString());
     }
 
-    public static void AdjustWasteByAmount(int amount)
+    public static void SetWaste(float amount)
     {
         //adjust Waste by percent and set its value to the static variable
         Debug.Log("Waste was " + Waste.ToString());
