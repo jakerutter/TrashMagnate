@@ -34,8 +34,9 @@ public static class RecyclingInventory
     private static float PickupRadius;
     public static float VariableYield = 1f;
     public static float Pollution = 0f;
-    public static float PollutionYield = 10f;
+    public static float PollutionYield = 25f;
     public static float Waste = 0f;
+    public static float WasteYield = 5f;
     public static float Energy = 0f;
     public static float Opinion = 0f;
 
@@ -482,6 +483,37 @@ public static class RecyclingInventory
         Debug.Log("Waste is now " + Waste.ToString());
     }
 
+    public static float GetWasteYield()
+    {
+        return WasteYield;
+    }
+
+    public static void AdjustWasteYieldByPercent(float percent, bool isPositive)
+    {
+        //adjust WasteYield by percent and set its value to the static variable
+        Debug.Log("WasteYield was " + WasteYield.ToString());
+        if (isPositive)
+        {
+            WasteYield = (WasteYield + WasteYield * percent);    
+        }
+        else
+        {
+            WasteYield = (WasteYield - WasteYield * percent); 
+        }
+
+        Debug.Log("WasteYield is now " + WasteYield.ToString());
+    }
+
+    public static void SetWasteYield(float amount)
+    {
+        //adjust WasteYield by percent and set its value to the static variable
+        Debug.Log("WasteYield was " + WasteYield.ToString());
+        
+        WasteYield += amount;
+
+        Debug.Log("WasteYield is now " + WasteYield.ToString());
+    }
+
      public static float GetEnergy()
     {
         return Energy;
@@ -551,6 +583,7 @@ public static class RecyclingInventory
         progressList.Add(Currency);
         progressList.Add(Pollution);
         progressList.Add(Opinion);
+        progressList.Add(Waste);
 
         return progressList;
     }

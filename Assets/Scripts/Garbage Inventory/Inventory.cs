@@ -166,7 +166,7 @@ public class Inventory
             //Pollution = item.mass * pollutionYield
             float pollution = mass * pollutionYield;
             //Waste = item.mass - (item.mass *  yield) + (item.mass * pollution)
-            float waste = mass - (mass * yield + mass * pollutionYield);
+            float waste = mass * RecyclingInventory.GetWasteYield();
 
             //set statics for pollution and waste
             // Debug.Log("pollution is " + pollution);
