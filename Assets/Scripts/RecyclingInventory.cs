@@ -13,11 +13,11 @@ public static class RecyclingInventory
     private static float ElectronicInventory;
     private static float WoodInventory;
     private static float GlassInventory;
-    private static float CarryingCapacity = 50f;
+    private static float CarryingCapacity = 500f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
     private static int RecyclingSkill = 0;
-    private static int Currency;
+    private static float Currency;
     private static int RecyclingTechPoints = 1500;
     private static bool BasicRecyclerBuilt;
     private static bool ModernRecyclerBuilt;
@@ -36,6 +36,7 @@ public static class RecyclingInventory
     public static float Pollution = 0f;
     public static float Waste = 0f;
     public static float Energy = 0f;
+    public static float Opinion = 0f;
 
     public static float GetPlasticInventory()
     {
@@ -142,12 +143,12 @@ public static class RecyclingInventory
         Debug.Log("Recycling skill == "+ RecyclingSkill);
     }
 
-    public static int GetCurrency()
+    public static float GetCurrency()
     {
         return Currency;
     }
 
-    public static void SetCurrency(int currency)
+    public static void SetCurrency(float currency)
     {
         Currency += currency;
     }
@@ -478,6 +479,48 @@ public static class RecyclingInventory
         Energy += amount;
 
         Debug.Log("Energy is now " + Energy.ToString());
+    }
+
+    public static float GetOpinion()
+    {
+        return Opinion;
+    }
+
+    public static void AdjustOpinionByPercent(float percent, bool isPositive)
+    {
+        //adjust Opinion by percent and set its value to the static variable
+        Debug.Log("Opinion was " + Opinion.ToString());
+        if (isPositive)
+        {
+            Opinion = (Opinion + Opinion * percent);    
+        }
+        else
+        {
+            Opinion = (Opinion - Opinion * percent); 
+        }
+
+        Debug.Log("Opinion is now " + Opinion.ToString());
+    }
+
+    public static void AdjustOpinionByAmount(int amount)
+    {
+        //adjust Opinion by percent and set its value to the static variable
+        Debug.Log("Opinion was " + Opinion.ToString());
+        
+        Opinion += amount;
+
+        Debug.Log("Opinion is now " + Opinion.ToString());
+    }
+
+    public static List<float> GetProgressData()
+    {
+        List<float> progressList = new List<float>();
+
+        progressList.Add(Currency);
+        progressList.Add(Pollution);
+        progressList.Add(Opinion);
+
+        return progressList;
     }
 
 }

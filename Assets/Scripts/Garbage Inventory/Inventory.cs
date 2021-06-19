@@ -20,6 +20,10 @@ public class Inventory
         itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 10});
         itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 10});
         itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 10});
+        itemList.Add(new Item { itemType = Item.ItemType.SmallWood, amount = 10});
+        itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 10});
+        itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 10});
+        itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 10});
     }
 
     public void AddItem(Item item)
@@ -120,7 +124,7 @@ public class Inventory
 
         float VariableYield = RecyclingInventory.GetVariableYield();
         Debug.Log("Variable yield is "+ VariableYield.ToString());
-        
+
         yield = yield * VariableYield;
         Debug.Log("Final yield calculated to be "+ yield.ToString());
 
@@ -133,7 +137,7 @@ public class Inventory
             return;
         }
 
-        // check available inventory  space against mass
+        // check available inventory space against mass
         bool canHold = RecyclingInventory.HaveAvailableCapacity(mass * item.amount * yield);
         canHoldAll = canHold;
         //cant hold the entire stack of items
@@ -141,6 +145,7 @@ public class Inventory
         {
             if(RecyclingInventory.HaveAvailableCapacity(mass * yield))
             {
+                //get the num of items player can recycle and still hold
                 canHoldAmount = GetCanHoldAmount(item);
                 canHold = true;
             }
