@@ -10,9 +10,17 @@ public class LightingManager : MonoBehaviour
    [SerializeField] private LightingPreset Preset;
    //Variables
    [SerializeField, Range(0,24)] private float TimeOfDay;
+   [SerializeField] private GameObject MainGate;
 
    private bool resetNewDay = false;
    private bool nightHasCome = false;
+   private Animator animator;
+   private bool GateClosed = true;
+
+    private void Start()
+    {
+        animator = MainGate.GetComponent<Animator>();
+    }
 
     private void Update()
     {
@@ -53,6 +61,21 @@ public class LightingManager : MonoBehaviour
         {
             nightHasCome = true;
             //Debug.Log("Set nightHasCome to TRUE");
+        }
+
+        //set bool for opening gate in morning
+        if(TimeOfDay > 5 && GateClosed)
+        {
+            GateClosed = false;
+            animator.SetBool("IsClosed", GateClosed);
+            Debug.LogWarning("Opened gate");
+        }
+        //set bool for closing gate in evening
+          if(TimeOfDay > 19 && !GateClosed)
+        {
+            GateClosed = true;
+            animator.SetBool("IsClosed", GateClosed);
+            Debug.LogWarning("Clossed gate");
         }
     }
 
