@@ -16,14 +16,14 @@ public class Inventory
         this.useItemAction = useItemAction;
         itemList = new List<Item>();
 
-        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.SmallWood, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 100});
-        itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 100});
+        itemList.Add(new Item { itemType = Item.ItemType.Can, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.SmallWood, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 20});
     }
 
     public void AddItem(Item item)

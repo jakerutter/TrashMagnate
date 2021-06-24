@@ -24,6 +24,9 @@ public class ProgressUI : MonoBehaviour
     {
         if(counter <= 0f)
         {
+            //call to todo update opinion
+            RecyclingInventory.UpdateOpinion();
+
             List<float> progressList = RecyclingInventory.GetProgressData();
 
             float wealth = progressList[0];
@@ -34,7 +37,7 @@ public class ProgressUI : MonoBehaviour
             personalWealthBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(progressInt, 230));
             pollutionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(pollution, 230));
             wasteBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(waste, 230));
-            publicOpinionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(opinion, 230));
+            publicOpinionBar.GetComponent<RectTransform>().SetSizeWithCurrentAnchors( RectTransform.Axis.Vertical, Mathf.Min(115 + opinion, 230));
 
             progressInt += 1;
 

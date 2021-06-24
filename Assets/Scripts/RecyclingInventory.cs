@@ -16,7 +16,7 @@ public static class RecyclingInventory
     private static float CarryingCapacity = 5000f;
     private static float AvailableCapcity;
     private static float TotalInventoryMass;
-    private static int RecyclingSkill = 0;
+    private static int RecyclingSkill = 2;
     private static float Currency;
     private static int RecyclingTechPoints = 1500;
     private static bool BasicRecyclerBuilt;
@@ -34,11 +34,12 @@ public static class RecyclingInventory
     private static float PickupRadius;
     public static float VariableYield = 1f;
     public static float Pollution = 0f;
-    public static float PollutionYield = 25f;
+    public static float PollutionYield = 50f;
     public static float Waste = 0f;
-    public static float WasteYield = 5f;
+    public static float WasteYield = 10f;
     public static float Energy = 0f;
     public static float Opinion = 0f;
+    public static int Customers = 0;
 
     public static float GetPlasticInventory()
     {
@@ -576,6 +577,12 @@ public static class RecyclingInventory
         Debug.Log("Opinion is now " + Opinion.ToString());
     }
 
+    public static void UpdateOpinion()
+    {
+        // Opinion formula: Opinion = - Pollution + -2(Waste) + Customers + 2(Energy) + VariableOpinion?
+        Opinion = -Pollution +  -2*Waste + Customers + 2*Energy;
+    }
+
     public static List<float> GetProgressData()
     {
         List<float> progressList = new List<float>();
@@ -586,6 +593,16 @@ public static class RecyclingInventory
         progressList.Add(Waste);
 
         return progressList;
+    }
+
+    public static int GetCustomers()
+    {
+        return Customers;
+    }
+
+    public static void SetCustomers(int customers)
+    {
+        Customers += customers;
     }
 
 }

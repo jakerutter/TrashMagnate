@@ -12423,8 +12423,8 @@ CanvasGroup:
   m_GameObject: {fileID: 472088126}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &472088128
 MonoBehaviour:
@@ -13688,9 +13688,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 523219976}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &523219979
 MonoBehaviour:
@@ -22569,7 +22569,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1465337054}
   m_HandleRect: {fileID: 1465337053}
   m_Direction: 2
-  m_Value: 0.49999988
+  m_Value: 0.5
   m_Size: 0.68571424
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -31264,8 +31264,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1141637447}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1141637450
 MonoBehaviour:
@@ -47240,8 +47240,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1705745684}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1705745688
 MonoBehaviour:
@@ -52769,8 +52769,8 @@ CanvasGroup:
   m_GameObject: {fileID: 1913245942}
   m_Enabled: 1
   m_Alpha: 0
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1913245944
 MonoBehaviour:
