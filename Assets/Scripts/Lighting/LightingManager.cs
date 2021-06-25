@@ -64,18 +64,20 @@ public class LightingManager : MonoBehaviour
         }
 
         //set bool for opening gate in morning
-        if(TimeOfDay > 5 && GateClosed)
+        if(TimeOfDay > 5 && TimeOfDay < 6 && GateClosed)
         {
             GateClosed = false;
             animator.SetBool("IsClosed", GateClosed);
             Debug.LogWarning("Opened gate");
+            MainGate.transform.Rotate(0, 0, 90);
         }
         //set bool for closing gate in evening
           if(TimeOfDay > 19 && !GateClosed)
         {
             GateClosed = true;
             animator.SetBool("IsClosed", GateClosed);
-            Debug.LogWarning("Clossed gate");
+            Debug.LogWarning("Closed gate");
+            MainGate.transform.Rotate(0, 0, -90);
         }
     }
 
