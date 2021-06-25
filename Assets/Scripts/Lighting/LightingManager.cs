@@ -69,7 +69,7 @@ public class LightingManager : MonoBehaviour
             GateClosed = false;
             animator.SetBool("IsClosed", GateClosed);
             Debug.LogWarning("Opened gate");
-            MainGate.transform.Rotate(0, 0, 90);
+            MainGate.transform.Rotate(0, 0, 180);
         }
         //set bool for closing gate in evening
           if(TimeOfDay > 19 && !GateClosed)
@@ -77,7 +77,7 @@ public class LightingManager : MonoBehaviour
             GateClosed = true;
             animator.SetBool("IsClosed", GateClosed);
             Debug.LogWarning("Closed gate");
-            MainGate.transform.Rotate(0, 0, -90);
+            MainGate.transform.Rotate(0, 0, -180);
         }
     }
 
