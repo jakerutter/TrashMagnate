@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 4890132680641245255}
   - component: {fileID: 4890132680639918505}
   - component: {fileID: 4890132680638952041}
+  - component: {fileID: 1518769818005973171}
+  - component: {fileID: 7859152006537207841}
   m_Layer: 0
   m_Name: building13
   m_TagString: Untagged
@@ -170,6 +172,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1518769818005973171
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890132680640949671}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.15, z: 0.069999985}
+  m_Center: {x: -0.0045288634, y: 0.01, z: 0.034999993}
+--- !u!114 &7859152006537207841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4890132680640949671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ebe716de67fb42f18666c0b30a3f984, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SellUI: {fileID: 0}
 --- !u!1 &5780893902765353165
 GameObject:
   m_ObjectHideFlags: 0
