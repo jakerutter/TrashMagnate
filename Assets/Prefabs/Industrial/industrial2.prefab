@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 8352799185987248408}
   - component: {fileID: 8352799185984381242}
   - component: {fileID: 8352799185985348474}
+  - component: {fileID: 4342237073445586078}
   m_Layer: 0
-  m_Name: Plane.033
+  m_Name: industrial2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4342237073445586078
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8352799185987616056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.023838269, y: 0.007205969, z: 0.016967678}
+  m_Center: {x: 0.0010660952, y: -0.000062788706, z: 0.008456296}
