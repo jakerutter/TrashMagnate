@@ -32,6 +32,9 @@ TagManager:
   - Messenger
   - RTPointDisplay
   - RecycleInventoryToggle
+  - Fire
+  - Ground
+  - GarbageCan
   layers:
   - Default
   - TransparentFX
