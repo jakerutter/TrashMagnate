@@ -72,7 +72,7 @@ public class LightingManager : MonoBehaviour
             MainGate.transform.Rotate(0, 0, 180);
         }
         //set bool for closing gate in evening
-          if(TimeOfDay > 19 && !GateClosed)
+        if(TimeOfDay > 19 && !GateClosed)
         {
             GateClosed = true;
             //animator.SetBool("IsClosed", GateClosed);

@@ -43,7 +43,7 @@ public class Player : MonoBehaviour
             inventory = newInventory;
         }
 
-        Debug.Log("In OnTriggerEnter in Player script");
+        //Debug.Log("In OnTriggerEnter in Player script");
         bool questComplete = false;
         
         ItemWorld itemWorld = collider.GetComponent<ItemWorld>();

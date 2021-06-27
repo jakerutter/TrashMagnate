@@ -6,9 +6,6 @@ public static class Quests
 {
     private static List<RecyclingQuest> ActiveRecyclingQuests;
     private static List<RecyclingQuest> CompleteRecyclingQuests;
-    private static List<LaunchQuest> LaunchQuests;
-    private static List<LaunchQuest> ActiveLaunchQuests;
-    private static List<LaunchQuest> CompleteLaunchQuests;
 
     public static List<RecyclingQuest> GetActiveRecyclingQuests()
     {
@@ -28,31 +25,6 @@ public static class Quests
     public static void SetCompleteRecyclingQuests(List<RecyclingQuest> quests)
     {
         CompleteRecyclingQuests = quests;
-    }
-
-    public static List<LaunchQuest> GetLaunchQuests()
-    {
-        return LaunchQuests;
-    }
-
-     public static List<LaunchQuest> GetActiveLaunchQuests()
-    {
-        return ActiveLaunchQuests;
-    }
-
-    public static void SetActiveLaunchQuests(List<LaunchQuest> quests)
-    {
-        ActiveLaunchQuests = quests;
-    }
-
-    public static List<LaunchQuest> GetCompleteLaunchQuests()
-    {
-        return CompleteLaunchQuests;
-    }
-
-    public static void SetCompleteLaunchQuests(List<LaunchQuest> quests)
-    {
-        CompleteLaunchQuests = quests;
     }
 
     public static void InitialLoadRecyclingQuests()
@@ -108,11 +80,6 @@ public static class Quests
         });
 
         ActiveRecyclingQuests = initialQuests;
-    }
-
-    private static void InitialLoadLaunchQuests(List<LaunchQuest> launchQuests)
-    {
-        LaunchQuests = launchQuests;
     }
 
     public static RecyclingQuest GenerateNewRecyclingQuest(RecyclingQuest quest)
