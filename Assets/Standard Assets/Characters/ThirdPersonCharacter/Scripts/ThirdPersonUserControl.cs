@@ -49,7 +49,11 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             float h = CrossPlatformInputManager.GetAxis("Horizontal");
             float v = CrossPlatformInputManager.GetAxis("Vertical");
             bool crouch = Input.GetKey(KeyCode.C);
-
+            // if(crouch)
+            // {
+            //   Debug.LogWarning("Crouch!");  
+            // }
+            
             // calculate move direction to pass to character
             if (m_Cam != null)
             {
@@ -61,10 +65,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 // we use world-relative directions in the case of no main camera
                 m_Move = v*Vector3.forward + h*Vector3.right;
+                Debug.Log("cam main is null broski");
             }
 #if !MOBILE_INPUT
 			// walk speed multiplier
-	        if (Input.GetKey(KeyCode.LeftShift)) m_Move *= 0.5f;
+	        if (Input.GetKey(KeyCode.LeftShift)) 
+            {
+                m_Move *= 0.5f;
+                //initial sprint animation
+                //Animator ani = this.GetComponent<Animator>();
+                //ani.SetTrigger("Run");
+            }
 #endif
 
             // pass all parameters to the character control script

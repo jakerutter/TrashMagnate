@@ -16,12 +16,12 @@ public class CameraController : MonoBehaviour
     {
         Vector3 pos = cam.transform.position;
         Vector3 playerPos = playerLocation.position;
-        pos.x = playerPos.x;
-        pos.y = playerPos.y+2.4f;
-        pos.z = playerPos.z-3;
+        //pos.x = playerPos.x;
+        //pos.y = playerPos.y+.2f;
+        //pos.z = playerPos.z+.3f;
 
-        cam.transform.position = pos;
-        cam.transform.LookAt(playerLocation);           
+        //cam.transform.position = pos;
+        //cam.transform.LookAt(playerLocation);           
     }
 
     void Update()
@@ -38,13 +38,13 @@ public class CameraController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Vector3 pos = cam.transform.position;
-        Vector3 playerPos = playerLocation.position;
+        // Vector3 pos = cam.transform.position;
+        // Vector3 playerPos = playerLocation.position;
 
-        pos.x = playerPos.x;
-        pos.z = playerPos.z-3;
+        // pos.x = playerPos.x;
+        // pos.z = playerPos.z-3;
 
-        cam.transform.position = pos;
+        // cam.transform.position = pos;
 
         // float scroll = Input.GetAxis("Mouse ScrollWheel");
 

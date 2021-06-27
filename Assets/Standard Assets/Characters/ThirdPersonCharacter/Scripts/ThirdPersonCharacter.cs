@@ -45,11 +45,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 
 		public void Move(Vector3 move, bool crouch, bool jump)
 		{
-
 			// convert the world relative moveInput vector into a local-relative
 			// turn amount and forward amount required to head in the desired
 			// direction.
-			if (move.magnitude > 1f) move.Normalize();
+			if (move.magnitude < 1f)
+			{ 
+				move.Normalize();
+			}
+			// else
+			// {
+			// 	Debug.LogWarning("Magnitude is just " + move.magnitude.ToString());
+			// }
 			move = transform.InverseTransformDirection(move);
 			CheckGroundStatus();
 			move = Vector3.ProjectOnPlane(move, m_GroundNormal);
@@ -216,6 +222,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			}
 			else
 			{
+				//Debug.Log("not grounded");
 				m_IsGrounded = false;
 				m_GroundNormal = Vector3.up;
 				m_Animator.applyRootMotion = false;
