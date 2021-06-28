@@ -105,7 +105,7 @@ public class Player : MonoBehaviour
             inventoryUI.SetInventory(inventory);
             recycleAll.SetRecycleAllInv(inventory);
         } else {
-            Debug.Log("ItemWorld is null in player script");
+            //Debug.Log("ItemWorld is null in player script");
         }
     }
 

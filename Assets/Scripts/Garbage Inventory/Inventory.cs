@@ -24,6 +24,7 @@ public class Inventory
         itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.PlasticJug, amount = 20});
     }
 
     public void AddItem(Item item)
@@ -172,8 +173,8 @@ public class Inventory
             // Debug.Log("pollution is " + pollution);
             // Debug.Log("waste is " + waste);
 
-            RecyclingInventory.SetPollution(pollution);
-            RecyclingInventory.SetWaste(waste);
+            RecyclingInventory.AddPollution(pollution);
+            RecyclingInventory.AddWaste(waste);
 
             //play sound for item recycled (by type)
             if(rawType == RecyclingQuest.RawType.Paper)

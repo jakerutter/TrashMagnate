@@ -137,6 +137,11 @@ public static class RecyclingInventory
         return RecyclingSkill;
     }
 
+     public static void SetRecyclingSkill(int skill)
+    {
+        RecyclingSkill = skill;
+    }
+
     public static void AddRecyclingSkill(int skill)
     {
         RecyclingSkill += skill;
@@ -153,12 +158,22 @@ public static class RecyclingInventory
 
     public static void SetCurrency(float currency)
     {
+        Currency = currency;
+    }
+
+    public static void AddCurrency(float currency)
+    {
         Currency += currency;
     }
 
     public static int GetRecyclingTechPoints()
     {
         return RecyclingTechPoints;
+    }
+
+    public static void SetRecyclingTechPoints(int rtPoints)
+    {
+        RecyclingTechPoints = rtPoints;
     }
 
     public static void AddRecyclingTechPoints(int rtPoints)
@@ -193,6 +208,11 @@ public static class RecyclingInventory
 
     public static void SetCarryingCapacity(float capacity)
     {
+        CarryingCapacity = capacity;
+    }
+
+    public static void AddCarryingCapacity(float capacity)
+    {
         CarryingCapacity += capacity;
     }
 
@@ -203,6 +223,12 @@ public static class RecyclingInventory
         AvailableCapcity = Mathf.Max(AvailableCapcity, 0f);
         return AvailableCapcity;
     }
+
+    public static void SetAvailableCapacity(float capacity)
+    {
+        AvailableCapcity = capacity;
+    }
+
 
     public static bool HaveAvailableCapacity(float mass)
     {
@@ -223,6 +249,11 @@ public static class RecyclingInventory
         return TotalInventoryMass;
     }
 
+    public static void SetTotalInventoryMass(float mass)
+    {
+        TotalInventoryMass = mass;
+    }
+
     public static void AdjustAvailableCapacity(float mass)
     {
         float carryLimit = GetCarryingCapacity();
@@ -234,6 +265,36 @@ public static class RecyclingInventory
         // GameObject cap = GameObject.FindGameObjectWithTag("GarbageCapacityText");
         // Text capText = cap.GetComponent<Text>();
         // capText.text = "Carrying Capacity\n "+totalMass+" kg / "+carryLimit+ " kg";  
+    }
+
+    public static bool GetBasicRecyclerBuilt()
+    {
+        return BasicRecyclerBuilt;
+    }
+
+    public static bool GetModernRecyclerBuilt()
+    {
+        return ModernRecyclerBuilt;
+    }
+
+    public static bool GetAdvancedRecyclerBuilt()
+    {
+        return AdvancedRecyclerBuilt;
+    }
+
+    public static void SetBasicRecyclerBuilt(bool built)
+    {
+        BasicRecyclerBuilt = built;
+    }
+
+    public static void SetModernRecyclerBuilt(bool built)
+    {
+        ModernRecyclerBuilt = built;
+    }
+
+    public static void SetAdvancedRecyclerBuilt(bool built)
+    {
+        AdvancedRecyclerBuilt = built;
     }
 
     public static void SetRecyclerBuilt(Recycler recycler)
@@ -252,7 +313,36 @@ public static class RecyclingInventory
         }
     }
 
-  
+    public static bool GetBasicRecyclerPurchased()
+    {
+        return BasicRecyclerPurchased;
+    }
+
+    public static bool GetModernRecyclerPurchased()
+    {
+        return ModernRecyclerPurchased;
+    }
+
+    public static bool GetAdvancedRecyclerPurchased()
+    {
+        return AdvancedRecyclerPurchased;
+    }
+
+    public static void SetBasicRecyclerPurchased(bool purchased)
+    {
+        BasicRecyclerPurchased = purchased;
+    }
+
+    public static void SetModernRecyclerPurchased(bool purchased)
+    {
+        ModernRecyclerPurchased = purchased;
+    }
+
+    public static void SetAdvancedRecyclerPurchased(bool purchased)
+    {
+        AdvancedRecyclerPurchased = purchased;
+    }
+
     public static void SetRecyclerPurchased(Recycler recycler)
     {
         if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
@@ -305,6 +395,36 @@ public static class RecyclingInventory
         return false;
     }
 
+    public static bool GetBasicRecyclerUnlocked()
+    {
+        return BasicRecyclerUnlocked;
+    }
+
+    public static bool GetModernRecyclerUnlocked()
+    {
+        return ModernRecyclerUnlocked;
+    }
+
+    public static bool GetAdvancedRecyclerUnlocked()
+    {
+        return AdvancedRecyclerUnlocked;
+    }
+
+    public static void SetBasicRecyclerUnlocked(bool unlocked)
+    {
+        BasicRecyclerUnlocked = unlocked;
+    }
+
+    public static void SetModernRecyclerUnlocked(bool unlocked)
+    {
+        ModernRecyclerUnlocked = unlocked;
+    }
+
+    public static void SetAdvancedRecyclerUnlocked(bool unlocked)
+    {
+        AdvancedRecyclerUnlocked = unlocked;
+    }
+
     public static bool GetIsRecyclerUnlocked(Recycler recycler)
     {
          if(recycler.recyclerType == Recycler.RecyclerType.BasicRecycler)
@@ -343,14 +463,24 @@ public static class RecyclingInventory
         return UnlockedTechNodes;
     }
 
-    public static void SetUnlockedTechNodes(int ID)
+    public static void AddUnlockedTechNodes(int ID)
     {
         UnlockedTechNodes.Add(ID);
     }
 
-      public static float GetPickupRadius()
+    public static void SetUnlockedTechNodes(List<int> techNodes)
+    {
+        UnlockedTechNodes = techNodes;
+    }
+
+    public static float GetPickupRadius()
     {
         return PickupRadius;
+    }
+
+    public static void SetPickupRadius(float radius)
+    {
+        PickupRadius = radius;
     }
 
     public static void AdjustPickupRadiusByPercent(float percent, bool isPositive)
@@ -373,6 +503,11 @@ public static class RecyclingInventory
     public static float GetVariableYield()
     {
         return VariableYield;
+    }
+
+    public static void SetVariableYield(float yield)
+    {
+        VariableYield = yield;
     }
 
     public static void  AdjustVariableYieldByPercent(float percent, bool isPositive)
@@ -414,6 +549,11 @@ public static class RecyclingInventory
 
     public static void SetPollution(float amount)
     {
+        Pollution = amount;
+    }
+
+    public static void AddPollution(float amount)
+    {
         //adjust Pollution by percent and set its value to the static variable
         Debug.Log("Pollution was " + Pollution.ToString());
         
@@ -425,6 +565,11 @@ public static class RecyclingInventory
     public static float GetPollutionYield()
     {
         return PollutionYield;
+    }
+
+    public static void SetPollutionYield(float amount)
+    {
+        PollutionYield = amount;
     }
 
     public static void AdjustPollutionYieldByPercent(float percent, bool isPositive)
@@ -458,6 +603,11 @@ public static class RecyclingInventory
         return Waste;
     }
 
+    public static void SetWaste(float amount)
+    {
+        Waste = amount;
+    }
+
     public static void AdjustWasteByPercent(float percent, bool isPositive)
     {
         //adjust Waste by percent and set its value to the static variable
@@ -474,7 +624,7 @@ public static class RecyclingInventory
         Debug.Log("Waste is now " + Waste.ToString());
     }
 
-    public static void SetWaste(float amount)
+    public static void AddWaste(float amount)
     {
         //adjust Waste by percent and set its value to the static variable
         Debug.Log("Waste was " + Waste.ToString());
@@ -487,6 +637,11 @@ public static class RecyclingInventory
     public static float GetWasteYield()
     {
         return WasteYield;
+    }
+
+    public static void SetWasteYield(float amount)
+    {
+        WasteYield = amount;
     }
 
     public static void AdjustWasteYieldByPercent(float percent, bool isPositive)
@@ -505,7 +660,7 @@ public static class RecyclingInventory
         Debug.Log("WasteYield is now " + WasteYield.ToString());
     }
 
-    public static void SetWasteYield(float amount)
+    public static void AddWasteYield(float amount)
     {
         //adjust WasteYield by percent and set its value to the static variable
         Debug.Log("WasteYield was " + WasteYield.ToString());
@@ -515,9 +670,14 @@ public static class RecyclingInventory
         Debug.Log("WasteYield is now " + WasteYield.ToString());
     }
 
-     public static float GetEnergy()
+    public static float GetEnergy()
     {
         return Energy;
+    }
+
+    public static void SetEnergy(float energy)
+    {
+        Energy = energy;
     }
 
     public static void AdjustEnergyByPercent(float percent, bool isPositive)
@@ -549,6 +709,11 @@ public static class RecyclingInventory
     public static float GetOpinion()
     {
         return Opinion;
+    }
+
+    public static void SetOpinion(float opinion)
+    {
+        Opinion = opinion;
     }
 
     public static void AdjustOpinionByPercent(float percent, bool isPositive)
@@ -601,6 +766,11 @@ public static class RecyclingInventory
     }
 
     public static void SetCustomers(int customers)
+    {
+        Customers = customers;
+    }
+
+    public static void AddCustomers(int customers)
     {
         Customers += customers;
     }
