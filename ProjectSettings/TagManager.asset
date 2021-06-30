@@ -35,6 +35,7 @@ TagManager:
   - Fire
   - Ground
   - GarbageCan
+  - Skin
   layers:
   - Default
   - TransparentFX

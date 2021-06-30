@@ -1647,7 +1647,6 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 854fbf871ae9fe5498006e51ee70bfe2, type: 3}
   - {fileID: 2800000, guid: 682969f26bc9db54f82735cd53c47ad9, type: 3}
   - {fileID: 2800000, guid: 68187abd81a0cea44a1d6132c1aa8f09, type: 3}
-  - {fileID: 2800000, guid: 68187abd81a0cea44a1d6132c1aa8f09, type: 3}
   - {fileID: 2800000, guid: c33e9d3336d5c434ebe29c380d9ffcab, type: 3}
   - {fileID: 2800000, guid: 19b102bc009074d499b1c55f4e842d48, type: 3}
   - {fileID: 2800000, guid: a03da08cc786e3446a6875d2a82ecdae, type: 3}
@@ -1661,6 +1660,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: a27b6d1a42103a54b8b8c635a55e9b4a, type: 3}
   - {fileID: 2800000, guid: 33d381644ff0b884299815a06b1e77f0, type: 3}
   - {fileID: 2800000, guid: 34f45b641fba3a946a81d3ae0c17f73d, type: 3}
+  - {fileID: 2800000, guid: ba2c5f2769650604986e51981e18a9aa, type: 3}
+  - {fileID: 2800000, guid: fcc13f30d9de5c84c88902f67fe89820, type: 3}
   materialList:
   - {fileID: 2100000, guid: 3682f7747d485db4586750a832808b31, type: 2}
   - {fileID: 0}

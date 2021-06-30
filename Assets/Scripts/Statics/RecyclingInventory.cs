@@ -6,6 +6,8 @@ using TMPro;
 
 public static class RecyclingInventory
 {
+    public static Texture2D PlayerSkin;
+
     private static float PlasticInventory;
     private static float RubberInventory;
     private static float MetalInventory;
@@ -773,6 +775,62 @@ public static class RecyclingInventory
     public static void AddCustomers(int customers)
     {
         Customers += customers;
+    }
+
+    public static Texture2D GetPlayerSkin()
+    {
+        return PlayerSkin;
+    }
+
+    public static void SetPlayerSkin(Texture2D skin)
+    {
+        PlayerSkin = skin;
+        Debug.Log("saved skin in SetPlayerSkin");
+    }
+
+    public static void SaveSkinToDisk()
+    {
+        Texture2D skin = DeCompress(PlayerSkin);
+        
+        byte[] bytes = skin.EncodeToPNG();
+
+        System.IO.File.WriteAllBytes(Application.dataPath + "/Save/PlayerSkin.png", bytes);
+
+        Debug.Log("skin saved " + bytes.Length / 1024 + "Kb was saved as " + Application.dataPath + "/Save/PlayerSkin");
+    }
+
+    public static void LoadSkinFromDisk()
+    {
+        byte[] bytes;
+        bytes = System.IO.File.ReadAllBytes(Application.dataPath + "/Save/PlayerSkin.png");
+        PlayerSkin = new Texture2D(1,1);
+        PlayerSkin.LoadImage(bytes);
+
+        // apply skin to charactr
+        GameObject playerSkinObj = GameObject.FindGameObjectWithTag("Skin");
+
+        SkinnedMeshRenderer renderer = playerSkinObj.GetComponent<SkinnedMeshRenderer>();
+        renderer.materials[0].mainTexture = PlayerSkin;
+    }
+
+    public static Texture2D DeCompress(this Texture2D source)
+    {
+        RenderTexture renderTex = RenderTexture.GetTemporary(
+                    source.width,
+                    source.height,
+                    0,
+                    RenderTextureFormat.Default,
+                    RenderTextureReadWrite.Linear);
+
+        Graphics.Blit(source, renderTex);
+        RenderTexture previous = RenderTexture.active;
+        RenderTexture.active = renderTex;
+        Texture2D readableText = new Texture2D(source.width, source.height);
+        readableText.ReadPixels(new Rect(0, 0, renderTex.width, renderTex.height), 0, 0);
+        readableText.Apply();
+        RenderTexture.active = previous;
+        RenderTexture.ReleaseTemporary(renderTex);
+        return readableText;
     }
 
 }

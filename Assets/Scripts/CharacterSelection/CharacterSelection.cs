@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class CharacterSelection : MonoBehaviour
 {
@@ -15,24 +16,31 @@ public class CharacterSelection : MonoBehaviour
 
     [SerializeField] private List<Texture2D> textureList;
     [SerializeField] private List<Material> materialList;
-
+    AudioManager _audio;
     private int currentSelection = 1;
 
     private void Start()
     {
         string message = "Character " + currentSelection + " of 55";
-        currentSelectionText.GetComponent<TextMeshProUGUI>().SetText(message);
+        currentSelectionText.GetComponent<TextMeshProUGUI>().SetText(message);      
+        _audio = FindObjectOfType<AudioManager>();
 
     }
 
     public void SelectCharacter()
     {
         Debug.Log("Selected character");
+        _audio.Play("LevelUp");
+        RecyclingInventory.SetPlayerSkin(currentTexture);
+        SceneManager.LoadScene(1);  
+        
     }
 
     public void PreviousCharacter()
     {
         Debug.Log("Show previous character");
+         _audio.Play("MenuAction");
+
         currentSelection -= 1;
 
         if(currentSelection < 1)
@@ -59,6 +67,8 @@ public class CharacterSelection : MonoBehaviour
     public void NextCharacter()
     {
         Debug.Log("Show next character");
+        _audio.Play("MenuAction");
+
         currentSelection += 1;
 
         if(currentSelection > 55)
@@ -72,9 +82,9 @@ public class CharacterSelection : MonoBehaviour
         //set current texture
         int index;
         index = currentSelection + 24;
-        if(index > 55)
+        if(index > 54)
         {
-            index -= 55;   
+            index -= 54;   
         }
 
         currentTexture = textureList[index];

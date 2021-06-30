@@ -13,6 +13,7 @@ public class DataManager : MonoBehaviour
     //6) Stats
     //7) Date / Time
     //8) Decision Dates pending
+
     public float PlasticInventory;
     public float RubberInventory;
     public float MetalInventory;
@@ -68,7 +69,7 @@ public class DataManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.O))
+        if(Input.GetKeyUp(KeyCode.O))
         {
             if(delay <= 0f)
             {
@@ -77,7 +78,7 @@ public class DataManager : MonoBehaviour
             }
             
         }
-        else if(Input.GetKey(KeyCode.P))
+        else if(Input.GetKeyUp(KeyCode.P))
         {
             if(delay <= 0f)
             {
@@ -93,8 +94,11 @@ public class DataManager : MonoBehaviour
     {
         Debug.Log("attempting save");
         HydrateVariables();
-        messenger.SetMessage(Messenger.MessageType.Success, "Game Saved");
         SaveSystem.SaveGame(this);
+        //save current skin
+        RecyclingInventory.SaveSkinToDisk();
+
+        messenger.SetMessage(Messenger.MessageType.Success, "Game Saved");
     }
 
     public void LoadGame()
@@ -111,7 +115,10 @@ public class DataManager : MonoBehaviour
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         player.transform.position =  position;
-
+        
+        //Set Player skin
+        RecyclingInventory.LoadSkinFromDisk();
+        //RecyclingInventory.SetPlayerSkin(PlayerSkin);
         //Set statics
         RecyclingInventory.SetPlasticInventory(PlasticInventory);
         RecyclingInventory.SetRubberInventory(RubberInventory);
@@ -196,7 +203,7 @@ public class DataManager : MonoBehaviour
         PollutionYield = RecyclingInventory.GetPollutionYield();
         Waste = RecyclingInventory.GetWaste();
         WasteYield = RecyclingInventory.GetWasteYield();
-        
+
         Energy = RecyclingInventory.GetEnergy();
         Opinion = RecyclingInventory.GetOpinion();
         Customers = RecyclingInventory.GetCustomers();

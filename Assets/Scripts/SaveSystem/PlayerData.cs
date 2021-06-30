@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerData
 {
     public float[] playerPosition;
+    //public Texture2D PlayerSkin;
+
     public float PlasticInventory;
     public float RubberInventory;
     public float MetalInventory;
@@ -55,6 +57,7 @@ public class PlayerData
         playerPosition[1] = manager.transform.position.y;
         playerPosition[2] = manager.transform.position.z;
 
+        //PlayerSkin = manager.PlayerSkin;
         PlasticInventory = manager.PlasticInventory;
         RubberInventory = manager.RubberInventory;
         MetalInventory = manager.MetalInventory;
