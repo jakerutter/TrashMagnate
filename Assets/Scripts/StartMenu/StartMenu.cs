@@ -40,7 +40,7 @@ public class StartMenu : MonoBehaviour
 
     public void Credits()
     {
-        Debug.Log("Show game credits");
+        Debug.Log("Credits selected");
         _audio.Play("MenuAction");
 
         //Show game credits 
