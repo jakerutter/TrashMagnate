@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class StartMenu : MonoBehaviour
 {
-    public GameObject newGamePanel;
 
     private AudioManager _audio;
 
@@ -44,5 +43,19 @@ public class StartMenu : MonoBehaviour
         _audio.Play("MenuAction");
 
         //Show game credits 
+    }
+
+    public void StartGame()
+    {
+        Debug.Log("Start game selected");
+        _audio.Play("MenuAction");
+
+        //Start game 
+    }
+
+    public void GoBack()
+    {
+        Debug.Log("Go back selected");
+        //display main menu, hide create game menu
     }
 }
