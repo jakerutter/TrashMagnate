@@ -20,11 +20,7 @@ public class MouseManager : MonoBehaviour
     public Button recycleInventoryToggle;
     public Button calendarMailToggle;
 
-    private GameObject selectedObject;
-    private float startPosX;
-    private float startPosY;
     private AudioManager _audio;
-    private bool _showInventory = false;
 
     void Start()
     {

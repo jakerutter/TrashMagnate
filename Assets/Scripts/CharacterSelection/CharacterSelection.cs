@@ -18,12 +18,22 @@ public class CharacterSelection : MonoBehaviour
     [SerializeField] private List<Material> materialList;
     AudioManager _audio;
     private int currentSelection = 1;
+    private Transform playerTransform;
 
     private void Start()
     {
         string message = "Character " + currentSelection + " of 55";
         currentSelectionText.GetComponent<TextMeshProUGUI>().SetText(message);      
         _audio = FindObjectOfType<AudioManager>();
+        _audio.Play("LightGuitar");
+        GameObject player = GameObject.FindGameObjectWithTag("Skin");
+
+        if(player == null)
+        {
+            Debug.Log("player is null");
+        }
+
+        playerTransform = player.transform;
 
     }
 
@@ -39,7 +49,7 @@ public class CharacterSelection : MonoBehaviour
     public void PreviousCharacter()
     {
         Debug.Log("Show previous character");
-         _audio.Play("MenuAction");
+         _audio.Play("MenuActionSmall");
 
         currentSelection -= 1;
 
@@ -67,7 +77,7 @@ public class CharacterSelection : MonoBehaviour
     public void NextCharacter()
     {
         Debug.Log("Show next character");
-        _audio.Play("MenuAction");
+        _audio.Play("MenuActionSmall");
 
         currentSelection += 1;
 
@@ -99,13 +109,21 @@ public class CharacterSelection : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
         {
             Debug.Log("Rotate left");
+            playerTransform.Rotate(Vector3.down * Time.deltaTime * 100f);
+            //Quaternion rotation = playerTransform.rotation;
+            //rotation.y += Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+            //playerTransform.rotation = rotation;
         }
         else if(Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             Debug.Log("Rotate right");
-        }
+            playerTransform.Rotate(Vector3.up * Time.deltaTime * 100f);
+            //Quaternion rotation = playerTransform.rotation;
+            //rotation.y += Input.GetAxisRaw("Horizontal") * Time.deltaTime;
+            //playerTransform.rotation = rotation;
+        }        
     }
 }
