@@ -653,7 +653,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 410839187}
-        m_MethodName: LoadGame
+        m_MethodName: LoadGameMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1485,7 +1485,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 410839187}
-        m_MethodName: StartGame
+        m_MethodName: StartNewGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3370,7 +3370,7 @@ GameObject:
   - component: {fileID: 1452306250}
   - component: {fileID: 1452306249}
   m_Layer: 5
-  m_Name: LoadGameBtn
+  m_Name: LoadGameStartBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3456,7 +3456,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 410839187}
-        m_MethodName: CreateNewGame
+        m_MethodName: LoadSelectedSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

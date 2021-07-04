@@ -21,7 +21,7 @@ public class Messenger : MonoBehaviour
     private bool messageShown = false;
     private List<GameObject> spawnedPanels;
 
-    void Start()
+    void Awake()
     {
         spawnedPanels = new List<GameObject>();
     }

@@ -19,7 +19,21 @@ public class PlayerSkin : MonoBehaviour
         }
         else
         {
-            Debug.Log("skin is null");
+            Debug.Log("skin is null, retrying");
+            RecyclingInventory.LoadSkinFromDisk();
+            skin = RecyclingInventory.GetPlayerSkin();
+
+            if(skin != null)
+            {
+                SkinnedMeshRenderer renderer = this.GetComponent<SkinnedMeshRenderer>();
+                renderer.materials[0].mainTexture = skin;
+            }
+            else
+            {
+                Debug.Log("skin skin skin is null again");
+            }
+
+           
         }
     }
 }

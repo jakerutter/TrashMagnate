@@ -790,23 +790,27 @@ public static class RecyclingInventory
 
     public static void SaveSkinToDisk()
     {
+        string saveFileName = SaveSystem.GetSpecificPath();
+
         Texture2D skin = DeCompress(PlayerSkin);
         
         byte[] bytes = skin.EncodeToPNG();
 
-        System.IO.File.WriteAllBytes(Application.dataPath + "/Save/PlayerSkin.png", bytes);
+        System.IO.File.WriteAllBytes(Application.persistentDataPath + "/" + saveFileName + "PlayerSkin.png", bytes);
 
-        Debug.Log("skin saved " + bytes.Length / 1024 + "Kb was saved as " + Application.dataPath + "/Save/PlayerSkin");
+        //Debug.Log("skin saved " + bytes.Length / 1024 + "Kb was saved as " + Application.persistentDataPath + saveFileName + "/PlayerSkin");
     }
 
     public static void LoadSkinFromDisk()
     {
+        string saveFileName = SaveSystem.GetSpecificPath();
+
         byte[] bytes;
-        bytes = System.IO.File.ReadAllBytes(Application.dataPath + "/Save/PlayerSkin.png");
+        bytes = System.IO.File.ReadAllBytes(Application.persistentDataPath +"/"+ saveFileName + "PlayerSkin.png");
         PlayerSkin = new Texture2D(1,1);
         PlayerSkin.LoadImage(bytes);
 
-        // apply skin to charactr
+        // apply skin to character
         GameObject playerSkinObj = GameObject.FindGameObjectWithTag("Skin");
 
         SkinnedMeshRenderer renderer = playerSkinObj.GetComponent<SkinnedMeshRenderer>();

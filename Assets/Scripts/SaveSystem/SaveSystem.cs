@@ -6,6 +6,7 @@ public static class SaveSystem
 {
     public static string specificPath;
     public static string entirePath;
+    public static bool isLoadingGame;
 
     public static void SaveGame(DataManager manager)
     {
@@ -42,6 +43,11 @@ public static class SaveSystem
         }
     }
 
+    public static string GetSpecificPath()
+    {
+        return specificPath;
+    }
+
     public static void SetSpecificPath(string path)
     {
         //this function is called when a player creates a new save
@@ -58,5 +64,15 @@ public static class SaveSystem
     public static string GetEntirePath()
     {
         return Application.persistentDataPath + "/" + specificPath + ".jtr";
+    }
+
+    public static void SetIsLoadingGame(bool isLoading)
+    {
+        isLoadingGame = isLoading;
+    }
+
+    public static bool GetIsLoadingGame()
+    {
+        return isLoadingGame;
     }
 }

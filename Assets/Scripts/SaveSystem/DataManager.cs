@@ -65,6 +65,12 @@ public class DataManager : MonoBehaviour
     void Start()
     {
         messenger = GameObject.FindGameObjectWithTag("Messenger").GetComponent<Messenger>();
+
+        //Game is starting from a loaded game -- load all data
+        if(SaveSystem.GetIsLoadingGame() == true)
+        {
+            LoadGame();
+        }
     }
 
     void Update()

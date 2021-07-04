@@ -12,6 +12,7 @@ public class StartMenu : MonoBehaviour
     public GameObject inputField;
     public TMP_Dropdown fileDropDown;
     private string saveNameText;
+    private string selectedLoadFile;
 
     // Start is called before the first frame update
     void Start()
@@ -23,13 +24,13 @@ public class StartMenu : MonoBehaviour
 
     public void CreateNewGame()
     {
-        Debug.Log("New game selected");
+        //Debug.Log("New game selected");
          _audio.Play("MenuAction");
     }
 
-    public void LoadGame()
+    public void LoadGameMenu()
     {
-        Debug.Log("Load game selected");
+        //Debug.Log("Load game selected");
          _audio.Play("MenuAction");
 
         //Open the list of save files to allow player to select and load the desired game
@@ -40,7 +41,7 @@ public class StartMenu : MonoBehaviour
 
         for (int i = 0; i < saveFiles.Length; i++)
         {
-            Debug.Log(saveFiles[i]);
+            //Debug.Log(saveFiles[i]);
 
             //remove most of path before displaying
             string saveName = saveFiles[i].Replace(Application.persistentDataPath.ToString(), "");
@@ -49,7 +50,20 @@ public class StartMenu : MonoBehaviour
             fileDropDown.options.Add(new TMP_Dropdown.OptionData() { text = saveName });
         }
 
-        fileDropDown.options.
+        fileDropDown.onValueChanged.AddListener(delegate
+       {
+           DropDownItemSelected(fileDropDown);
+       });
+    }
+
+    public void DropDownItemSelected(TMP_Dropdown dropdown)
+    {
+        int index = dropdown.value;
+        string saveName = dropdown.options[index].text;
+        Debug.Log(saveName + " selected");
+
+        //selectedLoadFile = Application.persistentDataPath + "/" + saveName + ".jtr";
+        selectedLoadFile = saveName;
     }
 
     public void Credits()
@@ -60,9 +74,9 @@ public class StartMenu : MonoBehaviour
         //Show game credits 
     }
 
-    public void StartGame()
+    public void StartNewGame()
     {
-        Debug.Log("Start game selected");
+        //Debug.Log("Start game selected");
         _audio.Play("MenuAction");
 
         //Create new save file
@@ -74,7 +88,7 @@ public class StartMenu : MonoBehaviour
 
     public void GoBack()
     {
-        Debug.Log("Go back selected");
+        //Debug.Log("Go back selected");
         //display main menu, hide create game menu
     }
 
@@ -87,5 +101,18 @@ public class StartMenu : MonoBehaviour
         Debug.Log(saveNameText + " is save file name");
 
         SaveSystem.SetSpecificPath(saveNameText);
+    }
+
+    public void LoadSelectedSave()
+    {
+        Debug.Log("loading game save " + selectedLoadFile);
+
+        //set is loading game to true
+        SaveSystem.SetIsLoadingGame(true);
+
+        //put the selected save name in save system
+        SaveSystem.SetSpecificPath(selectedLoadFile);
+        //load start scene
+        SceneManager.LoadScene(2);
     }
 }

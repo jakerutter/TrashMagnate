@@ -58,22 +58,25 @@ public class MouseManager : MonoBehaviour
 
         if(Input.GetKeyDown("r"))
         {
+            Debug.Log("recycling inv toggle");
             if(recycleInventoryToggle != null)
             {
                 _audio.Play("MenuAction");
                 recycleInventoryToggle.onClick.Invoke();
             }
         }
-          if(Input.GetKeyDown("t"))
+        if(Input.GetKeyDown("t"))
         {
+            Debug.Log("inventory toggle");
             if(recycleInventoryToggle != null)
             {
                 _audio.Play("MenuAction");
                 mainInventoryToggle.onClick.Invoke();
             }
         }
-         if(Input.GetKeyDown("m"))
+        if(Input.GetKeyDown("m"))
         {
+            Debug.Log("mail toggle");
             if(calendarMailToggle != null)
             {
                 _audio.Play("MenuAction");
