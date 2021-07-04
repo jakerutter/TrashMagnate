@@ -32,7 +32,7 @@ public class CharacterSelection : MonoBehaviour
         Debug.Log("Selected character");
         _audio.Play("LevelUp");
         RecyclingInventory.SetPlayerSkin(currentTexture);
-        SceneManager.LoadScene(1);  
+        SceneManager.LoadScene(2);  
         
     }
 
