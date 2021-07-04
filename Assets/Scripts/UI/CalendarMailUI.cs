@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -7,10 +6,11 @@ using CodeMonkey.Utils;
 
 public class CalendarMailUI : MonoBehaviour
 {
-    private static int CurrentDay = 15;
+    private static int CurrentDay = 1;
     private static int CurrentYear = 1;
     private static List<int> DecisionDay = new List<int>() { 7, 13 };
     private float countDown = 0f;
+    private TextMeshProUGUI timeText;
 
     public GameObject CalendarIcon;
     public GameObject MailIcon;
@@ -21,6 +21,7 @@ public class CalendarMailUI : MonoBehaviour
     public List<Tab> Tabs;
     public List<GameObject> UIPanels;
     public GameObject MainPanel;
+    public GameObject timeObject;
 
     void Start()
     {
@@ -33,6 +34,8 @@ public class CalendarMailUI : MonoBehaviour
                 SetPanel(tab);
             };
         }
+
+        timeText = timeObject.GetComponent<TextMeshProUGUI>();
     }
 
     void Update()
@@ -158,4 +161,8 @@ public class CalendarMailUI : MonoBehaviour
         }
     }
 
+    public void UpdateTime(string time)
+    {
+        timeText.SetText(time);
+    }
 }

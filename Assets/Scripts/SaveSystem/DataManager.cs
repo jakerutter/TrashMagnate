@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class DataManager : MonoBehaviour
@@ -75,7 +74,7 @@ public class DataManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKeyUp(KeyCode.O))
+        if(Input.GetKeyUp(KeyCode.Z))
         {
             if(delay <= 0f)
             {
@@ -84,7 +83,7 @@ public class DataManager : MonoBehaviour
             }
             
         }
-        else if(Input.GetKeyUp(KeyCode.P))
+        else if(Input.GetKeyUp(KeyCode.X))
         {
             if(delay <= 0f)
             {

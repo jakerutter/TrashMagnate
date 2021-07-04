@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
-using UnityEngine.EventSystems;
 
-public class MouseManager : MonoBehaviour
+public class InputManager : MonoBehaviour
 {
     // Need to know what objects are clickable
     //Need to swap cursors per object type
@@ -19,8 +16,11 @@ public class MouseManager : MonoBehaviour
     public Button mainInventoryToggle;
     public Button recycleInventoryToggle;
     public Button calendarMailToggle;
+    public GameObject pausePanel;
 
     private AudioManager _audio;
+    private float pauseCounter = 1.25f;
+    private bool timerSet = true;
 
     void Start()
     {
@@ -47,11 +47,8 @@ public class MouseManager : MonoBehaviour
         //     }
         // }
         //END TODO
-        if(Input.GetMouseButtonDown(0))
-        {
-            Debug.Log(gameObject.name);
-        }
-
+       
+        //recycling toggle
         if(Input.GetKeyDown("r"))
         {
             Debug.Log("recycling inv toggle");
@@ -61,6 +58,7 @@ public class MouseManager : MonoBehaviour
                 recycleInventoryToggle.onClick.Invoke();
             }
         }
+        //inventory toggle
         if(Input.GetKeyDown("t"))
         {
             Debug.Log("inventory toggle");
@@ -70,6 +68,7 @@ public class MouseManager : MonoBehaviour
                 mainInventoryToggle.onClick.Invoke();
             }
         }
+        //mail toggle
         if(Input.GetKeyDown("m"))
         {
             Debug.Log("mail toggle");
@@ -79,6 +78,28 @@ public class MouseManager : MonoBehaviour
                 calendarMailToggle.onClick.Invoke();
             }
         }
+        //pause menu
+        if (Input.GetKeyDown("p"))
+        {
+            _audio.Play("MenuAction");
+            PanelFader fader = pausePanel.GetComponent<PanelFader>();
+            fader.Fade(true);
+            pauseCounter = 1.25f;
+            timerSet = false;
+        }
+
+        pauseCounter -= Time.deltaTime;
+        if (pauseCounter <= 0f && !timerSet)
+        {
+            PauseTime();
+        }
+    }
+
+    private void PauseTime()
+    {
+        timerSet = true;
+        Debug.Log("stopping time");
+        Time.timeScale = 0f;
     }
 }
 

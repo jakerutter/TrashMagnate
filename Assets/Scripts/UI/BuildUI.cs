@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -155,7 +154,7 @@ public class BuildUI : MonoBehaviour
         }
     }
 
-     private void BuildingInventory_OnBuildingListChanged(object sender, System.EventArgs e)
+    private void BuildingInventory_OnBuildingListChanged(object sender, System.EventArgs e)
     {
         RefreshBuildingInventory();
     }

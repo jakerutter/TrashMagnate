@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[ExecuteAlways]
+//[ExecuteAlways]
 public class LightingManager : MonoBehaviour
 {
     //References
@@ -17,9 +15,12 @@ public class LightingManager : MonoBehaviour
    private Animator animator;
    private bool GateClosed = true;
 
+   private CalendarMailUI cal;
+
     private void Start()
     {
         animator = MainGate.GetComponent<Animator>();
+        cal = gameObject.GetComponent<CalendarMailUI>();
     }
 
     private void Update()
@@ -29,23 +30,25 @@ public class LightingManager : MonoBehaviour
             return;
         }
 
-        if(Application.isPlaying)
+        if(Time.timeScale > 0f)
         {
             TimeOfDay += Time.deltaTime;
             TimeOfDay %= 24; //clamp value between 0-24
             UpdateLighting(TimeOfDay / 24f);
+            cal.UpdateTime(TimeOfDay.ToString());
         }
-        else
-        {
-            UpdateLighting(TimeOfDay / 24f);
-        }
+        //else
+        //{
+        //    UpdateLighting(TimeOfDay / 24f);
+        //    string time = TimeOfDay.ToString();
+        //    cal.UpdateTime(time);
+        //}
         
         //if resetNewDay is true then update current date
         if(resetNewDay && nightHasCome)
         {
             resetNewDay = false;
             nightHasCome = false;
-            CalendarMailUI cal = gameObject.GetComponent<CalendarMailUI>();
             //Debug.Log("Calling UpdateCurrentDay");
             cal.UpdateCurrentDay();
         }
