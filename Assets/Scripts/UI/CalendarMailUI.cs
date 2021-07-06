@@ -20,7 +20,7 @@ public class CalendarMailUI : MonoBehaviour
     public TMP_FontAsset FontAssetBlue;
     public List<Tab> Tabs;
     public List<GameObject> UIPanels;
-    public GameObject MainPanel;
+    //public GameObject MainPanel;
     public GameObject timeObject;
 
     void Start()

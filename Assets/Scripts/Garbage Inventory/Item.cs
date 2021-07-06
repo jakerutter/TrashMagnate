@@ -20,8 +20,9 @@ public class Item
         Fan,
         SmallBattery,
         LargeBattery,
-        SmallWood,
-        LargeWood,
+        Crate,
+        Plank,
+        Pallet,
         Can,
         BrownGlassBottle,
         GreenGlassBottle,
@@ -53,8 +54,9 @@ public class Item
             case ItemType.Fan:                  return ItemAssets.Instance.FanSprite;
             case ItemType.SmallBattery:         return ItemAssets.Instance.SmallBatterySprite;
             case ItemType.LargeBattery:         return ItemAssets.Instance.LargeBatterySprite;
-            case ItemType.SmallWood:            return ItemAssets.Instance.SmallWoodSprite;
-            case ItemType.LargeWood:            return ItemAssets.Instance.LargeWoodSprite;
+            case ItemType.Crate:                return ItemAssets.Instance.CrateSprite;
+            case ItemType.Plank:                return ItemAssets.Instance.PlankSprite;
+            case ItemType.Pallet:               return ItemAssets.Instance.PalletSprite;
             case ItemType.Can:                  return ItemAssets.Instance.CanSprite;
             case ItemType.BrownGlassBottle:     return ItemAssets.Instance.BrownGlassBottleSprite;
             case ItemType.GreenGlassBottle:     return ItemAssets.Instance.GreenGlassBottleSprite;
@@ -83,8 +85,9 @@ public class Item
             case ItemType.Fan:                  return ItemAssets.Instance.FanPrefab;
             case ItemType.SmallBattery:         return ItemAssets.Instance.SmallBatteryPrefab;
             case ItemType.LargeBattery:         return ItemAssets.Instance.LargeBatteryPrefab;
-            case ItemType.SmallWood:            return ItemAssets.Instance.SmallWoodPrefab;
-            case ItemType.LargeWood:            return ItemAssets.Instance.LargeWoodPrefab;
+            case ItemType.Crate:                return ItemAssets.Instance.CratePrefab;
+            case ItemType.Plank:                return ItemAssets.Instance.PlankPrefab;
+            case ItemType.Pallet:               return ItemAssets.Instance.PalletPrefab;
             case ItemType.Can:                  return ItemAssets.Instance.CanPrefab;
             case ItemType.BrownGlassBottle:     return ItemAssets.Instance.BrownGlassBottlePrefab;
             case ItemType.GreenGlassBottle:     return ItemAssets.Instance.GreenGlassBottlePrefab;
@@ -112,8 +115,8 @@ public class Item
             case ItemType.Fan:                  
             case ItemType.SmallBattery:        
             case ItemType.LargeBattery:         
-            case ItemType.SmallWood:            
-            case ItemType.LargeWood:            
+            case ItemType.Crate:            
+            case ItemType.Pallet:            
             case ItemType.Can:             
             case ItemType.BrownGlassBottle:     
             case ItemType.GreenGlassBottle:     
@@ -143,8 +146,8 @@ public class Item
             case ItemType.Fan:                  
             case ItemType.SmallBattery:        
             case ItemType.LargeBattery:         
-            case ItemType.SmallWood:            
-            case ItemType.LargeWood:            
+            case ItemType.Crate:            
+            case ItemType.Pallet:            
             case ItemType.Can:             
             case ItemType.BrownGlassBottle:     
             case ItemType.GreenGlassBottle:     
@@ -168,14 +171,14 @@ public class Item
             case ItemType.Box:                                 
             case ItemType.SmallBattery:        
             case ItemType.LargeBattery:
-            case ItemType.SmallWood:  
+            case ItemType.Crate:  
             case ItemType.Can:             
             case ItemType.BrownGlassBottle:     
             case ItemType.GreenGlassBottle:
                 return 1;          
             case ItemType.LargeTire:            
             case ItemType.Book:                        
-            case ItemType.LargeWood:            
+            case ItemType.Pallet:            
             case ItemType.GrowlerBottle:  
             case ItemType.Computer:          
             case ItemType.CellPhone:
@@ -212,8 +215,8 @@ public class Item
             case ItemType.LargeBattery:
                 return RecyclingQuest.RawType.Electronic;
 
-            case ItemType.SmallWood:
-            case ItemType.LargeWood:
+            case ItemType.Crate:
+            case ItemType.Pallet:
                 return RecyclingQuest.RawType.Wood;
 
             case ItemType.Can:
@@ -246,8 +249,8 @@ public class Item
             case ItemType.Fan:                  return 3f;
             case ItemType.SmallBattery:         return .2f;
             case ItemType.LargeBattery:         return 4f;
-            case ItemType.SmallWood:            return 1f;
-            case ItemType.LargeWood:            return 3f;
+            case ItemType.Crate:            return 1f;
+            case ItemType.Pallet:            return 3f;
             case ItemType.Can:                  return .2f;
             case ItemType.BrownGlassBottle:     return .6f;
             case ItemType.GreenGlassBottle:     return .6f;
@@ -276,8 +279,8 @@ public class Item
             case ItemType.Fan:                  return "Fans";
             case ItemType.SmallBattery:         return "Small Batteries";
             case ItemType.LargeBattery:         return "Large Batteries";
-            case ItemType.SmallWood:            return "Small Chunks of Wood";
-            case ItemType.LargeWood:            return "Large Wood Planks";
+            case ItemType.Crate:            return "Small Chunks of Wood";
+            case ItemType.Pallet:            return "Large Wood Planks";
             case ItemType.Can:                  return "Aluminum Cans";
             case ItemType.BrownGlassBottle:     return "Brown Glass Bottles";
             case ItemType.GreenGlassBottle:     return "Green Glass Bottles";

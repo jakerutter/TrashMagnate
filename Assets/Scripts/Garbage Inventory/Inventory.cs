@@ -19,7 +19,7 @@ public class Inventory
         itemList.Add(new Item { itemType = Item.ItemType.BrownGlassBottle, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.SmallTire, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.Box, amount = 20});
-        itemList.Add(new Item { itemType = Item.ItemType.SmallWood, amount = 20});
+        itemList.Add(new Item { itemType = Item.ItemType.Pallet, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.GreenGlassBottle, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.Book, amount = 20});
         itemList.Add(new Item { itemType = Item.ItemType.Shoe, amount = 20});

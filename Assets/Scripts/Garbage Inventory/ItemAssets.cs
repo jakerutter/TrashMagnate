@@ -28,8 +28,9 @@ public class ItemAssets : MonoBehaviour
     public Sprite FanSprite;
     public Sprite SmallBatterySprite;
     public Sprite LargeBatterySprite;
-    public Sprite SmallWoodSprite;
-    public Sprite LargeWoodSprite;
+    public Sprite PalletSprite;  //need this sprite
+    public Sprite PlankSprite;
+    public Sprite CrateSprite;  //need this sprite
     public Sprite CanSprite;
     public Sprite BrownGlassBottleSprite;
     public Sprite GreenGlassBottleSprite;
@@ -69,13 +70,15 @@ public class ItemAssets : MonoBehaviour
     public GameObject BookPrefab3;
     public GameObject BookPrefab4;
     public GameObject BoxPrefab;
+    public GameObject BoxPrefab2;
     public GameObject ComputerPrefab;
     public GameObject CellPhonePrefab;
     public GameObject FanPrefab;
     public GameObject SmallBatteryPrefab;
     public GameObject LargeBatteryPrefab;
-    public GameObject SmallWoodPrefab;
-    public GameObject LargeWoodPrefab;
+    public GameObject PalletPrefab;
+    public GameObject PlankPrefab;
+    public GameObject CratePrefab;
     public GameObject CanPrefab;
     public GameObject BrownGlassBottlePrefab;
     public GameObject GreenGlassBottlePrefab;
