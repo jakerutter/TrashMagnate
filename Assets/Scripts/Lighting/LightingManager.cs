@@ -21,6 +21,7 @@ public class LightingManager : MonoBehaviour
     {
         animator = MainGate.GetComponent<Animator>();
         cal = gameObject.GetComponent<CalendarMailUI>();
+        MainGate.transform.Rotate(0, 0, 180);
     }
 
     private void Update()
@@ -32,17 +33,11 @@ public class LightingManager : MonoBehaviour
 
         if(Time.timeScale > 0f)
         {
-            TimeOfDay += Time.deltaTime;
+            TimeOfDay += Time.deltaTime / 10;
             TimeOfDay %= 24; //clamp value between 0-24
             UpdateLighting(TimeOfDay / 24f);
             cal.UpdateTime(TimeOfDay.ToString("0"));
         }
-        //else
-        //{
-        //    UpdateLighting(TimeOfDay / 24f);
-        //    string time = TimeOfDay.ToString();
-        //    cal.UpdateTime(time);
-        //}
         
         //if resetNewDay is true then update current date
         if(resetNewDay && nightHasCome)

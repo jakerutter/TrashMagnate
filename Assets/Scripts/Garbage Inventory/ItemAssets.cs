@@ -89,7 +89,7 @@ public class ItemAssets : MonoBehaviour
     {
         System.Random rd = new System.Random();
 
-        int rand_num = rd.Next(1, 4);
+        int rand_num = rd.Next(1, 5);
 
         if (rand_num == 1)
         {

@@ -445,7 +445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DirectionalLight: {fileID: 560578128}
   Preset: {fileID: 11400000, guid: 504d069aeaa7044a29d85e5a96bdce32, type: 2}
-  TimeOfDay: 13.1
+  TimeOfDay: 9
   MainGate: {fileID: 603745673}
 --- !u!4 &5142385
 Transform:
@@ -15862,7 +15862,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.372549, y: 1}
+    m_SensorSize: {x: 2.3829322, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -26947,7 +26947,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1465337054}
   m_HandleRect: {fileID: 1465337053}
   m_Direction: 2
-  m_Value: 0.4999998
+  m_Value: 0.49999988
   m_Size: 0.6857143
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -45274,7 +45274,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.372549, y: 1}
+    m_SensorSize: {x: 2.3829322, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -63754,7 +63754,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.372549, y: 1}
+    m_SensorSize: {x: 2.3829322, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -68800,7 +68800,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.372549, y: 1}
+    m_SensorSize: {x: 2.3829322, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
