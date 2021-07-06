@@ -76,7 +76,7 @@ public class Item
             case ItemType.Shoe:                 return ItemAssets.Instance.ShoePrefab;
             case ItemType.Boot:                 return ItemAssets.Instance.BootPrefab;
             case ItemType.NewsPaper:            return ItemAssets.Instance.NewsPaperPrefab;
-            case ItemType.Book:                 return ItemAssets.Instance.BookPrefab;
+            case ItemType.Book:                 return ItemAssets.Instance.GetRandomBookPrefab();
             case ItemType.Box:                  return ItemAssets.Instance.BoxPrefab;
             case ItemType.Computer:             return ItemAssets.Instance.ComputerPrefab;
             case ItemType.CellPhone:            return ItemAssets.Instance.CellPhonePrefab;
@@ -123,7 +123,7 @@ public class Item
         }
     }
 
-     public bool CanRecycle()
+    public bool CanRecycle()
     {
         switch(itemType)
         {
@@ -153,7 +153,7 @@ public class Item
         }
     }
 
-       public int RecycleRequirement()
+    public int RecycleRequirement()
     {
         switch(itemType)
         {
@@ -184,7 +184,7 @@ public class Item
         }
     }
 
-     public RecyclingQuest.RawType GetItemRawType()
+    public RecyclingQuest.RawType GetItemRawType()
     {
         switch(itemType)
         {
@@ -226,7 +226,7 @@ public class Item
         }
     }
 
-     public float GetRawMass()
+    public float GetRawMass()
     {
         switch (itemType)
         {
@@ -286,4 +286,6 @@ public class Item
 
         }
     }
+
+  
 }

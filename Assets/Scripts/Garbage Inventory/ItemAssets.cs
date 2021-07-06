@@ -64,7 +64,10 @@ public class ItemAssets : MonoBehaviour
     public GameObject ShoePrefab;
     public GameObject BootPrefab;
     public GameObject NewsPaperPrefab;
-    public GameObject BookPrefab;
+    public GameObject BookPrefab1;
+    public GameObject BookPrefab2;
+    public GameObject BookPrefab3;
+    public GameObject BookPrefab4;
     public GameObject BoxPrefab;
     public GameObject ComputerPrefab;
     public GameObject CellPhonePrefab;
@@ -81,4 +84,28 @@ public class ItemAssets : MonoBehaviour
     public GameObject ModernRecyclerPrefab;
     public GameObject AdvancedRecyclerPrefab;
     public GameObject SoupCanPrefab;
+
+    public GameObject GetRandomBookPrefab()
+    {
+        System.Random rd = new System.Random();
+
+        int rand_num = rd.Next(1, 4);
+
+        if (rand_num == 1)
+        {
+            return Instance.BookPrefab1;
+        }
+        else if (rand_num == 2)
+        {
+            return Instance.BookPrefab2;
+        }
+        else if (rand_num == 3)
+        {
+            return Instance.BookPrefab3;
+        }
+        else
+        {
+            return Instance.BookPrefab4;
+        }
+    }
 }

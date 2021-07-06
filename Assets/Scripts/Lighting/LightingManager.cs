@@ -35,7 +35,7 @@ public class LightingManager : MonoBehaviour
             TimeOfDay += Time.deltaTime;
             TimeOfDay %= 24; //clamp value between 0-24
             UpdateLighting(TimeOfDay / 24f);
-            cal.UpdateTime(TimeOfDay.ToString());
+            cal.UpdateTime(TimeOfDay.ToString("0"));
         }
         //else
         //{
