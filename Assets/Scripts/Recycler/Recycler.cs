@@ -78,7 +78,7 @@ public class Recycler
 
             case RecyclerType.ModernRecycler:       return new List<Item>()
                 {
-                    new Item(){ itemType = Item.ItemType.SmallBattery, amount = 10 },
+                    new Item(){ itemType = Item.ItemType.Pan, amount = 10 },
                     new Item(){ itemType = Item.ItemType.GrowlerBottle, amount = 10 },
                     new Item(){ itemType = Item.ItemType.LargeTire, amount = 20 },
                     new Item(){ itemType = Item.ItemType.Book, amount = 20 }

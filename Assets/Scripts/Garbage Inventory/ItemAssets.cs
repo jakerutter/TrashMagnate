@@ -26,7 +26,8 @@ public class ItemAssets : MonoBehaviour
     public Sprite ComputerSprite;
     public Sprite CellPhoneSprite;
     public Sprite FanSprite;
-    public Sprite SmallBatterySprite;
+    public Sprite PotSprite;  //need this sprite
+    public Sprite PanSprite; //need this sprite
     public Sprite LargeBatterySprite;
     public Sprite PalletSprite;  //need this sprite
     public Sprite PlankSprite;
@@ -74,7 +75,8 @@ public class ItemAssets : MonoBehaviour
     public GameObject ComputerPrefab;
     public GameObject CellPhonePrefab;
     public GameObject FanPrefab;
-    public GameObject SmallBatteryPrefab;
+    public GameObject PotPrefab;
+    public GameObject PanPrefab;
     public GameObject LargeBatteryPrefab;
     public GameObject PalletPrefab;
     public GameObject PlankPrefab;

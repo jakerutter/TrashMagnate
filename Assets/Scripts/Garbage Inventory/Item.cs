@@ -15,10 +15,12 @@ public class Item
         NewsPaper,
         Book,
         Box,
+        BoxOpen,
         Computer,
         CellPhone,
         Fan,
-        SmallBattery,
+        Pot,
+        Pan,
         LargeBattery,
         Crate,
         Plank,
@@ -52,7 +54,8 @@ public class Item
             case ItemType.Computer:             return ItemAssets.Instance.ComputerSprite;
             case ItemType.CellPhone:            return ItemAssets.Instance.CellPhoneSprite;
             case ItemType.Fan:                  return ItemAssets.Instance.FanSprite;
-            case ItemType.SmallBattery:         return ItemAssets.Instance.SmallBatterySprite;
+            case ItemType.Pot:                  return ItemAssets.Instance.PotSprite;
+            case ItemType.Pan:                  return ItemAssets.Instance.PanSprite;
             case ItemType.LargeBattery:         return ItemAssets.Instance.LargeBatterySprite;
             case ItemType.Crate:                return ItemAssets.Instance.CrateSprite;
             case ItemType.Plank:                return ItemAssets.Instance.PlankSprite;
@@ -83,7 +86,7 @@ public class Item
             case ItemType.Computer:             return ItemAssets.Instance.ComputerPrefab;
             case ItemType.CellPhone:            return ItemAssets.Instance.CellPhonePrefab;
             case ItemType.Fan:                  return ItemAssets.Instance.FanPrefab;
-            case ItemType.SmallBattery:         return ItemAssets.Instance.SmallBatteryPrefab;
+            case ItemType.Pan:                  return ItemAssets.Instance.PanPrefab;
             case ItemType.LargeBattery:         return ItemAssets.Instance.LargeBatteryPrefab;
             case ItemType.Crate:                return ItemAssets.Instance.CratePrefab;
             case ItemType.Plank:                return ItemAssets.Instance.PlankPrefab;
@@ -113,7 +116,8 @@ public class Item
             case ItemType.Computer:          
             case ItemType.CellPhone:           
             case ItemType.Fan:                  
-            case ItemType.SmallBattery:        
+            case ItemType.Pan:
+            case ItemType.Pot:
             case ItemType.LargeBattery:         
             case ItemType.Crate:            
             case ItemType.Pallet:            
@@ -144,7 +148,8 @@ public class Item
             case ItemType.Computer:          
             case ItemType.CellPhone:           
             case ItemType.Fan:                  
-            case ItemType.SmallBattery:        
+            case ItemType.Pot:
+            case ItemType.Pan:
             case ItemType.LargeBattery:         
             case ItemType.Crate:            
             case ItemType.Pallet:            
@@ -169,7 +174,8 @@ public class Item
             case ItemType.Boot:                 
             case ItemType.NewsPaper:
             case ItemType.Box:                                 
-            case ItemType.SmallBattery:        
+            case ItemType.Pot:
+            case ItemType.Pan:
             case ItemType.LargeBattery:
             case ItemType.Crate:  
             case ItemType.Can:             
@@ -210,8 +216,7 @@ public class Item
 
             case ItemType.Computer:          
             case ItemType.CellPhone:           
-            case ItemType.Fan:                  
-            case ItemType.SmallBattery:        
+            case ItemType.Fan:                        
             case ItemType.LargeBattery:
                 return RecyclingQuest.RawType.Electronic;
 
@@ -220,6 +225,8 @@ public class Item
                 return RecyclingQuest.RawType.Wood;
 
             case ItemType.Can:
+            case ItemType.Pot:
+            case ItemType.Pan:
                 return RecyclingQuest.RawType.Metal;
 
             case ItemType.BrownGlassBottle:     
@@ -247,10 +254,11 @@ public class Item
             case ItemType.Computer:             return 2f;
             case ItemType.CellPhone:            return .6f;
             case ItemType.Fan:                  return 3f;
-            case ItemType.SmallBattery:         return .2f;
+            case ItemType.Pot:                  return 2f;
+            case ItemType.Pan:                  return 1.6f;
             case ItemType.LargeBattery:         return 4f;
-            case ItemType.Crate:            return 1f;
-            case ItemType.Pallet:            return 3f;
+            case ItemType.Crate:                return 1f;
+            case ItemType.Pallet:               return 3f;
             case ItemType.Can:                  return .2f;
             case ItemType.BrownGlassBottle:     return .6f;
             case ItemType.GreenGlassBottle:     return .6f;
@@ -277,15 +285,16 @@ public class Item
             case ItemType.Computer:             return "Computers";
             case ItemType.CellPhone:            return "Cell Phones";
             case ItemType.Fan:                  return "Fans";
-            case ItemType.SmallBattery:         return "Small Batteries";
+            case ItemType.Pot:                  return "Pots";
+            case ItemType.Pan:                  return "Pans";
             case ItemType.LargeBattery:         return "Large Batteries";
-            case ItemType.Crate:            return "Small Chunks of Wood";
-            case ItemType.Pallet:            return "Large Wood Planks";
+            case ItemType.Crate:                return "Small Chunks of Wood";
+            case ItemType.Pallet:               return "Large Wood Planks";
             case ItemType.Can:                  return "Aluminum Cans";
             case ItemType.BrownGlassBottle:     return "Brown Glass Bottles";
             case ItemType.GreenGlassBottle:     return "Green Glass Bottles";
             case ItemType.GrowlerBottle:        return "Growler Bottle";
-            case ItemType.None:            return "None";
+            case ItemType.None:                 return "None";
 
         }
     }

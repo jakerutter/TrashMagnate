@@ -26,11 +26,11 @@ public class InputManager : MonoBehaviour
     {
         Cursor.SetCursor(pointer, new Vector2(16,16), CursorMode.Auto);
         //Do not remove these onClick invokes. They "prime" the buttons so a single click opens the menus
-        mainInventoryToggle.onClick.Invoke();
+        //mainInventoryToggle.onClick.Invoke();
 
-        recycleInventoryToggle.onClick.Invoke();
+        //recycleInventoryToggle.onClick.Invoke();
 
-        calendarMailToggle.onClick.Invoke();
+        //calendarMailToggle.onClick.Invoke();
 
         _audio = FindObjectOfType<AudioManager>();
     }
@@ -56,6 +56,9 @@ public class InputManager : MonoBehaviour
             {
                 _audio.Play("MenuAction");
                 recycleInventoryToggle.onClick.Invoke();
+            } else
+            {
+                Debug.Log("Recycling toggle button is null");
             }
         }
         //inventory toggle
@@ -66,8 +69,11 @@ public class InputManager : MonoBehaviour
             {
                 _audio.Play("MenuAction");
                 mainInventoryToggle.onClick.Invoke();
+            }else
+            {
+                Debug.Log("Inventory toggle button is null");
             }
-        }
+        } 
         //mail toggle
         if(Input.GetKeyDown("m"))
         {
@@ -76,6 +82,9 @@ public class InputManager : MonoBehaviour
             {
                 _audio.Play("MenuAction");
                 calendarMailToggle.onClick.Invoke();
+                } else
+            {
+                Debug.Log("Mail toggle button is null");
             }
         }
         //pause menu
