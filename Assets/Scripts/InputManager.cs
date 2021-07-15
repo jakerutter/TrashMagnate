@@ -82,7 +82,7 @@ public class InputManager : MonoBehaviour
             {
                 _audio.Play("MenuAction");
                 calendarMailToggle.onClick.Invoke();
-                } else
+            } else
             {
                 Debug.Log("Mail toggle button is null");
             }

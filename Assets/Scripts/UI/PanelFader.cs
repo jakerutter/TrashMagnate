@@ -13,12 +13,14 @@ public class PanelFader : MonoBehaviour
     {
         CanvasGroup canvasGrp = GetComponent<CanvasGroup>();
 
+        float endAlpha = canvasGrp.alpha == 0f ? 1 : 0;
         //toggle end value based on faded state
-        StartCoroutine(DoFade(canvasGrp, canvasGrp.alpha, canvasGrp.alpha == 0f ? 1 : 0));
+        //StartCoroutine(DoFade(canvasGrp, canvasGrp.alpha, canvasGrp.alpha == 0f ? 1 : 0));
+        StartCoroutine(DoFade(canvasGrp, canvasGrp.alpha, endAlpha));
 
         //Toggle the faded state
-        isFaded = !isFaded;
-       if(isFaded)
+        //isFaded = !isFaded;
+       if(endAlpha == 0)
        {
            canvasGrp.blocksRaycasts = false;
        } else 

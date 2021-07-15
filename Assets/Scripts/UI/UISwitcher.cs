@@ -11,6 +11,10 @@ public class UISwitcher : MonoBehaviour
     public TextMeshProUGUI titleText;
     public List<Tab> tabs;
     public List<GameObject> tabPanels;
+    public List<GameObject> mailCalendarPanels;
+
+    //TODO want to add some effect that emphasizes which tab is selected by way of
+    //color change, outline, or size change
 
     private void Start()
     {
@@ -70,7 +74,7 @@ public class UISwitcher : MonoBehaviour
         }
     }
 
-      public void SetPanel(Tab tab)
+    public void SetPanel(Tab tab)
     {
         if (tab.tabType == Tab.TabType.InventoryItems)
         {
@@ -189,6 +193,42 @@ public class UISwitcher : MonoBehaviour
                     canva.blocksRaycasts = false;
                  }
              }
+        }
+        else if (tab.tabType == Tab.TabType.Mail)
+        {
+            foreach (GameObject panel in mailCalendarPanels)
+            {
+                CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
+                if (panel.name == "MailUI")
+                {
+                    canva.alpha = 1;
+                    canva.blocksRaycasts = true;
+                }
+                else
+                {
+                    canva.alpha = 0;
+                    canva.blocksRaycasts = false;
+                }
+            }
+        }
+        else if (tab.tabType == Tab.TabType.Calendar)
+        {
+            foreach (GameObject panel in mailCalendarPanels)
+            {
+                CanvasGroup canva = panel.GetComponent<CanvasGroup>();
+
+                if (panel.name == "CalendarUI")
+                {
+                    canva.alpha = 1;
+                    canva.blocksRaycasts = true;
+                }
+                else
+                {
+                    canva.alpha = 0;
+                    canva.blocksRaycasts = false;
+                }
+            }
         }
     }
 }
