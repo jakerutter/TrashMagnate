@@ -13,6 +13,20 @@ public class PanelFader : MonoBehaviour
     {
         CanvasGroup canvasGrp = GetComponent<CanvasGroup>();
 
+        Debug.Log(this.name);
+        //because calendar and mail both have icons which can trigger fading, special consideration
+        //is required to ensure clicking one when already open will switch panels and not close but
+        //clicking one already open will close the UI.
+        if(this.name == "CalendarMailUI")
+        {
+            if(canvasGrp.alpha > 0f)
+            {
+                Debug.Log("entered into special case");
+                return;
+            }
+        }
+
+
         float endAlpha = canvasGrp.alpha == 0f ? 1 : 0;
         //toggle end value based on faded state
         //StartCoroutine(DoFade(canvasGrp, canvasGrp.alpha, canvasGrp.alpha == 0f ? 1 : 0));
