@@ -125,7 +125,7 @@ public class CalendarMailUI : MonoBehaviour
                 
     public void SetPanel(Tab tab)
     {
-        //Debug.Log("Setting panel");
+        Debug.Log("Setting panel " + tab.GetFriendlyName());
 
         if (tab.tabType == Tab.TabType.Calendar)
         {

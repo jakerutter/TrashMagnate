@@ -35,4 +35,22 @@ public class Tab : MonoBehaviour
         }
     }
 
+    public string GetFriendlyName()
+    {
+        switch (tabType)
+        {
+            default:
+            case TabType.InventoryItems: return "Inventory Items";
+            case TabType.RawResources: return "Raw Resources";
+            case TabType.QuestLog: return "Quest Log";
+            case TabType.BuildLog: return "Build Log";
+            case TabType.Collectables: return "Collectables";
+            case TabType.Stats: return "Stats";
+            case TabType.Calendar: return "Calendar";
+            case TabType.Mail: return "Mail";
+            case TabType.TechTree: return "Tech Tree";
+
+        }
+    }
+
 }
