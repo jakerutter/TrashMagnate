@@ -1,4 +1,4 @@
-# RecyclingRockets
+# Trash Magnate (as can be seen on STEAM)
 
 ## This is a resource management style game developed for STEAM.
 
